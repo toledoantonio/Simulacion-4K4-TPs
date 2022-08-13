@@ -11,6 +11,8 @@ namespace SIM_TP_4K4.TP1.Model
     {
         public List<Intervalo> intervalos { get; set; }
 
+        public double frecuenciaEsperada { get; set; }
+
         public IntervaloList(int cantidadIntervalos, double amplitud)
         {
             intervalos = new List<Intervalo>();
@@ -20,12 +22,15 @@ namespace SIM_TP_4K4.TP1.Model
         public void construirIntervalos(int cantidadIntervalos, double amplitud)
         {
          
-           double limInf = 0.0000;
-           double limSup = limInf + amplitud;
+           
            for (int i = 0; i < cantidadIntervalos; i++) {
+                double limSup = ((i + 1) * amplitud);
+                double limInf = (i * amplitud);
+
+                limSup = Util.truncar(limSup);
+                limInf = Util.truncar(limInf);
+
                 Intervalo intervalo = new Intervalo(limInf, limSup);
-                limInf = limSup;
-                limSup = limInf + amplitud;
                 intervalos.Add(intervalo);
             }
         }
@@ -54,6 +59,11 @@ namespace SIM_TP_4K4.TP1.Model
         public string[] getValoresAbsoluta()
         {
             return intervalos.Select(intervalo => intervalo.frecuenciaAbsoluta.ToString()).ToArray();
+        }
+
+        public void setFrecuenciaEsperada(double fEsperada)
+        {
+            this.frecuenciaEsperada = Util.truncar(fEsperada);
         }
     }
 }

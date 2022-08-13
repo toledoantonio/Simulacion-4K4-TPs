@@ -70,21 +70,31 @@ namespace SIM_TP_4K4.TP1
             if (TxtTamañoMuestra.Text.Equals("") || TxtXo.Text.Equals("") || TxtC.Text.Equals("") || (cbxMetodo.SelectedIndex == 3 && TxtSemilla2.Text.Equals("") || (!checkGyK.Checked && TxtM.Text.Equals(""))))
             {
                 MessageBox.Show("ERROR! Faltan Campos Por Completar");
+            } else if(checkGyK.Checked && (TxtG.Text.Equals("") || TxtK.Equals(""))){
+                MessageBox.Show("ERROR! Faltan Campos Por Completar");
             }
             else
-            {
+            {   
+                
                 int metodoSeleccionado = cbxMetodo.SelectedIndex;
                 int xo = Int32.Parse(TxtXo.Text);
-                int x0Anterior = (cbxMetodo.SelectedIndex == 3) ? Int32.Parse(TxtSemilla2.Text) : 0;
-                int a = Int32.Parse(TxtA.Text);
+
+                int a = (!checkGyK.Checked) ? Int32.Parse(TxtA.Text) : 0 ;
                 int c = Int32.Parse(TxtC.Text);
-                int m = Int32.Parse(TxtM.Text);
+                int m = (!checkGyK.Checked) ? Int32.Parse(TxtM.Text) : 0;
                 int n = Int32.Parse(TxtTamañoMuestra.Text);
+
+                int x0Anterior = (cbxMetodo.SelectedIndex == 3) ? Int32.Parse(TxtSemilla2.Text) : 0;
+                int k = (checkGyK.Checked) ? Int32.Parse(TxtK.Text) : 0;
+                int g = (checkGyK.Checked) ? Int32.Parse(TxtG.Text) : 0;
+
                 this.cantIntervalos = Int32.Parse(groupBox4.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text);
-                controller = new GeneradorControlador(xo,c, a, m, n, cantIntervalos, metodoSeleccionado, checkbxFr.Checked, x0Anterior);
+                controller = new GeneradorControlador(xo,c, a, m, n, cantIntervalos, metodoSeleccionado, checkbxFr.Checked, x0Anterior, k, g);
                 cleanColumns();
                 cargarDatos();
-                
+
+
+                this.btnChi.Enabled = true;
             }
         }
 
@@ -185,7 +195,60 @@ namespace SIM_TP_4K4.TP1
         private void btnMas10_Click(object sender, EventArgs e)
         {
             List<Iteracion> results = this.controller.getRandoms(10000);
+            gdrSerieAleatoria.Rows.Clear();
             agregarFilaTabla(results.Last());
+        }
+
+        private void checkBoxDefecto_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxDefecto.Checked)
+            {
+                TxtTamañoMuestra.Text = "20";
+                TxtXo.Text = "37";
+                TxtC.Text = "7";
+                TxtA.Text = "19";
+                TxtM.Text = "53";
+                cantIntervalos = 10;
+                radioButton10.Checked = true;
+                TxtTamañoMuestra.Enabled = false;
+                TxtXo.Enabled = false;
+                TxtC.Enabled = false;
+                TxtA.Enabled = false;
+                TxtM.Enabled = false;
+                
+                radioButton10.Enabled = false;
+                radioButton12.Enabled = false;
+                radioButton8.Enabled = false;
+                radioButton5.Enabled = false;
+                checkGyK.Enabled = false;
+
+            } else
+            {
+                TxtTamañoMuestra.Text = "";
+                TxtXo.Text = "";
+                TxtC.Text = "";
+                TxtA.Text = "";
+                TxtM.Text = "";
+                cantIntervalos = 10;
+                radioButton10.Checked = true;
+                TxtTamañoMuestra.Enabled = true;
+                TxtXo.Enabled = true;
+                TxtC.Enabled = true;
+                TxtA.Enabled = true;
+                TxtM.Enabled = true;
+
+                radioButton10.Enabled = true;
+                radioButton12.Enabled = true;
+                radioButton8.Enabled = true;
+                radioButton5.Enabled = true;
+                checkGyK.Enabled = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChiCuadrado chiCuadrado = new ChiCuadrado(this.controller, this.cantIntervalos);
+            chiCuadrado.Show();
         }
     }
 }

@@ -29,24 +29,13 @@ namespace SIM_TP_4K4.Generador
         
         public int orden { get; set; }
 
-        public CongruencialMixto(int cteC, int semilla, int g, int k, long tamMuestra, int cantIntervalos)
+
+        public CongruencialMixto(int cteA, int cteC, int semilla, int moduloM, int cantIntervalos, bool feRelativa, int k, int g)
         {
-            this.cteA = 1 + 4 * k;
+            this.cteA = (cteA == 0) ? 1 + 4 * k : cteA;
             this.cteC = cteC;
             this.xi = semilla;
-            this.moduloM = (int) Math.Pow(2, g);
-            this.tamMuestra = tamMuestra;
-            this.cantIntervalos = cantIntervalos;
-            this.amplitudIntervalos = 1 / (double) cantIntervalos;
-
-        }
-
-        public CongruencialMixto(int cteA, int cteC, int semilla, int moduloM, int cantIntervalos, bool feRelativa)
-        {
-            this.cteA = cteA;
-            this.cteC = cteC;
-            this.xi = semilla;
-            this.moduloM = moduloM;
+            this.moduloM = (moduloM == 0) ? (int)Math.Pow(2, g) : moduloM ;
             this.cantIntervalos = cantIntervalos;
             this.amplitudIntervalos = 1 / (double) cantIntervalos;
             this.feRelativa = feRelativa;

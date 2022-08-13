@@ -27,21 +27,12 @@ namespace SIM_TP_4K4.Generador
 
         public int orden { get; set; }
 
-        public CongruencialMultiplicativo(int semilla, int g, int k, int tamMuestra)
-        {
-            this.cteA = 3 + 8 * k;
-            this.xi = semilla;
-            this.moduloM = (int)Math.Pow(2, g);
-            this.tamMuestra = tamMuestra;
-            this.cantIntervalos = cantIntervalos;
-            this.amplitudIntervalos = 1 / (double)cantIntervalos;
-        }
 
-        public CongruencialMultiplicativo(int cteA, int semilla, int moduloM, int cantIntervalos, bool feRelativa)
+        public CongruencialMultiplicativo(int cteA, int semilla, int moduloM, int cantIntervalos, bool feRelativa, int k, int g)
         {
-            this.cteA = cteA;
+            this.cteA = (cteA == 0) ? 3 + 8 * k : cteA;
             this.xi = semilla;
-            this.moduloM = moduloM;
+            this.moduloM = (moduloM == 0) ? (int)Math.Pow(2, g) : moduloM;
             this.cantIntervalos = cantIntervalos;
             this.amplitudIntervalos = 1 / (double)cantIntervalos;
             this.feRelativa = feRelativa;

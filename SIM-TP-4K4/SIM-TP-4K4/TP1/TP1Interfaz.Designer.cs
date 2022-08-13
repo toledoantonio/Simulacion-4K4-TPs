@@ -41,9 +41,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_generar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxDefecto = new System.Windows.Forms.CheckBox();
             this.checkbxFr = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.cbxMetodo = new System.Windows.Forms.ComboBox();
             this.checkGyK = new System.Windows.Forms.CheckBox();
             this.TxtTamañoMuestra = new System.Windows.Forms.TextBox();
@@ -72,6 +72,7 @@
             this.btnMas1 = new System.Windows.Forms.Button();
             this.btnMas20 = new System.Windows.Forms.Button();
             this.btnMas10 = new System.Windows.Forms.Button();
+            this.btnChi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -151,7 +152,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 29);
+            this.label1.Location = new System.Drawing.Point(17, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 18);
             this.label1.TabIndex = 31;
@@ -172,12 +173,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBoxDefecto);
             this.groupBox1.Controls.Add(this.checkbxFr);
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.cbxMetodo);
             this.groupBox1.Controls.Add(this.checkGyK);
             this.groupBox1.Controls.Add(this.TxtTamañoMuestra);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Location = new System.Drawing.Point(6, 3);
             this.groupBox1.Name = "groupBox1";
@@ -185,11 +187,23 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             // 
+            // checkBoxDefecto
+            // 
+            this.checkBoxDefecto.AutoSize = true;
+            this.checkBoxDefecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxDefecto.Location = new System.Drawing.Point(20, 19);
+            this.checkBoxDefecto.Name = "checkBoxDefecto";
+            this.checkBoxDefecto.Size = new System.Drawing.Size(219, 22);
+            this.checkBoxDefecto.TabIndex = 41;
+            this.checkBoxDefecto.Text = "¿Utilizar valores por defecto?";
+            this.checkBoxDefecto.UseVisualStyleBackColor = true;
+            this.checkBoxDefecto.CheckedChanged += new System.EventHandler(this.checkBoxDefecto_CheckedChanged);
+            // 
             // checkbxFr
             // 
             this.checkbxFr.AutoSize = true;
             this.checkbxFr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbxFr.Location = new System.Drawing.Point(20, 116);
+            this.checkbxFr.Location = new System.Drawing.Point(20, 186);
             this.checkbxFr.Name = "checkbxFr";
             this.checkbxFr.Size = new System.Drawing.Size(217, 22);
             this.checkbxFr.TabIndex = 40;
@@ -203,22 +217,12 @@
             this.groupBox4.Controls.Add(this.radioButton12);
             this.groupBox4.Controls.Add(this.radioButton10);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(20, 54);
+            this.groupBox4.Location = new System.Drawing.Point(20, 77);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(208, 56);
             this.groupBox4.TabIndex = 39;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Seleccionar cantidad intervalos";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(17, 148);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 18);
-            this.label10.TabIndex = 38;
-            this.label10.Text = "Metodo";
             // 
             // cbxMetodo
             // 
@@ -229,7 +233,7 @@
             "Congruencial Lineal(Mixto)",
             "Congruencial Multiplicativo",
             "Congruencial Aditivo"});
-            this.cbxMetodo.Location = new System.Drawing.Point(20, 178);
+            this.cbxMetodo.Location = new System.Drawing.Point(20, 152);
             this.cbxMetodo.Name = "cbxMetodo";
             this.cbxMetodo.Size = new System.Drawing.Size(191, 23);
             this.cbxMetodo.TabIndex = 21;
@@ -252,7 +256,7 @@
             // 
             this.TxtTamañoMuestra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTamañoMuestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTamañoMuestra.Location = new System.Drawing.Point(200, 24);
+            this.TxtTamañoMuestra.Location = new System.Drawing.Point(197, 47);
             this.TxtTamañoMuestra.Name = "TxtTamañoMuestra";
             this.TxtTamañoMuestra.Size = new System.Drawing.Size(47, 24);
             this.TxtTamañoMuestra.TabIndex = 0;
@@ -432,7 +436,7 @@
             this.groupBox2.Controls.Add(this.gdrSerieAleatoria);
             this.groupBox2.Location = new System.Drawing.Point(317, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1015, 314);
+            this.groupBox2.Size = new System.Drawing.Size(1015, 406);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
             // 
@@ -476,7 +480,7 @@
             this.gdrSerieAleatoria.RowHeadersVisible = false;
             this.gdrSerieAleatoria.RowHeadersWidth = 51;
             this.gdrSerieAleatoria.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gdrSerieAleatoria.Size = new System.Drawing.Size(1009, 305);
+            this.gdrSerieAleatoria.Size = new System.Drawing.Size(1009, 397);
             this.gdrSerieAleatoria.TabIndex = 15;
             // 
             // orden
@@ -499,7 +503,7 @@
             this.btnMas1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMas1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas1.Location = new System.Drawing.Point(317, 335);
+            this.btnMas1.Location = new System.Drawing.Point(324, 416);
             this.btnMas1.Name = "btnMas1";
             this.btnMas1.Size = new System.Drawing.Size(83, 41);
             this.btnMas1.TabIndex = 38;
@@ -512,7 +516,7 @@
             this.btnMas20.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMas20.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas20.Location = new System.Drawing.Point(406, 335);
+            this.btnMas20.Location = new System.Drawing.Point(413, 416);
             this.btnMas20.Name = "btnMas20";
             this.btnMas20.Size = new System.Drawing.Size(83, 41);
             this.btnMas20.TabIndex = 39;
@@ -525,7 +529,7 @@
             this.btnMas10.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMas10.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas10.Location = new System.Drawing.Point(495, 335);
+            this.btnMas10.Location = new System.Drawing.Point(502, 416);
             this.btnMas10.Name = "btnMas10";
             this.btnMas10.Size = new System.Drawing.Size(83, 41);
             this.btnMas10.TabIndex = 40;
@@ -533,17 +537,31 @@
             this.btnMas10.UseVisualStyleBackColor = false;
             this.btnMas10.Click += new System.EventHandler(this.btnMas10_Click);
             // 
+            // btnChi
+            // 
+            this.btnChi.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnChi.Enabled = false;
+            this.btnChi.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChi.Location = new System.Drawing.Point(324, 489);
+            this.btnChi.Name = "btnChi";
+            this.btnChi.Size = new System.Drawing.Size(261, 41);
+            this.btnChi.TabIndex = 41;
+            this.btnChi.Text = "Realizar prueba de Chi Cuadrado";
+            this.btnChi.UseVisualStyleBackColor = false;
+            this.btnChi.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TP1_Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 674);
+            this.Controls.Add(this.btnChi);
             this.Controls.Add(this.btnMas10);
             this.Controls.Add(this.btnMas20);
             this.Controls.Add(this.btnMas1);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_volverMenu);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_generar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -561,7 +579,6 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gdrSerieAleatoria)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -595,7 +612,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView gdrSerieAleatoria;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbxMetodo;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridViewTextBoxColumn orden;
@@ -607,5 +623,7 @@
         private System.Windows.Forms.CheckBox checkbxFr;
         private System.Windows.Forms.Label lblSemilla2;
         private System.Windows.Forms.TextBox TxtSemilla2;
+        private System.Windows.Forms.CheckBox checkBoxDefecto;
+        private System.Windows.Forms.Button btnChi;
     }
 }
