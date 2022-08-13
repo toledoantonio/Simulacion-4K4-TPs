@@ -43,7 +43,7 @@ namespace SIM_TP_4K4.TP1
         {
             if (TxtTamañoMuestra.Text.Equals("") || TxtXo.Text.Equals("") || TxtC.Text.Equals(""))
             {
-                MessageBox.Show("ERROR! Faltan Campos por Completar");
+                MessageBox.Show("ERROR! Faltan Campos Por Completar");
             }
             else
             {
