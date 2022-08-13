@@ -50,15 +50,5 @@ namespace SIM_TP_4K4.Generador
                     break;
             }
         }
-
-        public void probando()
-        {
-            List<Iteracion> iteracions = this.generador.generarPseudoAleatorios(20);
-            foreach(Iteracion i in iteracions)
-            {
-                Console.WriteLine("Orden:" + i.orden + " Entero: " + i.entero +" Random" + i.random + "Valores Intervalo: " + i.valoresIntervalo[0]);
-
-            }
-        }
     }
 }

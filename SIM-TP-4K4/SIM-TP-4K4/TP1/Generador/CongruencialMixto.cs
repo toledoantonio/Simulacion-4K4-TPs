@@ -58,16 +58,14 @@ namespace SIM_TP_4K4.Generador
 
 
                 int xiSiguiente = ((xi * this.cteA) + this.cteC) % this.moduloM;
-                Console.WriteLine(xiSiguiente);
                 double rnd =((double)xiSiguiente / (double) this.moduloM);
-                Console.WriteLine(rnd);
                 rnd = Math.Truncate(rnd * ajusteCantidadDecimales) / ajusteCantidadDecimales;
                
-                intervalos.actualizarIntervalos(rnd, i, i - 1);
+                intervalos.actualizarIntervalos(rnd, i + 1, i);
+                int[]  intervalosValue = intervalos.getValores();
 
 
-
-                Iteracion pseudoAleatorio = new Iteracion(xiSiguiente, rnd, i, intervalos.valores());
+                Iteracion pseudoAleatorio = new Iteracion(xiSiguiente, rnd, i + 1, intervalos.getValores());
                 result.Add(pseudoAleatorio);
                 xi = xiSiguiente;
             }

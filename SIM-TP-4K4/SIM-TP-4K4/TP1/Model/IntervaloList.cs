@@ -13,18 +13,19 @@ namespace SIM_TP_4K4.TP1.Model
 
         public IntervaloList(int cantidadIntervalos, double amplitud)
         {
-            intervalos = new List<Intervalo>(cantidadIntervalos);
-            construirIntervalos(amplitud);
+            intervalos = new List<Intervalo>();
+            construirIntervalos(cantidadIntervalos, amplitud);
         }
 
-        public void construirIntervalos(double amplitud)
+        public void construirIntervalos(int cantidadIntervalos, double amplitud)
         {
            double limInf = 0.0000;
            double limSup = limInf + amplitud;
-           for (int i = 0; i < intervalos.Count; i++) {     
+           for (int i = 0; i < cantidadIntervalos; i++) {     
                 Intervalo intervalo = new Intervalo(limInf, limSup);
                 limInf = limSup;
                 limSup = limInf + amplitud;
+                intervalos.Add(intervalo);
             }
         }
 
@@ -42,7 +43,7 @@ namespace SIM_TP_4K4.TP1.Model
             }
         }
 
-        public int[] valores()
+        public int[] getValores()
         {
             int[] valores = intervalos.Select(intervalo => intervalo.frecuencia).ToArray();
             return valores;
