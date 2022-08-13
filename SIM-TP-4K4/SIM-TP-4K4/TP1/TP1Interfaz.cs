@@ -15,6 +15,7 @@ namespace SIM_TP_4K4.TP1
     {
         private int cantIntervalos { get; set; }
         private GeneradorControlador controller { get; set; }
+        
 
         public TP1_Interfaz()
         {
@@ -54,6 +55,26 @@ namespace SIM_TP_4K4.TP1
         private void cargarDatos()
         {
             controller.probando();
+        }
+
+        private void btn_volverMenu_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal ven = new MenuPrincipal();
+            ven.Show();
+            this.Close();
+        }
+
+        private void btn_limpiar_Click(object sender, EventArgs e)
+        {
+            TP1_Interfaz ven = new TP1_Interfaz();
+            ven.Show();
+            this.Close();
+        }
+
+        private void TP1_Interfaz_Load(object sender, EventArgs e)
+        {
+            TxtG.Enabled = false;
+            TxtK.Enabled = false;
         }
     }
 }

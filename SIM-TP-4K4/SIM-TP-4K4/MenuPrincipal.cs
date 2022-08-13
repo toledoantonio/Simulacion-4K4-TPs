@@ -27,11 +27,12 @@ namespace SIM_TP_4K4
         {
 
         }
-
+        
         private void btn_menuPrincipal_Click(object sender, EventArgs e)
         {
             TP1_Interfaz tp1 = new TP1_Interfaz();
             tp1.Show();
+            this.Hide();
         }
     }
 }
