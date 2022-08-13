@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIM_TP_4K4.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,18 +36,28 @@ namespace SIM_TP_4K4.Generador
         {
             switch (metodo)
             {
+                case 0:
+                    this.generador = new CongruencialMixto(cteMultiplicadora, cteC, semilla, moduloM, cantidadIntervalos);
+                    break;
                 case 1:
-                   // this.generador = new CongruencialMixto();
+                    // this.generador = new CongruencialMultiplicativo();
                     break;
                 case 2:
-                   // this.generador = new CongruencialMultiplicativo();
-                    break;
-                case 3:
-                   // this.generador = new Aditivo();
+                    // this.generador = new Aditivo();
                     break;
                 default:
                     this.generador = null;
                     break;
+            }
+        }
+
+        public void probando()
+        {
+            List<Iteracion> iteracions = this.generador.generarPseudoAleatorios(20);
+            foreach(Iteracion i in iteracions)
+            {
+                Console.WriteLine("Orden:" + i.orden + " Entero: " + i.entero +" Random" + i.random + "Valores Intervalo: " + i.valoresIntervalo[0]);
+
             }
         }
     }

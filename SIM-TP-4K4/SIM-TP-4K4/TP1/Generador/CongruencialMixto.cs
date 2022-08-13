@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using SIM_TP_4K4.Model;
+using SIM_TP_4K4.TP1.Model;
 
 namespace SIM_TP_4K4.Generador
 {
-    public class CongruencialMixto 
+    public class CongruencialMixto : IGenerador
     {
+        static readonly double ajusteCantidadDecimales = Math.Pow(10, 4);
         public int cteA { get; set; }
         public int cteC { get; set; }
 
@@ -19,33 +21,53 @@ namespace SIM_TP_4K4.Generador
 
         public long tamMuestra { get; set; }
 
-        public CongruencialMixto(int cteC, int semilla, int g, int k, long tamMuestra)
+        public int cantIntervalos { get; set; }
+        public double amplitudIntervalos { get; set; }
+
+        public CongruencialMixto(int cteC, int semilla, int g, int k, long tamMuestra, int cantIntervalos)
         {
             this.cteA = 1 + 4 * k;
             this.cteC = cteC;
             this.semilla = semilla;
             this.moduloM = (int) Math.Pow(2, g);
             this.tamMuestra = tamMuestra;
+            this.cantIntervalos = cantIntervalos;
+            this.amplitudIntervalos = 1 / cantIntervalos;
+
         }
 
-        public CongruencialMixto(int cteA, int cteC, int semilla, int moduloM)
+        public CongruencialMixto(int cteA, int cteC, int semilla, int moduloM, int cantIntervalos)
         {
             this.cteA = cteA;
             this.cteC = cteC;
             this.semilla = semilla;
             this.moduloM = moduloM;
+            this.cantIntervalos = cantIntervalos;
+            this.amplitudIntervalos = 1 / cantIntervalos;
         }
 
 
-        public List<PseudoAleatorio> generarPseudoAleatorios(int cantidad)
+        public List<Iteracion> generarPseudoAleatorios(int cantidad)
         {
-            List<PseudoAleatorio> result = new List<PseudoAleatorio>();
+            List<Iteracion> result = new List<Iteracion>();
             int xi = this.semilla;
+            IntervaloList intervalos = new IntervaloList(this.cantIntervalos, this.amplitudIntervalos);
 
             for (int i = 0; i < cantidad; ++i)
             {
+
+
                 int xiSiguiente = ((xi * this.cteA) + this.cteC) % this.moduloM;
-                PseudoAleatorio pseudoAleatorio = new PseudoAleatorio(xiSiguiente, this.moduloM);
+                Console.WriteLine(xiSiguiente);
+                double rnd =((double)xiSiguiente / (double) this.moduloM);
+                Console.WriteLine(rnd);
+                rnd = Math.Truncate(rnd * ajusteCantidadDecimales) / ajusteCantidadDecimales;
+               
+                intervalos.actualizarIntervalos(rnd, i, i - 1);
+
+
+
+                Iteracion pseudoAleatorio = new Iteracion(xiSiguiente, rnd, i, intervalos.valores());
                 result.Add(pseudoAleatorio);
                 xi = xiSiguiente;
             }
@@ -53,9 +75,9 @@ namespace SIM_TP_4K4.Generador
             return result;
         }
 
-        public PseudoAleatorio siguientePseudoAleatorio()
+        public Iteracion siguientePseudoAleatorio()
         {
-            return new PseudoAleatorio(1,1);
+            return new Iteracion();
         }
 
     }

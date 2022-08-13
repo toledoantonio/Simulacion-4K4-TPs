@@ -32,26 +32,33 @@ namespace SIM_TP_4K4.Generador
             this.moduloM = moduloM;
             this.tamMuestra = tamMuestra;
         }
-
-        public List<PseudoAleatorio> generarPseudoAleatorios()
+        /*
+        public List<Iteracion> generarPseudoAleatorios()
         {
-            List<PseudoAleatorio> result = new List<PseudoAleatorio>();
+            List<Iteracion> result = new List<Iteracion>();
             int xi = this.semilla;
 
             for (int i = 0; i < tamMuestra; ++i)
             {
                 int xiSiguiente = (this.cteA * xi) % this.moduloM;
-                PseudoAleatorio pseudoAleatorio = new PseudoAleatorio(xiSiguiente, this.moduloM);
+                Iteracion pseudoAleatorio = new PseudoAleatorio(xiSiguiente, this.moduloM);
                 result.Add(pseudoAleatorio);
                 xi = xiSiguiente;
             }
 
             return result;
+        }*/
+
+     
+
+        public List<Iteracion> generarPseudoAleatorios(int n)
+        {
+            throw new NotImplementedException();
         }
 
-        public PseudoAleatorio siguientePseudoAleatorio()
+        public Iteracion siguientePseudoAleatorio()
         {
-            return new PseudoAleatorio(1, 1);
+            throw new NotImplementedException();
         }
     }
 }

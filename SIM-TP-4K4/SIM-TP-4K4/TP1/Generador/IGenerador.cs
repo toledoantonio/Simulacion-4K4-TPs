@@ -9,7 +9,7 @@ namespace SIM_TP_4K4.Generador
 {
     public interface IGenerador
     {
-        List<PseudoAleatorio> generarPseudoAleatorios();
-        PseudoAleatorio siguientePseudoAleatorio();
+        List<Iteracion> generarPseudoAleatorios(int n);
+        Iteracion siguientePseudoAleatorio();
     }
 }

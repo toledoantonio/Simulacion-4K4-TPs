@@ -31,9 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_volverMenu = new System.Windows.Forms.Button();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
@@ -42,10 +39,10 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_generar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbxMetodo = new System.Windows.Forms.ComboBox();
             this.checkGyK = new System.Windows.Forms.CheckBox();
-            this.checkIncluir1 = new System.Windows.Forms.CheckBox();
             this.TxtTamañoMuestra = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TxtG = new System.Windows.Forms.TextBox();
@@ -62,27 +59,20 @@
             this.TxtA = new System.Windows.Forms.TextBox();
             this.TxtXo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbl_resHipotesis = new System.Windows.Forms.Label();
-            this.txtValorTabulado = new System.Windows.Forms.TextBox();
-            this.lblValorTabulado = new System.Windows.Forms.Label();
-            this.txtNivelSignificancia = new System.Windows.Forms.TextBox();
             this.gdrSerieAleatoria = new System.Windows.Forms.DataGridView();
-            this.iteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabla = new System.Windows.Forms.DataGridView();
-            this.desde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblNivelSignificancia = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.random = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnMas1 = new System.Windows.Forms.Button();
+            this.btnMas20 = new System.Windows.Forms.Button();
+            this.btnMas10 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdrSerieAleatoria)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_limpiar
@@ -109,11 +99,10 @@
             // 
             this.radioButton12.AutoSize = true;
             this.radioButton12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton12.Location = new System.Drawing.Point(203, 110);
+            this.radioButton12.Location = new System.Drawing.Point(157, 30);
             this.radioButton12.Name = "radioButton12";
             this.radioButton12.Size = new System.Drawing.Size(39, 19);
             this.radioButton12.TabIndex = 30;
-            this.radioButton12.TabStop = true;
             this.radioButton12.Text = "12";
             this.radioButton12.UseVisualStyleBackColor = true;
             // 
@@ -121,19 +110,19 @@
             // 
             this.radioButton8.AutoSize = true;
             this.radioButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton8.Location = new System.Drawing.Point(84, 110);
+            this.radioButton8.Location = new System.Drawing.Point(62, 30);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(32, 19);
             this.radioButton8.TabIndex = 28;
-            this.radioButton8.TabStop = true;
             this.radioButton8.Text = "8";
             this.radioButton8.UseVisualStyleBackColor = true;
             // 
             // radioButton10
             // 
             this.radioButton10.AutoSize = true;
+            this.radioButton10.Checked = true;
             this.radioButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton10.Location = new System.Drawing.Point(142, 110);
+            this.radioButton10.Location = new System.Drawing.Point(106, 30);
             this.radioButton10.Name = "radioButton10";
             this.radioButton10.Size = new System.Drawing.Size(39, 19);
             this.radioButton10.TabIndex = 29;
@@ -145,11 +134,10 @@
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(26, 110);
+            this.radioButton5.Location = new System.Drawing.Point(18, 30);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(32, 19);
             this.radioButton5.TabIndex = 27;
-            this.radioButton5.TabStop = true;
             this.radioButton5.Text = "5";
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
@@ -174,21 +162,14 @@
             this.btn_generar.TabIndex = 33;
             this.btn_generar.Text = "Generar";
             this.btn_generar.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 18);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Numero de Intervalos";
+            this.btn_generar.Click += new System.EventHandler(this.btn_generar_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.cbxMetodo);
             this.groupBox1.Controls.Add(this.checkGyK);
-            this.groupBox1.Controls.Add(this.checkIncluir1);
             this.groupBox1.Controls.Add(this.TxtTamañoMuestra);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Location = new System.Drawing.Point(6, 3);
@@ -196,6 +177,29 @@
             this.groupBox1.Size = new System.Drawing.Size(295, 594);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(17, 145);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 18);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "Metodo";
+            // 
+            // cbxMetodo
+            // 
+            this.cbxMetodo.FormattingEnabled = true;
+            this.cbxMetodo.Items.AddRange(new object[] {
+            "Congruencial Lineal(Mixto)",
+            "Congruencial Multiplicativo",
+            "Congruencial Aditivo"});
+            this.cbxMetodo.Location = new System.Drawing.Point(20, 178);
+            this.cbxMetodo.Name = "cbxMetodo";
+            this.cbxMetodo.Size = new System.Drawing.Size(191, 21);
+            this.cbxMetodo.TabIndex = 21;
+            this.cbxMetodo.Text = "Seleccionar Metodo";
             // 
             // checkGyK
             // 
@@ -207,17 +211,6 @@
             this.checkGyK.TabIndex = 20;
             this.checkGyK.Text = "¿Utilizar G y K para calculo ideal?";
             this.checkGyK.UseVisualStyleBackColor = true;
-            // 
-            // checkIncluir1
-            // 
-            this.checkIncluir1.AutoSize = true;
-            this.checkIncluir1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkIncluir1.Location = new System.Drawing.Point(20, 158);
-            this.checkIncluir1.Name = "checkIncluir1";
-            this.checkIncluir1.Size = new System.Drawing.Size(101, 22);
-            this.checkIncluir1.TabIndex = 19;
-            this.checkIncluir1.Text = "No incluir 1";
-            this.checkIncluir1.UseVisualStyleBackColor = true;
             // 
             // TxtTamañoMuestra
             // 
@@ -375,57 +368,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbl_resHipotesis);
-            this.groupBox2.Controls.Add(this.txtValorTabulado);
-            this.groupBox2.Controls.Add(this.lblValorTabulado);
-            this.groupBox2.Controls.Add(this.txtNivelSignificancia);
             this.groupBox2.Controls.Add(this.gdrSerieAleatoria);
-            this.groupBox2.Controls.Add(this.tabla);
-            this.groupBox2.Controls.Add(this.lblNivelSignificancia);
             this.groupBox2.Location = new System.Drawing.Point(317, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1015, 657);
+            this.groupBox2.Size = new System.Drawing.Size(1015, 314);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
-            // 
-            // lbl_resHipotesis
-            // 
-            this.lbl_resHipotesis.AutoSize = true;
-            this.lbl_resHipotesis.BackColor = System.Drawing.Color.Black;
-            this.lbl_resHipotesis.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_resHipotesis.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_resHipotesis.Location = new System.Drawing.Point(243, 579);
-            this.lbl_resHipotesis.Name = "lbl_resHipotesis";
-            this.lbl_resHipotesis.Size = new System.Drawing.Size(0, 24);
-            this.lbl_resHipotesis.TabIndex = 24;
-            // 
-            // txtValorTabulado
-            // 
-            this.txtValorTabulado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtValorTabulado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorTabulado.Location = new System.Drawing.Point(342, 514);
-            this.txtValorTabulado.Name = "txtValorTabulado";
-            this.txtValorTabulado.Size = new System.Drawing.Size(88, 22);
-            this.txtValorTabulado.TabIndex = 23;
-            // 
-            // lblValorTabulado
-            // 
-            this.lblValorTabulado.AutoSize = true;
-            this.lblValorTabulado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorTabulado.Location = new System.Drawing.Point(287, 474);
-            this.lblValorTabulado.Name = "lblValorTabulado";
-            this.lblValorTabulado.Size = new System.Drawing.Size(139, 24);
-            this.lblValorTabulado.TabIndex = 21;
-            this.lblValorTabulado.Text = "Valor Tabulado";
-            // 
-            // txtNivelSignificancia
-            // 
-            this.txtNivelSignificancia.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNivelSignificancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNivelSignificancia.Location = new System.Drawing.Point(342, 430);
-            this.txtNivelSignificancia.Name = "txtNivelSignificancia";
-            this.txtNivelSignificancia.Size = new System.Drawing.Size(88, 22);
-            this.txtNivelSignificancia.TabIndex = 22;
             // 
             // gdrSerieAleatoria
             // 
@@ -443,8 +391,9 @@
             this.gdrSerieAleatoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gdrSerieAleatoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdrSerieAleatoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iteracion,
-            this.rnd});
+            this.orden,
+            this.entero,
+            this.random});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -453,7 +402,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gdrSerieAleatoria.DefaultCellStyle = dataGridViewCellStyle2;
-            this.gdrSerieAleatoria.Location = new System.Drawing.Point(21, 25);
+            this.gdrSerieAleatoria.Location = new System.Drawing.Point(6, 19);
             this.gdrSerieAleatoria.Name = "gdrSerieAleatoria";
             this.gdrSerieAleatoria.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -466,143 +415,85 @@
             this.gdrSerieAleatoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gdrSerieAleatoria.RowHeadersVisible = false;
             this.gdrSerieAleatoria.RowHeadersWidth = 51;
-            this.gdrSerieAleatoria.Size = new System.Drawing.Size(176, 610);
+            this.gdrSerieAleatoria.Size = new System.Drawing.Size(967, 282);
             this.gdrSerieAleatoria.TabIndex = 15;
             // 
-            // iteracion
+            // groupBox4
             // 
-            this.iteracion.HeaderText = "Iteracion";
-            this.iteracion.MinimumWidth = 6;
-            this.iteracion.Name = "iteracion";
-            this.iteracion.Width = 80;
+            this.groupBox4.Controls.Add(this.radioButton5);
+            this.groupBox4.Controls.Add(this.radioButton8);
+            this.groupBox4.Controls.Add(this.radioButton12);
+            this.groupBox4.Controls.Add(this.radioButton10);
+            this.groupBox4.Location = new System.Drawing.Point(20, 67);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(208, 63);
+            this.groupBox4.TabIndex = 39;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Seleccionar cantidad intervalos";
             // 
-            // rnd
+            // orden
             // 
-            this.rnd.HeaderText = "RND";
-            this.rnd.MinimumWidth = 6;
-            this.rnd.Name = "rnd";
-            this.rnd.Width = 125;
+            this.orden.HeaderText = "Orden";
+            this.orden.Name = "orden";
             // 
-            // tabla
+            // entero
             // 
-            this.tabla.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.tabla.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tabla.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.tabla.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.desde,
-            this.hasta,
-            this.mc,
-            this.fo,
-            this.fe,
-            this.c,
-            this.cac});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tabla.DefaultCellStyle = dataGridViewCellStyle5;
-            this.tabla.Location = new System.Drawing.Point(237, 24);
-            this.tabla.Name = "tabla";
-            this.tabla.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.tabla.RowHeadersVisible = false;
-            this.tabla.RowHeadersWidth = 51;
-            this.tabla.Size = new System.Drawing.Size(770, 292);
-            this.tabla.TabIndex = 18;
+            this.entero.HeaderText = "X";
+            this.entero.Name = "entero";
             // 
-            // desde
+            // random
             // 
-            this.desde.HeaderText = "Lim Inferior";
-            this.desde.MinimumWidth = 6;
-            this.desde.Name = "desde";
-            this.desde.Width = 115;
+            this.random.HeaderText = "RND";
+            this.random.Name = "random";
             // 
-            // hasta
+            // btnMas1
             // 
-            this.hasta.HeaderText = "Lim Superior";
-            this.hasta.MinimumWidth = 6;
-            this.hasta.Name = "hasta";
-            this.hasta.Width = 125;
+            this.btnMas1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMas1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnMas1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMas1.Location = new System.Drawing.Point(317, 335);
+            this.btnMas1.Name = "btnMas1";
+            this.btnMas1.Size = new System.Drawing.Size(83, 41);
+            this.btnMas1.TabIndex = 38;
+            this.btnMas1.Text = "+1";
+            this.btnMas1.UseVisualStyleBackColor = false;
             // 
-            // mc
+            // btnMas20
             // 
-            this.mc.HeaderText = "MC";
-            this.mc.MinimumWidth = 6;
-            this.mc.Name = "mc";
-            this.mc.Width = 125;
+            this.btnMas20.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMas20.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnMas20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMas20.Location = new System.Drawing.Point(406, 335);
+            this.btnMas20.Name = "btnMas20";
+            this.btnMas20.Size = new System.Drawing.Size(83, 41);
+            this.btnMas20.TabIndex = 39;
+            this.btnMas20.Text = "+20";
+            this.btnMas20.UseVisualStyleBackColor = false;
             // 
-            // fo
+            // btnMas10
             // 
-            this.fo.HeaderText = "FO";
-            this.fo.MinimumWidth = 6;
-            this.fo.Name = "fo";
-            this.fo.Width = 95;
-            // 
-            // fe
-            // 
-            this.fe.HeaderText = "FE";
-            this.fe.MinimumWidth = 6;
-            this.fe.Name = "fe";
-            this.fe.Width = 125;
-            // 
-            // c
-            // 
-            this.c.HeaderText = "C";
-            this.c.MinimumWidth = 6;
-            this.c.Name = "c";
-            this.c.Width = 125;
-            // 
-            // cac
-            // 
-            this.cac.HeaderText = "C(Acumulado)";
-            this.cac.MinimumWidth = 6;
-            this.cac.Name = "cac";
-            this.cac.Width = 130;
-            // 
-            // lblNivelSignificancia
-            // 
-            this.lblNivelSignificancia.AutoSize = true;
-            this.lblNivelSignificancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNivelSignificancia.Location = new System.Drawing.Point(263, 382);
-            this.lblNivelSignificancia.Name = "lblNivelSignificancia";
-            this.lblNivelSignificancia.Size = new System.Drawing.Size(189, 24);
-            this.lblNivelSignificancia.TabIndex = 20;
-            this.lblNivelSignificancia.Text = "Nivel de Significancia";
+            this.btnMas10.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMas10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnMas10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMas10.Location = new System.Drawing.Point(495, 335);
+            this.btnMas10.Name = "btnMas10";
+            this.btnMas10.Size = new System.Drawing.Size(83, 41);
+            this.btnMas10.TabIndex = 40;
+            this.btnMas10.Text = "+10000 ";
+            this.btnMas10.UseVisualStyleBackColor = false;
             // 
             // TP1_Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 674);
+            this.Controls.Add(this.btnMas10);
+            this.Controls.Add(this.btnMas20);
+            this.Controls.Add(this.btnMas1);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_volverMenu);
-            this.Controls.Add(this.radioButton12);
-            this.Controls.Add(this.radioButton8);
-            this.Controls.Add(this.radioButton10);
-            this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_generar);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "TP1_Interfaz";
@@ -612,9 +503,9 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdrSerieAleatoria)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabla)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -630,10 +521,8 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_generar;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkGyK;
-        private System.Windows.Forms.CheckBox checkIncluir1;
         private System.Windows.Forms.TextBox TxtTamañoMuestra;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox TxtG;
@@ -650,21 +539,16 @@
         private System.Windows.Forms.TextBox TxtA;
         private System.Windows.Forms.TextBox TxtXo;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lbl_resHipotesis;
-        private System.Windows.Forms.TextBox txtValorTabulado;
-        private System.Windows.Forms.Label lblValorTabulado;
-        private System.Windows.Forms.TextBox txtNivelSignificancia;
         private System.Windows.Forms.DataGridView gdrSerieAleatoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iteracion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rnd;
-        private System.Windows.Forms.DataGridView tabla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desde;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hasta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn c;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cac;
-        private System.Windows.Forms.Label lblNivelSignificancia;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbxMetodo;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orden;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn random;
+        private System.Windows.Forms.Button btnMas1;
+        private System.Windows.Forms.Button btnMas20;
+        private System.Windows.Forms.Button btnMas10;
     }
 }
