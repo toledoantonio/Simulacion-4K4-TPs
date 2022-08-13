@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TP1_Interfaz));
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_volverMenu = new System.Windows.Forms.Button();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
@@ -40,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_generar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cbxMetodo = new System.Windows.Forms.ComboBox();
             this.checkGyK = new System.Windows.Forms.CheckBox();
@@ -60,19 +62,18 @@
             this.TxtXo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gdrSerieAleatoria = new System.Windows.Forms.DataGridView();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.random = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnMas1 = new System.Windows.Forms.Button();
             this.btnMas20 = new System.Windows.Forms.Button();
             this.btnMas10 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdrSerieAleatoria)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_limpiar
@@ -84,6 +85,7 @@
             this.btn_limpiar.TabIndex = 35;
             this.btn_limpiar.Text = "Limpiar Campos";
             this.btn_limpiar.UseVisualStyleBackColor = true;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // btn_volverMenu
             // 
@@ -94,6 +96,7 @@
             this.btn_volverMenu.TabIndex = 34;
             this.btn_volverMenu.Text = "Volver al Menu";
             this.btn_volverMenu.UseVisualStyleBackColor = true;
+            this.btn_volverMenu.Click += new System.EventHandler(this.btn_volverMenu_Click);
             // 
             // radioButton12
             // 
@@ -178,6 +181,20 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButton5);
+            this.groupBox4.Controls.Add(this.radioButton8);
+            this.groupBox4.Controls.Add(this.radioButton12);
+            this.groupBox4.Controls.Add(this.radioButton10);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(20, 67);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(208, 63);
+            this.groupBox4.TabIndex = 39;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Seleccionar cantidad intervalos";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -190,6 +207,7 @@
             // 
             // cbxMetodo
             // 
+            this.cbxMetodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMetodo.FormattingEnabled = true;
             this.cbxMetodo.Items.AddRange(new object[] {
             "Congruencial Lineal(Mixto)",
@@ -197,7 +215,7 @@
             "Congruencial Aditivo"});
             this.cbxMetodo.Location = new System.Drawing.Point(20, 178);
             this.cbxMetodo.Name = "cbxMetodo";
-            this.cbxMetodo.Size = new System.Drawing.Size(191, 21);
+            this.cbxMetodo.Size = new System.Drawing.Size(191, 23);
             this.cbxMetodo.TabIndex = 21;
             this.cbxMetodo.Text = "Seleccionar Metodo";
             // 
@@ -205,7 +223,7 @@
             // 
             this.checkGyK.AutoSize = true;
             this.checkGyK.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkGyK.Location = new System.Drawing.Point(20, 205);
+            this.checkGyK.Location = new System.Drawing.Point(20, 214);
             this.checkGyK.Name = "checkGyK";
             this.checkGyK.Size = new System.Drawing.Size(247, 22);
             this.checkGyK.TabIndex = 20;
@@ -418,19 +436,6 @@
             this.gdrSerieAleatoria.Size = new System.Drawing.Size(967, 282);
             this.gdrSerieAleatoria.TabIndex = 15;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.radioButton5);
-            this.groupBox4.Controls.Add(this.radioButton8);
-            this.groupBox4.Controls.Add(this.radioButton12);
-            this.groupBox4.Controls.Add(this.radioButton10);
-            this.groupBox4.Location = new System.Drawing.Point(20, 67);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(208, 63);
-            this.groupBox4.TabIndex = 39;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Seleccionar cantidad intervalos";
-            // 
             // orden
             // 
             this.orden.HeaderText = "Orden";
@@ -496,16 +501,19 @@
             this.Controls.Add(this.btn_generar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TP1_Interfaz";
-            this.Text = "TP1_Interfaz";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "TP1 - Generacion de Numeros Aleatorios";
+            this.Load += new System.EventHandler(this.TP1_Interfaz_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gdrSerieAleatoria)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
