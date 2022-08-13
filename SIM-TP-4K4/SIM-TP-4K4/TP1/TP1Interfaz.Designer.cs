@@ -41,12 +41,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_generar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkbxFr = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cbxMetodo = new System.Windows.Forms.ComboBox();
             this.checkGyK = new System.Windows.Forms.CheckBox();
             this.TxtTamañoMuestra = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblSemilla2 = new System.Windows.Forms.Label();
+            this.TxtSemilla2 = new System.Windows.Forms.TextBox();
             this.TxtG = new System.Windows.Forms.TextBox();
             this.TxtK = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -169,6 +172,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkbxFr);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.cbxMetodo);
@@ -181,6 +185,17 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             // 
+            // checkbxFr
+            // 
+            this.checkbxFr.AutoSize = true;
+            this.checkbxFr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkbxFr.Location = new System.Drawing.Point(20, 116);
+            this.checkbxFr.Name = "checkbxFr";
+            this.checkbxFr.Size = new System.Drawing.Size(217, 22);
+            this.checkbxFr.TabIndex = 40;
+            this.checkbxFr.Text = "¿Mostrar frecuencia relativa?";
+            this.checkbxFr.UseVisualStyleBackColor = true;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.radioButton5);
@@ -188,9 +203,9 @@
             this.groupBox4.Controls.Add(this.radioButton12);
             this.groupBox4.Controls.Add(this.radioButton10);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(20, 67);
+            this.groupBox4.Location = new System.Drawing.Point(20, 54);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(208, 63);
+            this.groupBox4.Size = new System.Drawing.Size(208, 56);
             this.groupBox4.TabIndex = 39;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Seleccionar cantidad intervalos";
@@ -199,7 +214,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(17, 145);
+            this.label10.Location = new System.Drawing.Point(17, 148);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 18);
             this.label10.TabIndex = 38;
@@ -210,6 +225,7 @@
             this.cbxMetodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMetodo.FormattingEnabled = true;
             this.cbxMetodo.Items.AddRange(new object[] {
+            "Seleccionar Metodo",
             "Congruencial Lineal(Mixto)",
             "Congruencial Multiplicativo",
             "Congruencial Aditivo"});
@@ -218,6 +234,7 @@
             this.cbxMetodo.Size = new System.Drawing.Size(191, 23);
             this.cbxMetodo.TabIndex = 21;
             this.cbxMetodo.Text = "Seleccionar Metodo";
+            this.cbxMetodo.SelectedIndexChanged += new System.EventHandler(this.chequearMetodo);
             // 
             // checkGyK
             // 
@@ -229,6 +246,7 @@
             this.checkGyK.TabIndex = 20;
             this.checkGyK.Text = "¿Utilizar G y K para calculo ideal?";
             this.checkGyK.UseVisualStyleBackColor = true;
+            this.checkGyK.CheckedChanged += new System.EventHandler(this.checkGyK_CheckedChanged);
             // 
             // TxtTamañoMuestra
             // 
@@ -241,6 +259,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblSemilla2);
+            this.groupBox3.Controls.Add(this.TxtSemilla2);
             this.groupBox3.Controls.Add(this.TxtG);
             this.groupBox3.Controls.Add(this.TxtK);
             this.groupBox3.Controls.Add(this.label9);
@@ -261,6 +281,29 @@
             this.groupBox3.Size = new System.Drawing.Size(254, 322);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
+            // 
+            // lblSemilla2
+            // 
+            this.lblSemilla2.AutoSize = true;
+            this.lblSemilla2.Enabled = false;
+            this.lblSemilla2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSemilla2.Location = new System.Drawing.Point(137, 44);
+            this.lblSemilla2.Name = "lblSemilla2";
+            this.lblSemilla2.Size = new System.Drawing.Size(40, 18);
+            this.lblSemilla2.TabIndex = 21;
+            this.lblSemilla2.Text = "Xo-1";
+            this.lblSemilla2.Visible = false;
+            // 
+            // TxtSemilla2
+            // 
+            this.TxtSemilla2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtSemilla2.Enabled = false;
+            this.TxtSemilla2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtSemilla2.Location = new System.Drawing.Point(191, 42);
+            this.TxtSemilla2.Name = "TxtSemilla2";
+            this.TxtSemilla2.Size = new System.Drawing.Size(47, 24);
+            this.TxtSemilla2.TabIndex = 20;
+            this.TxtSemilla2.Visible = false;
             // 
             // TxtG
             // 
@@ -407,7 +450,6 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gdrSerieAleatoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gdrSerieAleatoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdrSerieAleatoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.orden,
             this.entero,
@@ -420,7 +462,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gdrSerieAleatoria.DefaultCellStyle = dataGridViewCellStyle2;
-            this.gdrSerieAleatoria.Location = new System.Drawing.Point(6, 19);
+            this.gdrSerieAleatoria.Location = new System.Drawing.Point(0, 9);
             this.gdrSerieAleatoria.Name = "gdrSerieAleatoria";
             this.gdrSerieAleatoria.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -433,7 +475,8 @@
             this.gdrSerieAleatoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gdrSerieAleatoria.RowHeadersVisible = false;
             this.gdrSerieAleatoria.RowHeadersWidth = 51;
-            this.gdrSerieAleatoria.Size = new System.Drawing.Size(967, 282);
+            this.gdrSerieAleatoria.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gdrSerieAleatoria.Size = new System.Drawing.Size(1009, 305);
             this.gdrSerieAleatoria.TabIndex = 15;
             // 
             // orden
@@ -462,6 +505,7 @@
             this.btnMas1.TabIndex = 38;
             this.btnMas1.Text = "+1";
             this.btnMas1.UseVisualStyleBackColor = false;
+            this.btnMas1.Click += new System.EventHandler(this.btnMas1_Click);
             // 
             // btnMas20
             // 
@@ -474,6 +518,7 @@
             this.btnMas20.TabIndex = 39;
             this.btnMas20.Text = "+20";
             this.btnMas20.UseVisualStyleBackColor = false;
+            this.btnMas20.Click += new System.EventHandler(this.btnMas20_Click);
             // 
             // btnMas10
             // 
@@ -486,6 +531,7 @@
             this.btnMas10.TabIndex = 40;
             this.btnMas10.Text = "+10000 ";
             this.btnMas10.UseVisualStyleBackColor = false;
+            this.btnMas10.Click += new System.EventHandler(this.btnMas10_Click);
             // 
             // TP1_Interfaz
             // 
@@ -558,5 +604,8 @@
         private System.Windows.Forms.Button btnMas1;
         private System.Windows.Forms.Button btnMas20;
         private System.Windows.Forms.Button btnMas10;
+        private System.Windows.Forms.CheckBox checkbxFr;
+        private System.Windows.Forms.Label lblSemilla2;
+        private System.Windows.Forms.TextBox TxtSemilla2;
     }
 }

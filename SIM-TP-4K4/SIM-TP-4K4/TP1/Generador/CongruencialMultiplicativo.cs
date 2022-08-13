@@ -1,4 +1,5 @@
 ﻿using SIM_TP_4K4.Model;
+using SIM_TP_4K4.TP1.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,54 +12,73 @@ namespace SIM_TP_4K4.Generador
     {
         public int cteA { get; set; }
 
-        public int semilla { get; set; }
+        public int xi { get; set; }
 
         public int moduloM { get; set; }
 
         public long tamMuestra { get; set; }
 
+        public int cantIntervalos { get; set; }
+        public double amplitudIntervalos { get; set; }
+
+        public IntervaloList intervalos { get; set; }
+
+        public bool feRelativa;
+
+        public int orden { get; set; }
+
         public CongruencialMultiplicativo(int semilla, int g, int k, int tamMuestra)
         {
             this.cteA = 3 + 8 * k;
-            this.semilla = semilla;
-            this.moduloM = (int) Math.Pow(2, g);
+            this.xi = semilla;
+            this.moduloM = (int)Math.Pow(2, g);
             this.tamMuestra = tamMuestra;
+            this.cantIntervalos = cantIntervalos;
+            this.amplitudIntervalos = 1 / (double)cantIntervalos;
         }
 
-        public CongruencialMultiplicativo(int cteA, int semilla, int moduloM, long tamMuestra)
+        public CongruencialMultiplicativo(int cteA, int semilla, int moduloM, int cantIntervalos, bool feRelativa)
         {
             this.cteA = cteA;
-            this.semilla = semilla;
+            this.xi = semilla;
             this.moduloM = moduloM;
-            this.tamMuestra = tamMuestra;
+            this.cantIntervalos = cantIntervalos;
+            this.amplitudIntervalos = 1 / (double)cantIntervalos;
+            this.feRelativa = feRelativa;
+            this.orden = 1;
+            this.intervalos = new IntervaloList(this.cantIntervalos, this.amplitudIntervalos);
         }
-        /*
-        public List<Iteracion> generarPseudoAleatorios()
+
+        public List<Iteracion> generarPseudoAleatorios(int cantidad)
         {
             List<Iteracion> result = new List<Iteracion>();
-            int xi = this.semilla;
 
-            for (int i = 0; i < tamMuestra; ++i)
+            for (int i = 0; i < cantidad; ++i)
             {
-                int xiSiguiente = (this.cteA * xi) % this.moduloM;
-                Iteracion pseudoAleatorio = new PseudoAleatorio(xiSiguiente, this.moduloM);
-                result.Add(pseudoAleatorio);
-                xi = xiSiguiente;
+
+                result.Add(siguientePseudoAleatorio());
+
             }
 
             return result;
-        }*/
-
-     
-
-        public List<Iteracion> generarPseudoAleatorios(int n)
-        {
-            throw new NotImplementedException();
         }
 
         public Iteracion siguientePseudoAleatorio()
         {
-            throw new NotImplementedException();
+            int xiSiguiente = ((xi * this.cteA)) % this.moduloM;
+            xi = xiSiguiente;
+            double rnd = ((double)xiSiguiente / (double)this.moduloM);
+            rnd = Util.truncar(rnd);
+            intervalos.actualizarIntervalos(rnd, orden, orden - 1);
+            string[] valoresInteracion = (feRelativa) ? intervalos.getValoresRelativa() : intervalos.getValoresAbsoluta();
+            Iteracion it = new Iteracion(xiSiguiente, rnd, orden, valoresInteracion);
+            ++orden;
+            return it;
+        }
+
+        public IntervaloList getVectorIntervalos()
+        {
+            return this.intervalos;
         }
     }
 }

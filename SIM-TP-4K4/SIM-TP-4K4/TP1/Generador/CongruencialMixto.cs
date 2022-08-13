@@ -11,11 +11,10 @@ namespace SIM_TP_4K4.Generador
 {
     public class CongruencialMixto : IGenerador
     {
-        static readonly double ajusteCantidadDecimales = Math.Pow(10, 4);
         public int cteA { get; set; }
         public int cteC { get; set; }
 
-        public int semilla { get; set; }
+        public int xi { get; set; }
 
         public int moduloM { get; set; }
 
@@ -24,50 +23,47 @@ namespace SIM_TP_4K4.Generador
         public int cantIntervalos { get; set; }
         public double amplitudIntervalos { get; set; }
 
+        public IntervaloList intervalos { get; set; }
+
+        public bool feRelativa;
+        
+        public int orden { get; set; }
+
         public CongruencialMixto(int cteC, int semilla, int g, int k, long tamMuestra, int cantIntervalos)
         {
             this.cteA = 1 + 4 * k;
             this.cteC = cteC;
-            this.semilla = semilla;
+            this.xi = semilla;
             this.moduloM = (int) Math.Pow(2, g);
             this.tamMuestra = tamMuestra;
             this.cantIntervalos = cantIntervalos;
-            this.amplitudIntervalos = 1 / cantIntervalos;
+            this.amplitudIntervalos = 1 / (double) cantIntervalos;
 
         }
 
-        public CongruencialMixto(int cteA, int cteC, int semilla, int moduloM, int cantIntervalos)
+        public CongruencialMixto(int cteA, int cteC, int semilla, int moduloM, int cantIntervalos, bool feRelativa)
         {
             this.cteA = cteA;
             this.cteC = cteC;
-            this.semilla = semilla;
+            this.xi = semilla;
             this.moduloM = moduloM;
             this.cantIntervalos = cantIntervalos;
-            this.amplitudIntervalos = 1 / cantIntervalos;
+            this.amplitudIntervalos = 1 / (double) cantIntervalos;
+            this.feRelativa = feRelativa;
+            this.orden = 1;
+            this.intervalos = new IntervaloList(this.cantIntervalos, this.amplitudIntervalos);
         }
 
 
         public List<Iteracion> generarPseudoAleatorios(int cantidad)
         {
             List<Iteracion> result = new List<Iteracion>();
-            int xi = this.semilla;
-            IntervaloList intervalos = new IntervaloList(this.cantIntervalos, this.amplitudIntervalos);
 
             for (int i = 0; i < cantidad; ++i)
             {
-
-
-                int xiSiguiente = ((xi * this.cteA) + this.cteC) % this.moduloM;
-                double rnd =((double)xiSiguiente / (double) this.moduloM);
-                rnd = Math.Truncate(rnd * ajusteCantidadDecimales) / ajusteCantidadDecimales;
-               
-                intervalos.actualizarIntervalos(rnd, i + 1, i);
-                int[]  intervalosValue = intervalos.getValores();
-
-
-                Iteracion pseudoAleatorio = new Iteracion(xiSiguiente, rnd, i + 1, intervalos.getValores());
-                result.Add(pseudoAleatorio);
-                xi = xiSiguiente;
+    
+                result.Add(siguientePseudoAleatorio());
+                
             }
 
             return result;
@@ -75,7 +71,20 @@ namespace SIM_TP_4K4.Generador
 
         public Iteracion siguientePseudoAleatorio()
         {
-            return new Iteracion();
+            int xiSiguiente = ((xi * this.cteA) + this.cteC) % this.moduloM;
+            xi = xiSiguiente;
+            double rnd = ((double)xiSiguiente / (double)this.moduloM);
+            rnd = Util.truncar(rnd);
+            intervalos.actualizarIntervalos(rnd, orden, orden - 1);
+            string[] valoresInteracion = (feRelativa) ? intervalos.getValoresRelativa() : intervalos.getValoresAbsoluta();
+            Iteracion it =  new Iteracion(xiSiguiente, rnd, orden, valoresInteracion);
+            ++orden;
+            return it;
+        }
+
+        public IntervaloList getVectorIntervalos()
+        {
+            return this.intervalos;
         }
 
     }

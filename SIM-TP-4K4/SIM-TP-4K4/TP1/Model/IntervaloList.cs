@@ -19,9 +19,10 @@ namespace SIM_TP_4K4.TP1.Model
 
         public void construirIntervalos(int cantidadIntervalos, double amplitud)
         {
+         
            double limInf = 0.0000;
            double limSup = limInf + amplitud;
-           for (int i = 0; i < cantidadIntervalos; i++) {     
+           for (int i = 0; i < cantidadIntervalos; i++) {
                 Intervalo intervalo = new Intervalo(limInf, limSup);
                 limInf = limSup;
                 limSup = limInf + amplitud;
@@ -35,18 +36,24 @@ namespace SIM_TP_4K4.TP1.Model
             {
                 if(i.contieneRnd(random)) 
                 {
-                    i.contar(orden, ordenAnterior, 1); 
+                    i.contarRelativa(orden, ordenAnterior, 1);
+                    i.contarAbsoluta(1);
                 } else
                 {
-                    i.contar(orden, ordenAnterior, 0);
+                    i.contarRelativa(orden, ordenAnterior, 0);
+                    i.contarAbsoluta(0);
                 }
             }
         }
 
-        public int[] getValores()
+        public string[] getValoresRelativa()
         {
-            int[] valores = intervalos.Select(intervalo => intervalo.frecuencia).ToArray();
-            return valores;
+            return intervalos.Select(intervalo => intervalo.frecuenciaRelativa.ToString()).ToArray();
+        }
+
+        public string[] getValoresAbsoluta()
+        {
+            return intervalos.Select(intervalo => intervalo.frecuenciaAbsoluta.ToString()).ToArray();
         }
     }
 }
