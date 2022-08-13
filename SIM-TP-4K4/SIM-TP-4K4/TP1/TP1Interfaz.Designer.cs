@@ -187,6 +187,7 @@
             this.groupBox4.Controls.Add(this.radioButton8);
             this.groupBox4.Controls.Add(this.radioButton12);
             this.groupBox4.Controls.Add(this.radioButton10);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(20, 67);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(208, 63);
@@ -206,6 +207,7 @@
             // 
             // cbxMetodo
             // 
+            this.cbxMetodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMetodo.FormattingEnabled = true;
             this.cbxMetodo.Items.AddRange(new object[] {
             "Congruencial Lineal(Mixto)",
@@ -213,7 +215,7 @@
             "Congruencial Aditivo"});
             this.cbxMetodo.Location = new System.Drawing.Point(20, 178);
             this.cbxMetodo.Name = "cbxMetodo";
-            this.cbxMetodo.Size = new System.Drawing.Size(191, 21);
+            this.cbxMetodo.Size = new System.Drawing.Size(191, 23);
             this.cbxMetodo.TabIndex = 21;
             this.cbxMetodo.Text = "Seleccionar Metodo";
             // 
@@ -501,6 +503,7 @@
             this.Controls.Add(this.groupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TP1_Interfaz";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP1 - Generacion de Numeros Aleatorios";
             this.Load += new System.EventHandler(this.TP1_Interfaz_Load);
             this.groupBox1.ResumeLayout(false);
