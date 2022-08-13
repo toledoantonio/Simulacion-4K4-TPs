@@ -1,6 +1,6 @@
 ﻿namespace SIM_TP_4K4
 {
-    partial class Form1
+    partial class MenuPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.

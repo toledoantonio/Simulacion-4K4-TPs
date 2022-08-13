@@ -36,13 +36,13 @@ namespace SIM_TP_4K4.Generador
             switch (metodo)
             {
                 case 1:
-                    this.generador = new CongruencialMixto();
+                   // this.generador = new CongruencialMixto();
                     break;
                 case 2:
-                    this.generador = new CongruencialMultiplicativo();
+                   // this.generador = new CongruencialMultiplicativo();
                     break;
                 case 3:
-                    this.generador = new Aditivo();
+                   // this.generador = new Aditivo();
                     break;
                 default:
                     this.generador = null;

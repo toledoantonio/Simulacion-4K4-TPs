@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIM_TP_4K4.TP1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace SIM_TP_4K4
 {
-    public partial class Form1 : Form
+    public partial class MenuPrincipal : Form
     {
-        public Form1()
+        public MenuPrincipal()
         {
             InitializeComponent();
         }
@@ -29,7 +30,8 @@ namespace SIM_TP_4K4
 
         private void btn_menuPrincipal_Click(object sender, EventArgs e)
         {
-            
+            TP1_Interfaz tp1 = new TP1_Interfaz();
+            tp1.Show();
         }
     }
 }

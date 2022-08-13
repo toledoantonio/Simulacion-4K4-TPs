@@ -46,16 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PressLayer\Form1.cs">
+    <Compile Include="TP1\Controlador\GeneradorControlador.cs" />
+    <Compile Include="TP1\Generador\Aditivo.cs" />
+    <Compile Include="TP1\Generador\CongruencialMixto.cs" />
+    <Compile Include="TP1\Generador\CongruencialMultiplicativo.cs" />
+    <Compile Include="TP1\Generador\IGenerador.cs" />
+    <Compile Include="TP1\Model\Intervalo.cs" />
+    <Compile Include="TP1\Model\PseudoAleatorio.cs" />
+    <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PressLayer\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="PressLayer\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="TP1\TP1Interfaz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TP1\TP1Interfaz.Designer.cs">
+      <DependentUpon>TP1Interfaz.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +79,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TP1\TP1Interfaz.resx">
+      <DependentUpon>TP1Interfaz.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

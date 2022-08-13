@@ -16,7 +16,7 @@ namespace SIM_TP_4K4
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MenuPrincipal());
             //sadadsdasasd
         }
     }

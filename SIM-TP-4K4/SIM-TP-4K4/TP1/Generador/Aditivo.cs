@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SIM_TP_4K4.Generador
 {
-    public class Aditivo : IGenerador
+    public class Aditivo 
     {
     }
 }

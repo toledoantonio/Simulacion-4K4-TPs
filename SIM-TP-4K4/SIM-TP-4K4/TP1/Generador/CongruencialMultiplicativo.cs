@@ -13,19 +13,19 @@ namespace SIM_TP_4K4.Generador
 
         public int semilla { get; set; }
 
-        public long moduloM { get; set; }
+        public int moduloM { get; set; }
 
         public long tamMuestra { get; set; }
 
-        public CongruencialMultiplicativo(int semilla, int g, int k, long tamMuestra)
+        public CongruencialMultiplicativo(int semilla, int g, int k, int tamMuestra)
         {
             this.cteA = 3 + 8 * k;
             this.semilla = semilla;
-            this.moduloM = (long)Math.Pow(2, g);
+            this.moduloM = (int) Math.Pow(2, g);
             this.tamMuestra = tamMuestra;
         }
 
-        public CongruencialMultiplicativo(int cteA, int semilla, long moduloM, long tamMuestra)
+        public CongruencialMultiplicativo(int cteA, int semilla, int moduloM, long tamMuestra)
         {
             this.cteA = cteA;
             this.semilla = semilla;
@@ -45,6 +45,13 @@ namespace SIM_TP_4K4.Generador
                 result.Add(pseudoAleatorio);
                 xi = xiSiguiente;
             }
+
+            return result;
+        }
+
+        public PseudoAleatorio siguientePseudoAleatorio()
+        {
+            return new PseudoAleatorio(1, 1);
         }
     }
 }

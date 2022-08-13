@@ -8,7 +8,7 @@ using SIM_TP_4K4.Model;
 
 namespace SIM_TP_4K4.Generador
 {
-    public class CongruencialMixto : IGenerador
+    public class CongruencialMixto 
     {
         public int cteA { get; set; }
         public int cteC { get; set; }
@@ -55,7 +55,7 @@ namespace SIM_TP_4K4.Generador
 
         public PseudoAleatorio siguientePseudoAleatorio()
         {
-
+            return new PseudoAleatorio(1,1);
         }
 
     }
