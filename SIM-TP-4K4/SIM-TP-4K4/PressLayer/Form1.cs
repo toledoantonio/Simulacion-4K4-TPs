@@ -16,5 +16,20 @@ namespace SIM_TP_4K4
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_menuPrincipal_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
