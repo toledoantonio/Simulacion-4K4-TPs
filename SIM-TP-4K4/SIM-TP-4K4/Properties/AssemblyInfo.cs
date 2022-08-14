@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SIM-TP-4K4")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Simulacion 4K4")]
 [assembly: AssemblyProduct("SIM-TP-4K4")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright("Copyright ©  2022 - Grupo B")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
