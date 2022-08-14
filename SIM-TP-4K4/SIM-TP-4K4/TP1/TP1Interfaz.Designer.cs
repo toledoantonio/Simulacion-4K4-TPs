@@ -73,17 +73,20 @@
             this.btnMas20 = new System.Windows.Forms.Button();
             this.btnMas10 = new System.Windows.Forms.Button();
             this.btnChi = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdrSerieAleatoria)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_limpiar
             // 
             this.btn_limpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar.Location = new System.Drawing.Point(203, 619);
+            this.btn_limpiar.Location = new System.Drawing.Point(206, 619);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(88, 41);
             this.btn_limpiar.TabIndex = 35;
@@ -94,7 +97,7 @@
             // btn_volverMenu
             // 
             this.btn_volverMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_volverMenu.Location = new System.Drawing.Point(6, 619);
+            this.btn_volverMenu.Location = new System.Drawing.Point(9, 619);
             this.btn_volverMenu.Name = "btn_volverMenu";
             this.btn_volverMenu.Size = new System.Drawing.Size(80, 41);
             this.btn_volverMenu.TabIndex = 34;
@@ -152,7 +155,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 49);
+            this.label1.Location = new System.Drawing.Point(17, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 18);
             this.label1.TabIndex = 31;
@@ -163,7 +166,7 @@
             this.btn_generar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_generar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_generar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_generar.Location = new System.Drawing.Point(104, 619);
+            this.btn_generar.Location = new System.Drawing.Point(107, 619);
             this.btn_generar.Name = "btn_generar";
             this.btn_generar.Size = new System.Drawing.Size(83, 41);
             this.btn_generar.TabIndex = 33;
@@ -183,7 +186,7 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Location = new System.Drawing.Point(6, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(295, 594);
+            this.groupBox1.Size = new System.Drawing.Size(295, 610);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             // 
@@ -203,7 +206,7 @@
             // 
             this.checkbxFr.AutoSize = true;
             this.checkbxFr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbxFr.Location = new System.Drawing.Point(20, 186);
+            this.checkbxFr.Location = new System.Drawing.Point(20, 200);
             this.checkbxFr.Name = "checkbxFr";
             this.checkbxFr.Size = new System.Drawing.Size(217, 22);
             this.checkbxFr.TabIndex = 40;
@@ -217,7 +220,7 @@
             this.groupBox4.Controls.Add(this.radioButton12);
             this.groupBox4.Controls.Add(this.radioButton10);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(20, 77);
+            this.groupBox4.Location = new System.Drawing.Point(20, 89);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(208, 56);
             this.groupBox4.TabIndex = 39;
@@ -226,16 +229,16 @@
             // 
             // cbxMetodo
             // 
-            this.cbxMetodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxMetodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMetodo.FormattingEnabled = true;
             this.cbxMetodo.Items.AddRange(new object[] {
             "Seleccionar Metodo",
             "Congruencial Lineal(Mixto)",
             "Congruencial Multiplicativo",
             "Congruencial Aditivo"});
-            this.cbxMetodo.Location = new System.Drawing.Point(20, 152);
+            this.cbxMetodo.Location = new System.Drawing.Point(20, 160);
             this.cbxMetodo.Name = "cbxMetodo";
-            this.cbxMetodo.Size = new System.Drawing.Size(191, 23);
+            this.cbxMetodo.Size = new System.Drawing.Size(191, 24);
             this.cbxMetodo.TabIndex = 21;
             this.cbxMetodo.Text = "Seleccionar Metodo";
             this.cbxMetodo.SelectedIndexChanged += new System.EventHandler(this.chequearMetodo);
@@ -244,7 +247,7 @@
             // 
             this.checkGyK.AutoSize = true;
             this.checkGyK.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkGyK.Location = new System.Drawing.Point(20, 214);
+            this.checkGyK.Location = new System.Drawing.Point(20, 237);
             this.checkGyK.Name = "checkGyK";
             this.checkGyK.Size = new System.Drawing.Size(247, 22);
             this.checkGyK.TabIndex = 20;
@@ -256,9 +259,9 @@
             // 
             this.TxtTamañoMuestra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTamañoMuestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTamañoMuestra.Location = new System.Drawing.Point(197, 47);
+            this.TxtTamañoMuestra.Location = new System.Drawing.Point(195, 54);
             this.TxtTamañoMuestra.Name = "TxtTamañoMuestra";
-            this.TxtTamañoMuestra.Size = new System.Drawing.Size(47, 24);
+            this.TxtTamañoMuestra.Size = new System.Drawing.Size(51, 24);
             this.TxtTamañoMuestra.TabIndex = 0;
             // 
             // groupBox3
@@ -279,7 +282,7 @@
             this.groupBox3.Controls.Add(this.TxtA);
             this.groupBox3.Controls.Add(this.TxtXo);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(20, 252);
+            this.groupBox3.Location = new System.Drawing.Point(20, 275);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupBox3.Size = new System.Drawing.Size(254, 322);
@@ -291,7 +294,7 @@
             this.lblSemilla2.AutoSize = true;
             this.lblSemilla2.Enabled = false;
             this.lblSemilla2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSemilla2.Location = new System.Drawing.Point(137, 44);
+            this.lblSemilla2.Location = new System.Drawing.Point(140, 44);
             this.lblSemilla2.Name = "lblSemilla2";
             this.lblSemilla2.Size = new System.Drawing.Size(40, 18);
             this.lblSemilla2.TabIndex = 21;
@@ -303,7 +306,7 @@
             this.TxtSemilla2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSemilla2.Enabled = false;
             this.TxtSemilla2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtSemilla2.Location = new System.Drawing.Point(191, 42);
+            this.TxtSemilla2.Location = new System.Drawing.Point(193, 42);
             this.TxtSemilla2.Name = "TxtSemilla2";
             this.TxtSemilla2.Size = new System.Drawing.Size(47, 24);
             this.TxtSemilla2.TabIndex = 20;
@@ -466,7 +469,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gdrSerieAleatoria.DefaultCellStyle = dataGridViewCellStyle2;
-            this.gdrSerieAleatoria.Location = new System.Drawing.Point(0, 9);
+            this.gdrSerieAleatoria.Location = new System.Drawing.Point(6, 9);
             this.gdrSerieAleatoria.Name = "gdrSerieAleatoria";
             this.gdrSerieAleatoria.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -480,7 +483,7 @@
             this.gdrSerieAleatoria.RowHeadersVisible = false;
             this.gdrSerieAleatoria.RowHeadersWidth = 51;
             this.gdrSerieAleatoria.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.gdrSerieAleatoria.Size = new System.Drawing.Size(1009, 397);
+            this.gdrSerieAleatoria.Size = new System.Drawing.Size(1003, 391);
             this.gdrSerieAleatoria.TabIndex = 15;
             // 
             // orden
@@ -503,7 +506,7 @@
             this.btnMas1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMas1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas1.Location = new System.Drawing.Point(324, 416);
+            this.btnMas1.Location = new System.Drawing.Point(617, 477);
             this.btnMas1.Name = "btnMas1";
             this.btnMas1.Size = new System.Drawing.Size(83, 41);
             this.btnMas1.TabIndex = 38;
@@ -516,7 +519,7 @@
             this.btnMas20.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMas20.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas20.Location = new System.Drawing.Point(413, 416);
+            this.btnMas20.Location = new System.Drawing.Point(766, 477);
             this.btnMas20.Name = "btnMas20";
             this.btnMas20.Size = new System.Drawing.Size(83, 41);
             this.btnMas20.TabIndex = 39;
@@ -529,11 +532,11 @@
             this.btnMas10.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMas10.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas10.Location = new System.Drawing.Point(502, 416);
+            this.btnMas10.Location = new System.Drawing.Point(915, 476);
             this.btnMas10.Name = "btnMas10";
             this.btnMas10.Size = new System.Drawing.Size(83, 41);
             this.btnMas10.TabIndex = 40;
-            this.btnMas10.Text = "+10000 ";
+            this.btnMas10.Text = "+10.000 ";
             this.btnMas10.UseVisualStyleBackColor = false;
             this.btnMas10.Click += new System.EventHandler(this.btnMas10_Click);
             // 
@@ -543,13 +546,32 @@
             this.btnChi.Enabled = false;
             this.btnChi.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChi.Location = new System.Drawing.Point(324, 489);
+            this.btnChi.Location = new System.Drawing.Point(679, 581);
             this.btnChi.Name = "btnChi";
-            this.btnChi.Size = new System.Drawing.Size(261, 41);
+            this.btnChi.Size = new System.Drawing.Size(261, 48);
             this.btnChi.TabIndex = 41;
-            this.btnChi.Text = "Realizar prueba de Chi Cuadrado";
+            this.btnChi.Text = "Realizar Test de Chi Cuadrado";
             this.btnChi.UseVisualStyleBackColor = false;
             this.btnChi.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Location = new System.Drawing.Point(562, 437);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(495, 112);
+            this.groupBox5.TabIndex = 42;
+            this.groupBox5.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(171, -3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(152, 18);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Agregar Simulaciones";
             // 
             // TP1_Interfaz
             // 
@@ -565,6 +587,7 @@
             this.Controls.Add(this.btn_generar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TP1_Interfaz";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -578,6 +601,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gdrSerieAleatoria)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -625,5 +650,7 @@
         private System.Windows.Forms.TextBox TxtSemilla2;
         private System.Windows.Forms.CheckBox checkBoxDefecto;
         private System.Windows.Forms.Button btnChi;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label2;
     }
 }

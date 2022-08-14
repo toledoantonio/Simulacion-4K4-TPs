@@ -67,6 +67,8 @@ namespace SIM_TP_4K4.TP1
 
         private void btn_generar_Click(object sender, EventArgs e)
         {
+            int validarEntero;
+            
             if (TxtTamañoMuestra.Text.Equals("") || TxtXo.Text.Equals("") || TxtC.Text.Equals("") || (cbxMetodo.SelectedIndex == 3 && TxtSemilla2.Text.Equals("") || (!checkGyK.Checked && TxtM.Text.Equals(""))))
             {
                 MessageBox.Show("ERROR! Faltan Campos Por Completar");
@@ -74,27 +76,32 @@ namespace SIM_TP_4K4.TP1
                 MessageBox.Show("ERROR! Faltan Campos Por Completar");
             }
             else
-            {   
-                
-                int metodoSeleccionado = cbxMetodo.SelectedIndex;
-                int xo = Int32.Parse(TxtXo.Text);
+            {
+                if (!int.TryParse(TxtTamañoMuestra.Text, out validarEntero) || !int.TryParse(TxtXo.Text, out validarEntero) || !int.TryParse(TxtC.Text, out validarEntero))
+                {
+                    MessageBox.Show("ERROR! Ingresar un Número Entero");
+                }
+                else
+                {
+                    int metodoSeleccionado = cbxMetodo.SelectedIndex;
+                    int xo = Int32.Parse(TxtXo.Text);
 
-                int a = (!checkGyK.Checked) ? Int32.Parse(TxtA.Text) : 0 ;
-                int c = Int32.Parse(TxtC.Text);
-                int m = (!checkGyK.Checked) ? Int32.Parse(TxtM.Text) : 0;
-                int n = Int32.Parse(TxtTamañoMuestra.Text);
+                    int a = (!checkGyK.Checked) ? Int32.Parse(TxtA.Text) : 0;
+                    int c = Int32.Parse(TxtC.Text);
+                    int m = (!checkGyK.Checked) ? Int32.Parse(TxtM.Text) : 0;
+                    int n = Int32.Parse(TxtTamañoMuestra.Text);
 
-                int x0Anterior = (cbxMetodo.SelectedIndex == 3) ? Int32.Parse(TxtSemilla2.Text) : 0;
-                int k = (checkGyK.Checked) ? Int32.Parse(TxtK.Text) : 0;
-                int g = (checkGyK.Checked) ? Int32.Parse(TxtG.Text) : 0;
+                    int x0Anterior = (cbxMetodo.SelectedIndex == 3) ? Int32.Parse(TxtSemilla2.Text) : 0;
+                    int k = (checkGyK.Checked) ? Int32.Parse(TxtK.Text) : 0;
+                    int g = (checkGyK.Checked) ? Int32.Parse(TxtG.Text) : 0;
 
-                this.cantIntervalos = Int32.Parse(groupBox4.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text);
-                controller = new GeneradorControlador(xo,c, a, m, n, cantIntervalos, metodoSeleccionado, checkbxFr.Checked, x0Anterior, k, g);
-                cleanColumns();
-                cargarDatos();
+                    this.cantIntervalos = Int32.Parse(groupBox4.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text);
+                    controller = new GeneradorControlador(xo, c, a, m, n, cantIntervalos, metodoSeleccionado, checkbxFr.Checked, x0Anterior, k, g);
+                    cleanColumns();
+                    cargarDatos();
 
-
-                this.btnChi.Enabled = true;
+                    this.btnChi.Enabled = true;
+                }
             }
         }
 
