@@ -42,7 +42,5 @@ namespace SIM_TP_4K4.Model
         {
             return $"[{(limInf)} - {(limSup)})";
         }
- 
     }
-
 }

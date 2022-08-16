@@ -10,7 +10,6 @@ namespace SIM_TP_4K4.TP1.Model
     {
         static readonly double ajusteCantidadDecimales = Math.Pow(10, 4);
 
-
         public static double truncar(double aTruncar)
         {
             return Math.Truncate(aTruncar * ajusteCantidadDecimales) / ajusteCantidadDecimales;

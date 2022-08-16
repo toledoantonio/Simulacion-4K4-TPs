@@ -30,7 +30,6 @@ namespace SIM_TP_4K4.TP1
             {
                 gdrSerieAleatoria.Columns.Add($"intervalo {i + 1}", vectorIntervalos.intervalos[i].intervaloTitulo());
             }
-  
         }
 
         public void cargarTabla(List<Iteracion> interaciones)
@@ -39,8 +38,7 @@ namespace SIM_TP_4K4.TP1
             foreach(Iteracion it in interaciones)
             {
                 agregarFilaTabla(it);
-            }
-            
+            }   
         }
 
         public void agregarFilaTabla(Iteracion it) {

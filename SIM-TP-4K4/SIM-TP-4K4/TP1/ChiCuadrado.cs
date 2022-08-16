@@ -100,12 +100,12 @@ namespace SIM_TP_4K4.TP1
         {
             if(this.valorCalculado < this.valorTabulado)
             {
-                lblResultado.Text = "No se rechaza la hipotesis!!";
+                lblResultado.Text = "No se rechaza la Hipotesis!!";
                 lblResultado.BackColor = Color.FromArgb(0, 0, 0);
                 lblResultado.ForeColor = Color.FromArgb(0, 255, 0);
             } else
             {
-                lblResultado.Text = "Rechaza la hipotesis!!";
+                lblResultado.Text = "Rechaza la Hipotesis!!";
                 lblResultado.BackColor = Color.FromArgb(0, 0, 0);
                 lblResultado.ForeColor = Color.FromArgb(255, 0, 0);
             }

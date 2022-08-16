@@ -22,7 +22,6 @@ namespace SIM_TP_4K4.TP1.Model
         public void construirIntervalos(int cantidadIntervalos, double amplitud)
         {
          
-           
            for (int i = 0; i < cantidadIntervalos; i++) {
                 double limSup = ((i + 1) * amplitud);
                 double limInf = (i * amplitud);

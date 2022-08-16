@@ -45,6 +45,7 @@
             this.C2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.generadorControladorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblNivel = new System.Windows.Forms.Label();
             this.lblVCalculado = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblResultado = new System.Windows.Forms.Label();
-            this.generadorControladorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiCuadrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generadorControladorBindingSource)).BeginInit();
@@ -167,6 +167,10 @@
             this.chart1.TabIndex = 43;
             this.chart1.Text = "chart";
             // 
+            // generadorControladorBindingSource
+            // 
+            this.generadorControladorBindingSource.DataSource = typeof(SIM_TP_4K4.Generador.GeneradorControlador);
+            // 
             // lblNivel
             // 
             this.lblNivel.AutoSize = true;
@@ -251,15 +255,11 @@
             this.lblResultado.TabIndex = 51;
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // generadorControladorBindingSource
-            // 
-            this.generadorControladorBindingSource.DataSource = typeof(SIM_TP_4K4.Generador.GeneradorControlador);
-            // 
             // ChiCuadrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 656);
+            this.ClientSize = new System.Drawing.Size(964, 656);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

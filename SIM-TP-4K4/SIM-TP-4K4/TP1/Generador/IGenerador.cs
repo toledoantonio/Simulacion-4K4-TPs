@@ -12,7 +12,6 @@ namespace SIM_TP_4K4.Generador
     {
         List<Iteracion> generarPseudoAleatorios(int n);
         Iteracion siguientePseudoAleatorio();
-
         IntervaloList getVectorIntervalos();
     }
 }

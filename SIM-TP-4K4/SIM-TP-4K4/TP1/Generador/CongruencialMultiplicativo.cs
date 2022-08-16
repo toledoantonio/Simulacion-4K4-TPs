@@ -17,8 +17,9 @@ namespace SIM_TP_4K4.Generador
         public int moduloM { get; set; }
 
         public long tamMuestra { get; set; }
-
+        
         public int cantIntervalos { get; set; }
+
         public double amplitudIntervalos { get; set; }
 
         public IntervaloList intervalos { get; set; }
@@ -26,7 +27,6 @@ namespace SIM_TP_4K4.Generador
         public bool feRelativa;
 
         public int orden { get; set; }
-
 
         public CongruencialMultiplicativo(int cteA, int semilla, int moduloM, int cantIntervalos, bool feRelativa, int k, int g)
         {
@@ -46,9 +46,7 @@ namespace SIM_TP_4K4.Generador
 
             for (int i = 0; i < cantidad; ++i)
             {
-
                 result.Add(siguientePseudoAleatorio());
-
             }
 
             return result;

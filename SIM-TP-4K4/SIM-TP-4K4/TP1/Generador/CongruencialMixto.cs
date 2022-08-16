@@ -12,8 +12,9 @@ namespace SIM_TP_4K4.Generador
     public class CongruencialMixto : IGenerador
     {
         public int cteA { get; set; }
-        public int cteC { get; set; }
 
+        public int cteC { get; set; }
+        
         public int xi { get; set; }
 
         public int moduloM { get; set; }
@@ -21,6 +22,7 @@ namespace SIM_TP_4K4.Generador
         public long tamMuestra { get; set; }
 
         public int cantIntervalos { get; set; }
+
         public double amplitudIntervalos { get; set; }
 
         public IntervaloList intervalos { get; set; }
@@ -28,7 +30,6 @@ namespace SIM_TP_4K4.Generador
         public bool feRelativa;
         
         public int orden { get; set; }
-
 
         public CongruencialMixto(int cteA, int cteC, int semilla, int moduloM, int cantIntervalos, bool feRelativa, int k, int g)
         {
@@ -50,9 +51,7 @@ namespace SIM_TP_4K4.Generador
 
             for (int i = 0; i < cantidad; ++i)
             {
-    
                 result.Add(siguientePseudoAleatorio());
-                
             }
 
             return result;

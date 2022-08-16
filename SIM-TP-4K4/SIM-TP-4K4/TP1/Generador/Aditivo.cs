@@ -37,9 +37,7 @@ namespace SIM_TP_4K4.Generador
 
             for (int i = 0; i < n; ++i)
             {
-
                 result.Add(siguientePseudoAleatorio());
-
             }
 
             return result;
