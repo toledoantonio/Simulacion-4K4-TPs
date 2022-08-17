@@ -60,8 +60,9 @@ namespace SIM_TP_4K4.Generador
 
         public List<object[]> getRandoms()
         {
-            ultimaSim = 20;
-            return this.generador.generarPseudoAleatorios(20);
+            int cant = (tamMuestra < 20) ? tamMuestra: 20;
+            ultimaSim = cant;
+            return this.generador.generarPseudoAleatorios(cant);
         }
 
         public IntervaloList getListaIntervalos()
