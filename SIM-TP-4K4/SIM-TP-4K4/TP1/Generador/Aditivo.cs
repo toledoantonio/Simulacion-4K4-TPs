@@ -15,9 +15,10 @@ namespace SIM_TP_4K4.Generador
         public int moduloM { get; set; }
         public bool feRelativa { get; set; }
         public int cantidadIntervalos { get; set; }
-        public IntervaloList intervalos { get; set; }
+        public VectorEstado vector { get; set; }
         public int orden { get; set; }
         public double amplitudIntervalos { get; set; }
+        private object[] primer { get; set; }
 
         public Aditivo(int semilla, int semillaAnterior, int moduloM, bool feRelativa, int cantidadIntervalos)
         {
@@ -28,13 +29,14 @@ namespace SIM_TP_4K4.Generador
             this.cantidadIntervalos = cantidadIntervalos;
             this.amplitudIntervalos = 1 / (double) cantidadIntervalos;
             this.orden = 1;
-            this.intervalos = new IntervaloList(this.cantidadIntervalos, this.amplitudIntervalos);
+            this.vector = new VectorEstado(xi, xiAnterior, cantidadIntervalos, amplitudIntervalos);
+            this.primer = this.siguientePseudoAleatorio();
         }
 
-        public List<Iteracion> generarPseudoAleatorios(int n)
+        public List<object[]> generarPseudoAleatorios(int n)
         {
-            List<Iteracion> result = new List<Iteracion>();
-
+            List<object[]> result = new List<object[]>();
+            result.Add(this.primer);
             for (int i = 0; i < n; ++i)
             {
                 result.Add(siguientePseudoAleatorio());
@@ -45,21 +47,27 @@ namespace SIM_TP_4K4.Generador
 
         public IntervaloList getVectorIntervalos()
         {
-            return this.intervalos;
+            return this.vector.intervalos;
         }
 
-        public Iteracion siguientePseudoAleatorio()
+        public object[] siguientePseudoAleatorio()
         {
-            int suma = xi + xiAnterior;
-            xiAnterior = xi;
-            xi = (suma) % moduloM;
-            double rnd = ((double) xi / (double) this.moduloM);
+            int suma = vector.xi + vector.xi_1;
+
+            
+            double rnd = ((double) (suma % moduloM) / (double) (this.moduloM));
             rnd = Util.truncar(rnd);
-            intervalos.actualizarIntervalos(rnd, orden, orden - 1);
-            string[] valoresInteracion = (feRelativa) ? intervalos.getValoresRelativa() : intervalos.getValoresAbsoluta();
-            Iteracion it = new Iteracion(xi, rnd, orden, valoresInteracion);
+            
+            vector.rnd = rnd;
+            vector.actualizar(orden);
+
+            object[] data = vector.getDatosAditivo(orden, feRelativa);
+
+            vector.xi_1 = vector.xi;
+            vector.xi = (suma) % moduloM;
+
             ++orden;
-            return it;
+            return data;
         }
     }
 }

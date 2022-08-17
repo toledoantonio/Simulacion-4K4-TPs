@@ -22,7 +22,7 @@ namespace SIM_TP_4K4.Generador
 
         public double amplitudIntervalos { get; set; }
 
-        public IntervaloList intervalos { get; set; }
+        public VectorEstado vector { get; set; }
 
         public bool feRelativa;
 
@@ -37,12 +37,12 @@ namespace SIM_TP_4K4.Generador
             this.amplitudIntervalos = 1 / (double)cantIntervalos;
             this.feRelativa = feRelativa;
             this.orden = 1;
-            this.intervalos = new IntervaloList(this.cantIntervalos, this.amplitudIntervalos);
+            this.vector = new VectorEstado(this.xi, this.cantIntervalos, this.amplitudIntervalos);
         }
 
-        public List<Iteracion> generarPseudoAleatorios(int cantidad)
+        public List<object[]> generarPseudoAleatorios(int cantidad)
         {
-            List<Iteracion> result = new List<Iteracion>();
+            List<object[]> result = new List<object[]>();
 
             for (int i = 0; i < cantidad; ++i)
             {
@@ -52,22 +52,26 @@ namespace SIM_TP_4K4.Generador
             return result;
         }
 
-        public Iteracion siguientePseudoAleatorio()
+        public object[] siguientePseudoAleatorio()
         {
-            int xiSiguiente = ((xi * this.cteA)) % this.moduloM;
-            xi = xiSiguiente;
+            int xiSiguiente = ((vector.xi * this.cteA)) % this.moduloM;
+            vector.xi = xiSiguiente;
+
             double rnd = ((double)xiSiguiente / (double)this.moduloM);
             rnd = Util.truncar(rnd);
-            intervalos.actualizarIntervalos(rnd, orden, orden - 1);
-            string[] valoresInteracion = (feRelativa) ? intervalos.getValoresRelativa() : intervalos.getValoresAbsoluta();
-            Iteracion it = new Iteracion(xiSiguiente, rnd, orden, valoresInteracion);
+
+            vector.rnd = rnd;
+
+            vector.actualizar(orden);
+
+            object[] data = vector.getDatos(orden, feRelativa);
             ++orden;
-            return it;
+            return data;
         }
 
         public IntervaloList getVectorIntervalos()
         {
-            return this.intervalos;
+            return this.vector.intervalos;
         }
     }
 }

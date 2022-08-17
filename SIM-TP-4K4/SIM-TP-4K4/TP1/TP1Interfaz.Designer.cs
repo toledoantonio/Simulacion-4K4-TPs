@@ -75,6 +75,7 @@
             this.btnChi = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnN = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -504,9 +505,10 @@
             // btnMas1
             // 
             this.btnMas1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMas1.Enabled = false;
             this.btnMas1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas1.Location = new System.Drawing.Point(617, 477);
+            this.btnMas1.Location = new System.Drawing.Point(31, 28);
             this.btnMas1.Name = "btnMas1";
             this.btnMas1.Size = new System.Drawing.Size(83, 41);
             this.btnMas1.TabIndex = 38;
@@ -517,9 +519,10 @@
             // btnMas20
             // 
             this.btnMas20.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMas20.Enabled = false;
             this.btnMas20.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas20.Location = new System.Drawing.Point(766, 477);
+            this.btnMas20.Location = new System.Drawing.Point(148, 28);
             this.btnMas20.Name = "btnMas20";
             this.btnMas20.Size = new System.Drawing.Size(83, 41);
             this.btnMas20.TabIndex = 39;
@@ -530,9 +533,10 @@
             // btnMas10
             // 
             this.btnMas10.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMas10.Enabled = false;
             this.btnMas10.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnMas10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMas10.Location = new System.Drawing.Point(915, 476);
+            this.btnMas10.Location = new System.Drawing.Point(265, 28);
             this.btnMas10.Name = "btnMas10";
             this.btnMas10.Size = new System.Drawing.Size(83, 41);
             this.btnMas10.TabIndex = 40;
@@ -556,10 +560,14 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnN);
+            this.groupBox5.Controls.Add(this.btnMas1);
+            this.groupBox5.Controls.Add(this.btnMas20);
             this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.btnMas10);
             this.groupBox5.Location = new System.Drawing.Point(562, 437);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(495, 112);
+            this.groupBox5.Size = new System.Drawing.Size(495, 93);
             this.groupBox5.TabIndex = 42;
             this.groupBox5.TabStop = false;
             // 
@@ -573,15 +581,26 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Agregar Simulaciones";
             // 
+            // btnN
+            // 
+            this.btnN.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnN.Enabled = false;
+            this.btnN.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnN.Location = new System.Drawing.Point(382, 28);
+            this.btnN.Name = "btnN";
+            this.btnN.Size = new System.Drawing.Size(83, 41);
+            this.btnN.TabIndex = 44;
+            this.btnN.Text = "Hasta N";
+            this.btnN.UseVisualStyleBackColor = false;
+            this.btnN.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // TP1_Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 674);
             this.Controls.Add(this.btnChi);
-            this.Controls.Add(this.btnMas10);
-            this.Controls.Add(this.btnMas20);
-            this.Controls.Add(this.btnMas1);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_volverMenu);
             this.Controls.Add(this.btn_generar);
@@ -652,5 +671,6 @@
         private System.Windows.Forms.Button btnChi;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnN;
     }
 }

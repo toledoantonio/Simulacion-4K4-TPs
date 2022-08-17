@@ -73,6 +73,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TP1\Model\Util.cs" />
+    <Compile Include="TP1\Model\VectorEstado.cs" />
     <Compile Include="TP1\TP1Interfaz.cs">
       <SubType>Form</SubType>
     </Compile>

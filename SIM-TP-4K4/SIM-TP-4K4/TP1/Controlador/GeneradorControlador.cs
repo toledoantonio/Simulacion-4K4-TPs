@@ -23,7 +23,7 @@ namespace SIM_TP_4K4.Generador
         public int g { get; set; }
         public IGenerador generador { get; set; }
         public bool frecuenciaRel { get; set; }
-
+        public int ultimaSim { get; set; }
 
         public GeneradorControlador(int semilla, int cteIndependiente, int cteMultiplicadora, int moduloM, int tamMuestra, int cantidadIntervalos,int metodo, bool frecuenciaRel, int semillaAnterior, int k, int g) {
             this.semilla = semilla;
@@ -58,9 +58,10 @@ namespace SIM_TP_4K4.Generador
             }
         }
 
-        public List<Iteracion> getRandoms()
+        public List<object[]> getRandoms()
         {
-            return this.generador.generarPseudoAleatorios(this.tamMuestra);
+            ultimaSim = 20;
+            return this.generador.generarPseudoAleatorios(20);
         }
 
         public IntervaloList getListaIntervalos()
@@ -68,15 +69,60 @@ namespace SIM_TP_4K4.Generador
             return this.generador.getVectorIntervalos();
         }
 
-        public List<Iteracion> getRandoms(int cantidad)
+        public List<object[]> getRandoms(int cantidad)
         {
-            this.tamMuestra += cantidad;
+            this.ultimaSim += cantidad;
             return this.generador.generarPseudoAleatorios(cantidad);
         }
 
-        public Iteracion getSiguiente()
+        public List<object[]> ultimosDos(int cantidad)
         {
-            ++this.tamMuestra;
+            this.ultimaSim += cantidad;
+
+            List<object[]> result = new List<object[]>();
+            for (int i = 0; i < cantidad; ++i)
+            {
+                if (i == (cantidad - 1) || i == (cantidad - 2))
+                {
+                    result.Add(this.generador.siguientePseudoAleatorio());
+
+                } else
+                {
+                    this.generador.siguientePseudoAleatorio();
+
+                }
+
+            }
+            return result;
+        }
+
+        public List<object[]> hastaN()
+        {
+            List<object[]> result = new List<object[]>();
+
+            if(tamMuestra - ultimaSim > 0)
+            {
+                for(int i = ultimaSim; i < tamMuestra; ++i)
+                {
+                    if (i == (tamMuestra - 1) || i == (tamMuestra - 2))
+                    {
+                        result.Add(this.generador.siguientePseudoAleatorio());
+              
+                    } else
+                    {
+                        this.generador.siguientePseudoAleatorio();
+
+                    }
+
+                }
+            }
+            ultimaSim = tamMuestra;
+            return result;
+        }
+
+        public object[] getSiguiente()
+        {
+            ++ultimaSim;
             return this.generador.siguientePseudoAleatorio();
         }
 
@@ -118,6 +164,11 @@ namespace SIM_TP_4K4.Generador
 
             double[] valores = new double[4] {resta, potencia, estadistico, acumulado };
             return valores;
+        }
+
+        public bool superaMuestra(int cantidad)
+        {
+            return tamMuestra - (cantidad + ultimaSim) < 0;
         }
     }
 }

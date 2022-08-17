@@ -32,26 +32,17 @@ namespace SIM_TP_4K4.TP1
             }
         }
 
-        public void cargarTabla(List<Iteracion> interaciones)
+        public void cargarTabla(List<object[]> interaciones)
         {
            
-            foreach(Iteracion it in interaciones)
+            foreach(object[] it in interaciones)
             {
                 agregarFilaTabla(it);
             }   
         }
 
-        public void agregarFilaTabla(Iteracion it) {
-            Object[] datos = new Object[3 + this.cantIntervalos];
-            datos[0] = it.orden;
-            datos[1] = it.entero;
-            datos[2] = it.random;
+        public void agregarFilaTabla(object[] datos) {
 
-
-            for (int i = 0; i < it.valoresIteracion.Length; ++i)
-            {
-                datos[3 + i] = it.valoresIteracion[i];
-            }
             gdrSerieAleatoria.Rows.Add(datos);
         }
 
@@ -60,6 +51,10 @@ namespace SIM_TP_4K4.TP1
             gdrSerieAleatoria.Columns.Clear();
             gdrSerieAleatoria.Columns.Add("orden", "Orden");
             gdrSerieAleatoria.Columns.Add("entero", "X");
+            if(cbxMetodo.SelectedIndex == 3)
+            {
+                gdrSerieAleatoria.Columns.Add("entero_1", "X-1");
+            }
             gdrSerieAleatoria.Columns.Add("random", "RND");
         }
 
@@ -67,7 +62,7 @@ namespace SIM_TP_4K4.TP1
         {
             int validarEntero;
             
-            if (TxtTamañoMuestra.Text.Equals("") || TxtXo.Text.Equals("") || TxtC.Text.Equals("") || (cbxMetodo.SelectedIndex == 3 && TxtSemilla2.Text.Equals("") || (!checkGyK.Checked && TxtM.Text.Equals(""))))
+            if (TxtTamañoMuestra.Text.Equals("") || TxtXo.Text.Equals("") || (TxtC.Text.Equals("") && cbxMetodo.SelectedIndex !=3) || (cbxMetodo.SelectedIndex == 3 && TxtSemilla2.Text.Equals("") || (!checkGyK.Checked && TxtM.Text.Equals(""))))
             {
                 MessageBox.Show("ERROR! Faltan Campos Por Completar");
             } else if(checkGyK.Checked && (TxtG.Text.Equals("") || TxtK.Equals(""))){
@@ -75,7 +70,7 @@ namespace SIM_TP_4K4.TP1
             }
             else
             {
-                if (!int.TryParse(TxtTamañoMuestra.Text, out validarEntero) || !int.TryParse(TxtXo.Text, out validarEntero) || !int.TryParse(TxtC.Text, out validarEntero))
+                if (!int.TryParse(TxtTamañoMuestra.Text, out validarEntero) || !int.TryParse(TxtXo.Text, out validarEntero) || (!int.TryParse(TxtC.Text, out validarEntero) && cbxMetodo.SelectedIndex != 3))
                 {
                     MessageBox.Show("ERROR! Ingresar un Número Entero");
                 }
@@ -84,8 +79,9 @@ namespace SIM_TP_4K4.TP1
                     int metodoSeleccionado = cbxMetodo.SelectedIndex;
                     int xo = Int32.Parse(TxtXo.Text);
 
-                    int a = (!checkGyK.Checked) ? Int32.Parse(TxtA.Text) : 0;
-                    int c = Int32.Parse(TxtC.Text);
+                    int a = (!checkGyK.Checked && (cbxMetodo.SelectedIndex != 3)) ? Int32.Parse(TxtA.Text) : 0;
+                    a = (cbxMetodo.SelectedIndex != 3) ? a : 0;
+                    int c = (cbxMetodo.SelectedIndex != 3) ? Int32.Parse(TxtC.Text) : 0;
                     int m = (!checkGyK.Checked) ? Int32.Parse(TxtM.Text) : 0;
                     int n = Int32.Parse(TxtTamañoMuestra.Text);
 
@@ -98,14 +94,15 @@ namespace SIM_TP_4K4.TP1
                     cleanColumns();
                     cargarDatos();
 
-                    this.btnChi.Enabled = true;
+                    
+                    this.habilitarBotones();
                 }
             }
         }
 
         private void cargarDatos()
         {
-            List<Iteracion> resultado = this.controller.getRandoms();
+            List<object[]> resultado = this.controller.getRandoms();
             IntervaloList intervalos = this.controller.getListaIntervalos();
             this.agregarColumnas(intervalos);
             this.cargarTabla(resultado);
@@ -145,12 +142,20 @@ namespace SIM_TP_4K4.TP1
                 this.TxtSemilla2.Enabled = true;
                 this.lblSemilla2.Visible = true;
                 this.lblSemilla2.Enabled = true;
-            } else
+                this.TxtA.Enabled = false;
+                this.TxtC.Enabled = false;
+                this.TxtA.Text = ""; 
+                this.TxtC.Text = "";
+
+            }
+            else
             {
                 this.TxtSemilla2.Visible = false;
                 this.TxtSemilla2.Enabled = false;
                 this.lblSemilla2.Visible = false;
                 this.lblSemilla2.Enabled = false;
+                this.TxtA.Enabled = (checkBoxDefecto.Checked) ? false : true;
+                this.TxtC.Enabled = (checkBoxDefecto.Checked) ? false : true;
             }
         }
 
@@ -187,21 +192,43 @@ namespace SIM_TP_4K4.TP1
 
         private void btnMas1_Click(object sender, EventArgs e)
         {
-            Iteracion siguiente = this.controller.getSiguiente();
-            agregarFilaTabla(siguiente);
+
+            if (!this.controller.superaMuestra(1))
+            {
+                object[] siguiente = this.controller.getSiguiente();
+                agregarFilaTabla(siguiente);
+            } else
+            {
+                MessageBox.Show("ERROR! + 1 superara el tamaño de la muestra");
+            }
+
         }
 
         private void btnMas20_Click(object sender, EventArgs e)
         {
-            List<Iteracion> results = this.controller.getRandoms(20);
-            results.ForEach(it => agregarFilaTabla(it));
+
+            if (!this.controller.superaMuestra(20))
+            {
+                List<object[]> results = this.controller.getRandoms(20);
+                gdrSerieAleatoria.Rows.Clear();
+                results.ForEach(it => agregarFilaTabla(it));
+            } else
+            {
+                MessageBox.Show("ERROR! + 20 superara el tamaño de la muestra");
+            }
         }
 
         private void btnMas10_Click(object sender, EventArgs e)
         {
-            List<Iteracion> results = this.controller.getRandoms(10000);
-            gdrSerieAleatoria.Rows.Clear();
-            agregarFilaTabla(results.Last());
+            if (!this.controller.superaMuestra(10000))
+            {
+                List<object[]> results = this.controller.ultimosDos(10000);
+                gdrSerieAleatoria.Rows.Clear();
+                results.ForEach(x => agregarFilaTabla(x));
+            } else
+            {
+                MessageBox.Show("ERROR! + 10.000 superara el tamaño de la muestra");
+            }
         }
 
         private void checkBoxDefecto_CheckedChanged(object sender, EventArgs e)
@@ -254,6 +281,28 @@ namespace SIM_TP_4K4.TP1
         {
             ChiCuadrado chiCuadrado = new ChiCuadrado(this.controller, this.cantIntervalos);
             chiCuadrado.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            List<object[]> result = this.controller.hastaN();
+            if(result.Count > 0)
+            {
+                gdrSerieAleatoria.Rows.Clear();
+                result.ForEach(x => agregarFilaTabla(x));
+            } else
+            {
+                MessageBox.Show("ERROR! Ya supero N anteriormente");
+            }
+        }
+
+        private void habilitarBotones()
+        {
+            btnMas1.Enabled = true;
+            btnMas20.Enabled = true;
+            btnMas10.Enabled = true;
+            btnN.Enabled = true;
+            btnChi.Enabled = true;
         }
     }
 }
