@@ -57,5 +57,18 @@ namespace SIM_TP_4K4.TP1.Model
             }
             return data;
         }
+        
+        public object[] getDatosC(int orden, bool fr)
+        {
+            object[] data = new object[2 + this.intervalos.intervalos.Count];
+            data[0] = orden;
+            data[1] = this.rnd;
+            string[] frecuencias = (fr) ? this.intervalos.getValoresRelativa() : this.intervalos.getValoresAbsoluta();
+            for (int i = 0; i < frecuencias.Length; i++)
+            {
+                data[i + 2] = frecuencias[i];
+            }
+            return data;
+        }
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="TP1\Generador\CongruencialMixto.cs" />
     <Compile Include="TP1\Generador\CongruencialMultiplicativo.cs" />
     <Compile Include="TP1\Generador\IGenerador.cs" />
+    <Compile Include="TP1\Generador\Propio.cs" />
     <Compile Include="TP1\Model\Intervalo.cs" />
     <Compile Include="TP1\Model\IntervaloList.cs" />
     <Compile Include="TP1\Model\Iteracion.cs" />
