@@ -314,11 +314,11 @@ namespace SIM_TP_4K4.TP1
             {
                 gdrSerieAleatoria.Rows.Clear();
                 result.ForEach(x => agregarFilaTabla(x));
-                btnChi.Enabled = true;
             } else
             {
                 MessageBox.Show("ERROR! Ya supero N anteriormente");
             }
+            btnChi.Enabled = true;
         }
 
         private void habilitarBotones()
