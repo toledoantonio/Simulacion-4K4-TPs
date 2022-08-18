@@ -1,4 +1,5 @@
 ﻿using SIM_TP_4K4.Model;
+using SIM_TP_4K4.TP1.Generador;
 using SIM_TP_4K4.TP1.Model;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,9 @@ namespace SIM_TP_4K4.Generador
                 case 3:
                     this.generador = new Aditivo(semilla, semillaAnterior, moduloM, frecuenciaRel, cantidadIntervalos);
                     break;
+                case 4:
+                    this.generador = new Propio(tamMuestra, cantidadIntervalos, frecuenciaRel);
+                    break;
                 default:
                     this.generador = null;
                     break;
@@ -60,8 +64,9 @@ namespace SIM_TP_4K4.Generador
 
         public List<object[]> getRandoms()
         {
-            ultimaSim = 20;
-            return this.generador.generarPseudoAleatorios(20);
+            int cant = (tamMuestra < 20) ? tamMuestra: 20;
+            ultimaSim = cant;
+            return this.generador.generarPseudoAleatorios(cant);
         }
 
         public IntervaloList getListaIntervalos()

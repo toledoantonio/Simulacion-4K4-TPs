@@ -38,19 +38,22 @@ namespace SIM_TP_4K4.TP1
             foreach(object[] it in interaciones)
             {
                 agregarFilaTabla(it);
-            }   
+            }
         }
 
         public void agregarFilaTabla(object[] datos) {
 
             gdrSerieAleatoria.Rows.Add(datos);
+            gdrSerieAleatoria.FirstDisplayedScrollingRowIndex = gdrSerieAleatoria.Rows.Count - 1;
         }
 
         public void cleanColumns()
         {
             gdrSerieAleatoria.Columns.Clear();
             gdrSerieAleatoria.Columns.Add("orden", "Orden");
-            gdrSerieAleatoria.Columns.Add("entero", "X");
+            if(cbxMetodo.SelectedIndex != 4) {
+                gdrSerieAleatoria.Columns.Add("entero", "X");
+            }
             if(cbxMetodo.SelectedIndex == 3)
             {
                 gdrSerieAleatoria.Columns.Add("entero_1", "X-1");
@@ -62,7 +65,7 @@ namespace SIM_TP_4K4.TP1
         {
             int validarEntero;
             
-            if (TxtTamañoMuestra.Text.Equals("") || TxtXo.Text.Equals("") || (TxtC.Text.Equals("") && cbxMetodo.SelectedIndex !=3) || (cbxMetodo.SelectedIndex == 3 && TxtSemilla2.Text.Equals("") || (!checkGyK.Checked && TxtM.Text.Equals(""))))
+            if (TxtTamañoMuestra.Text.Equals("") || (TxtXo.Text.Equals("") && (cbxMetodo.SelectedIndex != 4) ) || (TxtC.Text.Equals("") && cbxMetodo.SelectedIndex < 3) || (cbxMetodo.SelectedIndex == 3 && TxtSemilla2.Text.Equals("") || (!checkGyK.Checked && TxtM.Text.Equals("") && (cbxMetodo.SelectedIndex != 4))))
             {
                 MessageBox.Show("ERROR! Faltan Campos Por Completar");
             } else if(checkGyK.Checked && (TxtG.Text.Equals("") || TxtK.Equals(""))){
@@ -70,19 +73,20 @@ namespace SIM_TP_4K4.TP1
             }
             else
             {
-                if (!int.TryParse(TxtTamañoMuestra.Text, out validarEntero) || !int.TryParse(TxtXo.Text, out validarEntero) || (!int.TryParse(TxtC.Text, out validarEntero) && cbxMetodo.SelectedIndex != 3))
+                if (!int.TryParse(TxtTamañoMuestra.Text, out validarEntero) || (!int.TryParse(TxtXo.Text, out validarEntero) && cbxMetodo.SelectedIndex < 3) || (!int.TryParse(TxtC.Text, out validarEntero) && cbxMetodo.SelectedIndex < 3))
                 {
                     MessageBox.Show("ERROR! Ingresar un Número Entero");
                 }
                 else
                 {
                     int metodoSeleccionado = cbxMetodo.SelectedIndex;
-                    int xo = Int32.Parse(TxtXo.Text);
+                    int xo = (cbxMetodo.SelectedIndex != 4) ? Int32.Parse(TxtXo.Text) : 0;
 
-                    int a = (!checkGyK.Checked && (cbxMetodo.SelectedIndex != 3)) ? Int32.Parse(TxtA.Text) : 0;
-                    a = (cbxMetodo.SelectedIndex != 3) ? a : 0;
-                    int c = (cbxMetodo.SelectedIndex != 3) ? Int32.Parse(TxtC.Text) : 0;
-                    int m = (!checkGyK.Checked) ? Int32.Parse(TxtM.Text) : 0;
+                    int a = (!checkGyK.Checked && (cbxMetodo.SelectedIndex < 3)) ? Int32.Parse(TxtA.Text) : 0;
+                    a = (cbxMetodo.SelectedIndex < 3) ? a : 0;
+                    int c = (cbxMetodo.SelectedIndex < 3) ? Int32.Parse(TxtC.Text) : 0;
+                    int m = (!checkGyK.Checked && (cbxMetodo.SelectedIndex != 4)) ? Int32.Parse(TxtM.Text) : 0;
+
                     int n = Int32.Parse(TxtTamañoMuestra.Text);
 
                     int x0Anterior = (cbxMetodo.SelectedIndex == 3) ? Int32.Parse(TxtSemilla2.Text) : 0;
@@ -146,6 +150,7 @@ namespace SIM_TP_4K4.TP1
                 this.TxtC.Enabled = false;
                 this.TxtA.Text = ""; 
                 this.TxtC.Text = "";
+                this.checkBoxDefecto.Enabled = false;
 
             }
             else
@@ -154,8 +159,27 @@ namespace SIM_TP_4K4.TP1
                 this.TxtSemilla2.Enabled = false;
                 this.lblSemilla2.Visible = false;
                 this.lblSemilla2.Enabled = false;
-                this.TxtA.Enabled = (checkBoxDefecto.Checked) ? false : true;
-                this.TxtC.Enabled = (checkBoxDefecto.Checked) ? false : true;
+                this.TxtA.Enabled = (checkBoxDefecto.Checked || cbxMetodo.SelectedIndex == 4) ? false : true;
+                this.TxtC.Enabled = (checkBoxDefecto.Checked || cbxMetodo.SelectedIndex == 4) ? false : true;
+                this.checkBoxDefecto.Enabled = true;
+            }
+            if (indice == 4)
+            {
+                this.TxtA.Enabled = false;
+                this.TxtC.Enabled = false;
+                this.TxtXo.Enabled = false;
+                this.TxtM.Enabled = false;
+                this.checkGyK.Enabled = false;
+                this.checkBoxDefecto.Enabled = false;
+            }
+            else
+            {
+                this.TxtA.Enabled = true;
+                this.TxtC.Enabled = true;
+                this.TxtXo.Enabled = true;
+                this.TxtM.Enabled = true;
+                this.checkGyK.Enabled = true;
+                this.checkBoxDefecto.Enabled = true;
             }
         }
 
@@ -294,6 +318,7 @@ namespace SIM_TP_4K4.TP1
             {
                 MessageBox.Show("ERROR! Ya supero N anteriormente");
             }
+            btnChi.Enabled = true;
         }
 
         private void habilitarBotones()
@@ -302,7 +327,7 @@ namespace SIM_TP_4K4.TP1
             btnMas20.Enabled = true;
             btnMas10.Enabled = true;
             btnN.Enabled = true;
-            btnChi.Enabled = true;
+            
         }
     }
 }
