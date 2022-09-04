@@ -81,6 +81,10 @@
     <Compile Include="TP1\TP1Interfaz.Designer.cs">
       <DependentUpon>TP1Interfaz.cs</DependentUpon>
     </Compile>
+    <Compile Include="TP3\Controlador.cs" />
+    <Compile Include="TP3\Distribuciones\Exponencial.cs" />
+    <Compile Include="TP3\Distribuciones\Normal.cs" />
+    <Compile Include="TP3\Distribuciones\Poisson.cs" />
     <Compile Include="TP3\TP3Interfaz.cs">
       <SubType>Form</SubType>
     </Compile>

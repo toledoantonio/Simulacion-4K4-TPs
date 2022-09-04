@@ -32,6 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtIntervalos = new System.Windows.Forms.TextBox();
+            this.dgvRandoms = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.iteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGenerar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRandoms)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtTamañoMuestra
@@ -72,17 +80,71 @@
             this.TxtIntervalos.Size = new System.Drawing.Size(51, 24);
             this.TxtIntervalos.TabIndex = 35;
             // 
+            // dgvRandoms
+            // 
+            this.dgvRandoms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRandoms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iteracion,
+            this.RND});
+            this.dgvRandoms.Location = new System.Drawing.Point(26, 123);
+            this.dgvRandoms.Name = "dgvRandoms";
+            this.dgvRandoms.Size = new System.Drawing.Size(226, 432);
+            this.dgvRandoms.TabIndex = 36;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(517, 208);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.TabIndex = 37;
+            // 
+            // iteracion
+            // 
+            this.iteracion.HeaderText = "Iteracion";
+            this.iteracion.Name = "iteracion";
+            // 
+            // RND
+            // 
+            this.RND.HeaderText = "RND";
+            this.RND.Name = "RND";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(491, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Location = new System.Drawing.Point(289, 32);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerar.TabIndex = 39;
+            this.btnGenerar.Text = "Generar";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            // 
             // TP3Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 582);
+            this.Controls.Add(this.btnGenerar);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dgvRandoms);
             this.Controls.Add(this.TxtIntervalos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtTamañoMuestra);
             this.Controls.Add(this.label1);
             this.Name = "TP3Interfaz";
             this.Text = "TP3Interfaz";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRandoms)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,5 +156,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtIntervalos;
+        private System.Windows.Forms.DataGridView dgvRandoms;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iteracion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RND;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGenerar;
     }
 }

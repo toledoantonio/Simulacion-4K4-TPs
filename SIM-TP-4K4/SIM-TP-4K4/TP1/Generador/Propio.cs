@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SIM_TP_4K4.TP1.Generador
 {
-    public class Propio: IGenerador
+    public class Propio : IGenerador
     {
         public long tamMuestra { get; set; }
 
@@ -33,6 +33,9 @@ namespace SIM_TP_4K4.TP1.Generador
             this.orden = 1;
             this.vector = new VectorEstado(0, this.cantIntervalos, this.amplitudIntervalos);
             this.generador = new Random();
+        }
+        public Propio (int muestra) : this(muestra,0, false)
+        {
         }
 
         public List<object[]> generarPseudoAleatorios(int n)
