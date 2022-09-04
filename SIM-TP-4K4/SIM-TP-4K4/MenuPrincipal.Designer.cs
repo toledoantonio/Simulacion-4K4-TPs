@@ -47,14 +47,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn4_MenuPrincipal = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btn4_MenuPrincipal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,7 +78,6 @@
             // btn3_MenuPrincipal
             // 
             this.btn3_MenuPrincipal.BackColor = System.Drawing.Color.SlateGray;
-            this.btn3_MenuPrincipal.Enabled = false;
             this.btn3_MenuPrincipal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3_MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn3_MenuPrincipal.Location = new System.Drawing.Point(150, 34);
@@ -87,6 +86,7 @@
             this.btn3_MenuPrincipal.TabIndex = 15;
             this.btn3_MenuPrincipal.Text = "TP3";
             this.btn3_MenuPrincipal.UseVisualStyleBackColor = false;
+            this.btn3_MenuPrincipal.Click += new System.EventHandler(this.btn3_MenuPrincipal_Click);
             // 
             // txt_Menu
             // 
@@ -256,6 +256,16 @@
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(112, -5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(253, 21);
+            this.label7.TabIndex = 35;
+            this.label7.Text = "Generación de Números Aleatorios";
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btn3_MenuPrincipal);
@@ -265,6 +275,16 @@
             this.groupBox3.Size = new System.Drawing.Size(465, 109);
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(165, -4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 21);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Variables Aleatorias";
             // 
             // groupBox4
             // 
@@ -276,25 +296,18 @@
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             // 
-            // label7
+            // btn4_MenuPrincipal
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(112, -5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(253, 21);
-            this.label7.TabIndex = 35;
-            this.label7.Text = "Generación de Números Aleatorios";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(165, -4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(146, 21);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Variables Aleatorias";
+            this.btn4_MenuPrincipal.BackColor = System.Drawing.Color.SlateGray;
+            this.btn4_MenuPrincipal.Enabled = false;
+            this.btn4_MenuPrincipal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4_MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn4_MenuPrincipal.Location = new System.Drawing.Point(150, 33);
+            this.btn4_MenuPrincipal.Name = "btn4_MenuPrincipal";
+            this.btn4_MenuPrincipal.Size = new System.Drawing.Size(170, 58);
+            this.btn4_MenuPrincipal.TabIndex = 38;
+            this.btn4_MenuPrincipal.Text = "TP4";
+            this.btn4_MenuPrincipal.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -325,19 +338,6 @@
             this.label11.Size = new System.Drawing.Size(111, 30);
             this.label11.TabIndex = 36;
             this.label11.Text = "Año: 2022";
-            // 
-            // btn4_MenuPrincipal
-            // 
-            this.btn4_MenuPrincipal.BackColor = System.Drawing.Color.SlateGray;
-            this.btn4_MenuPrincipal.Enabled = false;
-            this.btn4_MenuPrincipal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4_MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn4_MenuPrincipal.Location = new System.Drawing.Point(150, 33);
-            this.btn4_MenuPrincipal.Name = "btn4_MenuPrincipal";
-            this.btn4_MenuPrincipal.Size = new System.Drawing.Size(170, 58);
-            this.btn4_MenuPrincipal.TabIndex = 38;
-            this.btn4_MenuPrincipal.Text = "TP4";
-            this.btn4_MenuPrincipal.UseVisualStyleBackColor = false;
             // 
             // MenuPrincipal
             // 

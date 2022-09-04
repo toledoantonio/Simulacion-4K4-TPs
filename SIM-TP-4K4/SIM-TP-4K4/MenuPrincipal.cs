@@ -1,4 +1,5 @@
 ﻿using SIM_TP_4K4.TP1;
+using SIM_TP_4K4.TP2;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,13 @@ namespace SIM_TP_4K4
         {
             TP1_Interfaz tp1 = new TP1_Interfaz();
             tp1.Show();
+            this.Hide();
+        }
+
+        private void btn3_MenuPrincipal_Click(object sender, EventArgs e)
+        {
+            TP3Interfaz tp2 = new TP3Interfaz();
+            tp2.Show();
             this.Hide();
         }
     }

@@ -81,6 +81,12 @@
     <Compile Include="TP1\TP1Interfaz.Designer.cs">
       <DependentUpon>TP1Interfaz.cs</DependentUpon>
     </Compile>
+    <Compile Include="TP3\TP3Interfaz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TP3\TP3Interfaz.Designer.cs">
+      <DependentUpon>TP3Interfaz.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TP1\TP1Interfaz.resx">
       <DependentUpon>TP1Interfaz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TP3\TP3Interfaz.resx">
+      <DependentUpon>TP3Interfaz.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
