@@ -37,8 +37,7 @@ namespace SIM_TP_4K4.TP2
             //    MessageBox.Show("¡Complete los campos necesarios!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
 
-                this.dvgRandoms.Visible = true;
-                this.dvgVariable.Visible = true;
+                
             
                 this.limpiarTabla(dvgRandoms);
                 this.limpiarTabla(dvgPrueba);
@@ -55,7 +54,9 @@ namespace SIM_TP_4K4.TP2
                 PruebaChiCuadrado prueba1 = new PruebaChiCuadrado(prueba);
 
                 this.cargarTablaChi(prueba1.calcular());
-            
+
+                this.dvgRandoms.Visible = true;
+                this.dvgVariable.Visible = true;
         }
 
         public void cargarTablaChi(List<object[]> data)
