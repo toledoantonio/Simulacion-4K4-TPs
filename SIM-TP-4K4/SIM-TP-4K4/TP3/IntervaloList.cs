@@ -16,7 +16,6 @@ namespace SIM_TP_4K4.TP3
 
         public IntervaloList(List<double> variables, int cantidadIntervalos)
         {
-
             this.cantidadIntervalos = cantidadIntervalos;
             this.variables = variables;
             this.intervalos = new List<Intervalo>();
@@ -91,6 +90,5 @@ namespace SIM_TP_4K4.TP3
                 i.frecuenciaEsperada = Util.truncar(fe);
             }
         }
-
     }
 }

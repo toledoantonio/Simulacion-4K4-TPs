@@ -68,6 +68,7 @@
             this.radioButtonCHI = new System.Windows.Forms.RadioButton();
             this.btn_volverMenu = new System.Windows.Forms.Button();
             this.btn_limpiar = new System.Windows.Forms.Button();
+            this.Cmb_intervalos = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             this.TxtTamañoMuestra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTamañoMuestra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTamañoMuestra.Location = new System.Drawing.Point(197, 80);
+            this.TxtTamañoMuestra.Location = new System.Drawing.Point(197, 79);
             this.TxtTamañoMuestra.Name = "TxtTamañoMuestra";
             this.TxtTamañoMuestra.Size = new System.Drawing.Size(51, 24);
             this.TxtTamañoMuestra.TabIndex = 32;
@@ -92,7 +93,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 82);
+            this.label1.Location = new System.Drawing.Point(16, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 18);
             this.label1.TabIndex = 33;
@@ -102,7 +103,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 31);
+            this.label2.Location = new System.Drawing.Point(16, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(153, 18);
             this.label2.TabIndex = 34;
@@ -112,7 +113,7 @@
             // 
             this.TxtIntervalos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtIntervalos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtIntervalos.Location = new System.Drawing.Point(197, 31);
+            this.TxtIntervalos.Location = new System.Drawing.Point(19, 4);
             this.TxtIntervalos.Name = "TxtIntervalos";
             this.TxtIntervalos.Size = new System.Drawing.Size(51, 24);
             this.TxtIntervalos.TabIndex = 35;
@@ -120,7 +121,7 @@
             // btnGenerar
             // 
             this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerar.Location = new System.Drawing.Point(973, 21);
+            this.btnGenerar.Location = new System.Drawing.Point(966, 21);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(175, 40);
             this.btnGenerar.TabIndex = 39;
@@ -183,7 +184,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(661, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(295, 92);
+            this.groupBox2.Size = new System.Drawing.Size(284, 92);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros";
@@ -191,30 +192,30 @@
             // txtParametro2
             // 
             this.txtParametro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtParametro2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtParametro2.Location = new System.Drawing.Point(132, 57);
+            this.txtParametro2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParametro2.Location = new System.Drawing.Point(164, 59);
             this.txtParametro2.Name = "txtParametro2";
-            this.txtParametro2.Size = new System.Drawing.Size(51, 24);
+            this.txtParametro2.Size = new System.Drawing.Size(51, 22);
             this.txtParametro2.TabIndex = 45;
             this.txtParametro2.Visible = false;
             // 
             // txtParametro1
             // 
             this.txtParametro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtParametro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtParametro1.Location = new System.Drawing.Point(132, 27);
+            this.txtParametro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParametro1.Location = new System.Drawing.Point(164, 27);
             this.txtParametro1.Name = "txtParametro1";
-            this.txtParametro1.Size = new System.Drawing.Size(51, 24);
+            this.txtParametro1.Size = new System.Drawing.Size(51, 22);
             this.txtParametro1.TabIndex = 44;
             this.txtParametro1.Visible = false;
             // 
             // lblParametro2
             // 
             this.lblParametro2.AutoSize = true;
-            this.lblParametro2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblParametro2.Location = new System.Drawing.Point(21, 58);
+            this.lblParametro2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParametro2.Location = new System.Drawing.Point(57, 61);
             this.lblParametro2.Name = "lblParametro2";
-            this.lblParametro2.Size = new System.Drawing.Size(86, 18);
+            this.lblParametro2.Size = new System.Drawing.Size(77, 16);
             this.lblParametro2.TabIndex = 36;
             this.lblParametro2.Text = "Parametro2";
             this.lblParametro2.Visible = false;
@@ -222,10 +223,10 @@
             // lblParametro1
             // 
             this.lblParametro1.AutoSize = true;
-            this.lblParametro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblParametro1.Location = new System.Drawing.Point(21, 27);
+            this.lblParametro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParametro1.Location = new System.Drawing.Point(57, 29);
             this.lblParametro1.Name = "lblParametro1";
-            this.lblParametro1.Size = new System.Drawing.Size(86, 18);
+            this.lblParametro1.Size = new System.Drawing.Size(77, 16);
             this.lblParametro1.TabIndex = 35;
             this.lblParametro1.Text = "Parametro1";
             this.lblParametro1.Visible = false;
@@ -457,7 +458,7 @@
             // btn_volverMenu
             // 
             this.btn_volverMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_volverMenu.Location = new System.Drawing.Point(1068, 71);
+            this.btn_volverMenu.Location = new System.Drawing.Point(1061, 71);
             this.btn_volverMenu.Name = "btn_volverMenu";
             this.btn_volverMenu.Size = new System.Drawing.Size(80, 42);
             this.btn_volverMenu.TabIndex = 44;
@@ -468,7 +469,7 @@
             // btn_limpiar
             // 
             this.btn_limpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar.Location = new System.Drawing.Point(973, 72);
+            this.btn_limpiar.Location = new System.Drawing.Point(966, 72);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(80, 41);
             this.btn_limpiar.TabIndex = 45;
@@ -476,11 +477,26 @@
             this.btn_limpiar.UseVisualStyleBackColor = true;
             this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
+            // Cmb_intervalos
+            // 
+            this.Cmb_intervalos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_intervalos.FormattingEnabled = true;
+            this.Cmb_intervalos.Items.AddRange(new object[] {
+            "8",
+            "10",
+            "15",
+            "20"});
+            this.Cmb_intervalos.Location = new System.Drawing.Point(197, 30);
+            this.Cmb_intervalos.Name = "Cmb_intervalos";
+            this.Cmb_intervalos.Size = new System.Drawing.Size(51, 26);
+            this.Cmb_intervalos.TabIndex = 46;
+            // 
             // TP3Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 583);
+            this.Controls.Add(this.Cmb_intervalos);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_volverMenu);
             this.Controls.Add(this.groupBox3);
@@ -548,5 +564,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FE;
         private System.Windows.Forms.Button btn_volverMenu;
         private System.Windows.Forms.Button btn_limpiar;
+        private System.Windows.Forms.ComboBox Cmb_intervalos;
     }
 }

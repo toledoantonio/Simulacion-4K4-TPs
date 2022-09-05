@@ -32,34 +32,37 @@ namespace SIM_TP_4K4.TP2
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            this.limpiarTabla(dvgRandoms);
-            this.limpiarTabla(dvgPrueba);
-            this.limpiarTabla(dvgVariable);
+            //if (TxtTamañoMuestra.Text.Equals("") || txtParametro1.Text.Equals(""))
+            //{
+            //    MessageBox.Show("¡Complete los campos necesarios!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            
+                this.limpiarTabla(dvgRandoms);
+                this.limpiarTabla(dvgPrueba);
+                this.limpiarTabla(dvgVariable);
 
 
-            this.controlador = new Controlador(Int32.Parse(this.TxtTamañoMuestra.Text), Double.Parse(this.txtParametro2.Text), Double.Parse(this.txtParametro1.Text));
-            this.cargarTablaRandoms(this.controlador.listaRnd);
-            this.cargarTablaVariables(this.controlador.variables);
+                this.controlador = new Controlador(Int32.Parse(this.TxtTamañoMuestra.Text), Double.Parse(this.txtParametro2.Text), Double.Parse(this.txtParametro1.Text));
+                this.cargarTablaRandoms(this.controlador.listaRnd);
+                this.cargarTablaVariables(this.controlador.variables);
 
-            IntervaloList prueba = new IntervaloList(this.controlador.variables, 10);
-            prueba.contarFE(0, Double.Parse(this.txtParametro1.Text), Double.Parse(this.txtParametro2.Text), 0);
+                IntervaloList prueba = new IntervaloList(this.controlador.variables, 10);
+                prueba.contarFE(0, Double.Parse(this.txtParametro1.Text), Double.Parse(this.txtParametro2.Text), 0);
 
-            PruebaChiCuadrado prueba1 = new PruebaChiCuadrado(prueba);
+                PruebaChiCuadrado prueba1 = new PruebaChiCuadrado(prueba);
 
-            this.cargarTablaChi(prueba1.calcular());
+                this.cargarTablaChi(prueba1.calcular());
+            
         }
-
 
         public void cargarTablaChi(List<object[]> data)
         {
-
             data.ForEach((x) => dvgPrueba.Rows.Add(x));
             dvgRandoms.FirstDisplayedScrollingRowIndex = dvgPrueba.Rows.Count - 1;
         }
 
         public void cargarTablaRandoms(List<double> data)
         {
-
             for (int i = 0; i < data.Count; i++)
             {
                 dvgRandoms.Rows.Add(new object[] { i + 1, Util.truncar(data[i]) });
@@ -71,7 +74,6 @@ namespace SIM_TP_4K4.TP2
         {
             data.ForEach((x) => dvgVariable.Rows.Add(x));
             dvgVariable.FirstDisplayedScrollingRowIndex = dvgVariable.Rows.Count - 1;
-
         }
 
         public void limpiarTabla(DataGridView tabla)
@@ -86,7 +88,7 @@ namespace SIM_TP_4K4.TP2
                 this.lblParametro1.Text = "Media";
                 this.lblParametro2.Text = "Varianza";
 
-
+                this.radioButtonKS.Visible = true;
                 this.lblParametro1.Visible = true;
                 this.lblParametro2.Visible = true;
                 this.txtParametro1.Visible = true;
@@ -96,6 +98,7 @@ namespace SIM_TP_4K4.TP2
             {
                 this.lblParametro1.Text = "Media";
                 this.lblParametro2.Text = "Lambda";
+                this.radioButtonKS.Visible = true;
                 this.lblParametro1.Visible = true;
                 this.lblParametro2.Visible = true;
                 this.txtParametro1.Visible = true;
@@ -104,6 +107,7 @@ namespace SIM_TP_4K4.TP2
             else
             {
                 this.lblParametro1.Text = "Lambda";
+                this.radioButtonKS.Visible = false;
                 this.lblParametro1.Visible = true;
                 this.lblParametro2.Visible = false;
                 this.txtParametro1.Visible = true;
