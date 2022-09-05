@@ -28,32 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TxtTamañoMuestra = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtIntervalos = new System.Windows.Forms.TextBox();
-            this.dgvRandoms = new System.Windows.Forms.DataGridView();
-            this.iteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonNormal = new System.Windows.Forms.RadioButton();
-            this.radioButtonExpo = new System.Windows.Forms.RadioButton();
             this.radioButtonPoisson = new System.Windows.Forms.RadioButton();
+            this.radioButtonExpo = new System.Windows.Forms.RadioButton();
+            this.radioButtonNormal = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.parametro1 = new System.Windows.Forms.Label();
+            this.txtParametro2 = new System.Windows.Forms.TextBox();
+            this.txtParametro1 = new System.Windows.Forms.TextBox();
+            this.lblParametro2 = new System.Windows.Forms.Label();
+            this.lblParametro1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Variables = new System.Windows.Forms.TabPage();
+            this.dvgVariable = new System.Windows.Forms.DataGridView();
+            this.Variable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgRandoms = new System.Windows.Forms.DataGridView();
+            this.Iteracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.random = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Test = new System.Windows.Forms.TabPage();
+            this.dvgPrueba = new System.Windows.Forms.DataGridView();
             this.Grafico = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButtonCHI = new System.Windows.Forms.RadioButton();
             this.radioButtonKS = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRandoms)).BeginInit();
+            this.radioButtonCHI = new System.Windows.Forms.RadioButton();
+            this.li = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ls = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Variables.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgVariable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgRandoms)).BeginInit();
+            this.Test.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgPrueba)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,27 +117,6 @@
             this.TxtIntervalos.Size = new System.Drawing.Size(51, 24);
             this.TxtIntervalos.TabIndex = 35;
             // 
-            // dgvRandoms
-            // 
-            this.dgvRandoms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRandoms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iteracion,
-            this.RND});
-            this.dgvRandoms.Location = new System.Drawing.Point(16, 6);
-            this.dgvRandoms.Name = "dgvRandoms";
-            this.dgvRandoms.Size = new System.Drawing.Size(226, 413);
-            this.dgvRandoms.TabIndex = 36;
-            // 
-            // iteracion
-            // 
-            this.iteracion.HeaderText = "Iteracion";
-            this.iteracion.Name = "iteracion";
-            // 
-            // RND
-            // 
-            this.RND.HeaderText = "RND";
-            this.RND.Name = "RND";
-            // 
             // btnGenerar
             // 
             this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,16 +141,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Distribucion";
             // 
-            // radioButtonNormal
+            // radioButtonPoisson
             // 
-            this.radioButtonNormal.AutoSize = true;
-            this.radioButtonNormal.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonNormal.Name = "radioButtonNormal";
-            this.radioButtonNormal.Size = new System.Drawing.Size(69, 20);
-            this.radioButtonNormal.TabIndex = 0;
-            this.radioButtonNormal.TabStop = true;
-            this.radioButtonNormal.Text = "Normal";
-            this.radioButtonNormal.UseVisualStyleBackColor = true;
+            this.radioButtonPoisson.AutoSize = true;
+            this.radioButtonPoisson.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonPoisson.Name = "radioButtonPoisson";
+            this.radioButtonPoisson.Size = new System.Drawing.Size(74, 20);
+            this.radioButtonPoisson.TabIndex = 2;
+            this.radioButtonPoisson.TabStop = true;
+            this.radioButtonPoisson.Text = "Poisson";
+            this.radioButtonPoisson.UseVisualStyleBackColor = true;
             // 
             // radioButtonExpo
             // 
@@ -162,20 +163,23 @@
             this.radioButtonExpo.Text = "Exponencial";
             this.radioButtonExpo.UseVisualStyleBackColor = true;
             // 
-            // radioButtonPoisson
+            // radioButtonNormal
             // 
-            this.radioButtonPoisson.AutoSize = true;
-            this.radioButtonPoisson.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonPoisson.Name = "radioButtonPoisson";
-            this.radioButtonPoisson.Size = new System.Drawing.Size(74, 20);
-            this.radioButtonPoisson.TabIndex = 2;
-            this.radioButtonPoisson.TabStop = true;
-            this.radioButtonPoisson.Text = "Poisson";
-            this.radioButtonPoisson.UseVisualStyleBackColor = true;
+            this.radioButtonNormal.AutoSize = true;
+            this.radioButtonNormal.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonNormal.Name = "radioButtonNormal";
+            this.radioButtonNormal.Size = new System.Drawing.Size(69, 20);
+            this.radioButtonNormal.TabIndex = 0;
+            this.radioButtonNormal.TabStop = true;
+            this.radioButtonNormal.Text = "Normal";
+            this.radioButtonNormal.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.parametro1);
+            this.groupBox2.Controls.Add(this.txtParametro2);
+            this.groupBox2.Controls.Add(this.txtParametro1);
+            this.groupBox2.Controls.Add(this.lblParametro2);
+            this.groupBox2.Controls.Add(this.lblParametro1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(661, 27);
             this.groupBox2.Name = "groupBox2";
@@ -184,15 +188,47 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parametros";
             // 
-            // parametro1
+            // txtParametro2
             // 
-            this.parametro1.AutoSize = true;
-            this.parametro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parametro1.Location = new System.Drawing.Point(28, 29);
-            this.parametro1.Name = "parametro1";
-            this.parametro1.Size = new System.Drawing.Size(68, 18);
-            this.parametro1.TabIndex = 35;
-            this.parametro1.Text = "ASDSAD";
+            this.txtParametro2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtParametro2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParametro2.Location = new System.Drawing.Point(132, 57);
+            this.txtParametro2.Name = "txtParametro2";
+            this.txtParametro2.Size = new System.Drawing.Size(51, 24);
+            this.txtParametro2.TabIndex = 45;
+            this.txtParametro2.Visible = false;
+            // 
+            // txtParametro1
+            // 
+            this.txtParametro1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtParametro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParametro1.Location = new System.Drawing.Point(132, 27);
+            this.txtParametro1.Name = "txtParametro1";
+            this.txtParametro1.Size = new System.Drawing.Size(51, 24);
+            this.txtParametro1.TabIndex = 44;
+            this.txtParametro1.Visible = false;
+            // 
+            // lblParametro2
+            // 
+            this.lblParametro2.AutoSize = true;
+            this.lblParametro2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParametro2.Location = new System.Drawing.Point(21, 58);
+            this.lblParametro2.Name = "lblParametro2";
+            this.lblParametro2.Size = new System.Drawing.Size(68, 18);
+            this.lblParametro2.TabIndex = 36;
+            this.lblParametro2.Text = "ASDSAD";
+            this.lblParametro2.Visible = false;
+            // 
+            // lblParametro1
+            // 
+            this.lblParametro1.AutoSize = true;
+            this.lblParametro1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParametro1.Location = new System.Drawing.Point(21, 27);
+            this.lblParametro1.Name = "lblParametro1";
+            this.lblParametro1.Size = new System.Drawing.Size(68, 18);
+            this.lblParametro1.TabIndex = 35;
+            this.lblParametro1.Text = "ASDSAD";
+            this.lblParametro1.Visible = false;
             // 
             // tabControl1
             // 
@@ -207,7 +243,8 @@
             // 
             // Variables
             // 
-            this.Variables.Controls.Add(this.dgvRandoms);
+            this.Variables.Controls.Add(this.dvgVariable);
+            this.Variables.Controls.Add(this.dvgRandoms);
             this.Variables.Location = new System.Drawing.Point(4, 22);
             this.Variables.Name = "Variables";
             this.Variables.Padding = new System.Windows.Forms.Padding(3);
@@ -216,22 +253,172 @@
             this.Variables.Text = "Variables";
             this.Variables.UseVisualStyleBackColor = true;
             // 
+            // dvgVariable
+            // 
+            this.dvgVariable.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dvgVariable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvgVariable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dvgVariable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgVariable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dvgVariable.ColumnHeadersHeight = 29;
+            this.dvgVariable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Variable});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgVariable.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dvgVariable.Location = new System.Drawing.Point(288, 3);
+            this.dvgVariable.Name = "dvgVariable";
+            this.dvgVariable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgVariable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dvgVariable.RowHeadersVisible = false;
+            this.dvgVariable.RowHeadersWidth = 51;
+            this.dvgVariable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dvgVariable.Size = new System.Drawing.Size(101, 413);
+            this.dvgVariable.TabIndex = 39;
+            // 
+            // Variable
+            // 
+            this.Variable.HeaderText = "Variable";
+            this.Variable.Name = "Variable";
+            // 
+            // dvgRandoms
+            // 
+            this.dvgRandoms.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dvgRandoms.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvgRandoms.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dvgRandoms.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgRandoms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dvgRandoms.ColumnHeadersHeight = 29;
+            this.dvgRandoms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Iteracion,
+            this.random});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgRandoms.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dvgRandoms.Location = new System.Drawing.Point(7, 6);
+            this.dvgRandoms.Name = "dvgRandoms";
+            this.dvgRandoms.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgRandoms.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dvgRandoms.RowHeadersVisible = false;
+            this.dvgRandoms.RowHeadersWidth = 51;
+            this.dvgRandoms.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dvgRandoms.Size = new System.Drawing.Size(226, 413);
+            this.dvgRandoms.TabIndex = 37;
+            // 
+            // Iteracion
+            // 
+            this.Iteracion.HeaderText = "Iteracion";
+            this.Iteracion.MinimumWidth = 6;
+            this.Iteracion.Name = "Iteracion";
+            this.Iteracion.Width = 125;
+            // 
+            // random
+            // 
+            this.random.HeaderText = "RND";
+            this.random.MinimumWidth = 6;
+            this.random.Name = "random";
+            this.random.Width = 125;
+            // 
             // Test
             // 
+            this.Test.Controls.Add(this.dvgPrueba);
             this.Test.Location = new System.Drawing.Point(4, 22);
             this.Test.Name = "Test";
             this.Test.Padding = new System.Windows.Forms.Padding(3);
-            this.Test.Size = new System.Drawing.Size(360, 271);
+            this.Test.Size = new System.Drawing.Size(1007, 420);
             this.Test.TabIndex = 1;
             this.Test.Text = "Test";
             this.Test.UseVisualStyleBackColor = true;
+            // 
+            // dvgPrueba
+            // 
+            this.dvgPrueba.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvgPrueba.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dvgPrueba.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvgPrueba.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dvgPrueba.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPrueba.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dvgPrueba.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.li,
+            this.ls,
+            this.Fo,
+            this.FE});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgPrueba.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dvgPrueba.Location = new System.Drawing.Point(27, 6);
+            this.dvgPrueba.Name = "dvgPrueba";
+            this.dvgPrueba.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPrueba.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dvgPrueba.RowHeadersVisible = false;
+            this.dvgPrueba.RowHeadersWidth = 51;
+            this.dvgPrueba.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dvgPrueba.Size = new System.Drawing.Size(964, 395);
+            this.dvgPrueba.TabIndex = 43;
             // 
             // Grafico
             // 
             this.Grafico.Location = new System.Drawing.Point(4, 22);
             this.Grafico.Name = "Grafico";
             this.Grafico.Padding = new System.Windows.Forms.Padding(3);
-            this.Grafico.Size = new System.Drawing.Size(883, 342);
+            this.Grafico.Size = new System.Drawing.Size(1007, 420);
             this.Grafico.TabIndex = 2;
             this.Grafico.Text = "Grafico";
             this.Grafico.UseVisualStyleBackColor = true;
@@ -248,17 +435,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Prueba de Ajuste";
             // 
-            // radioButtonCHI
-            // 
-            this.radioButtonCHI.AutoSize = true;
-            this.radioButtonCHI.Location = new System.Drawing.Point(19, 27);
-            this.radioButtonCHI.Name = "radioButtonCHI";
-            this.radioButtonCHI.Size = new System.Drawing.Size(107, 20);
-            this.radioButtonCHI.TabIndex = 0;
-            this.radioButtonCHI.TabStop = true;
-            this.radioButtonCHI.Text = "Chi Cuadrado";
-            this.radioButtonCHI.UseVisualStyleBackColor = true;
-            // 
             // radioButtonKS
             // 
             this.radioButtonKS.AutoSize = true;
@@ -266,9 +442,40 @@
             this.radioButtonKS.Name = "radioButtonKS";
             this.radioButtonKS.Size = new System.Drawing.Size(42, 20);
             this.radioButtonKS.TabIndex = 1;
-            this.radioButtonKS.TabStop = true;
             this.radioButtonKS.Text = "KS";
             this.radioButtonKS.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCHI
+            // 
+            this.radioButtonCHI.AutoSize = true;
+            this.radioButtonCHI.Location = new System.Drawing.Point(19, 27);
+            this.radioButtonCHI.Name = "radioButtonCHI";
+            this.radioButtonCHI.Size = new System.Drawing.Size(107, 20);
+            this.radioButtonCHI.TabIndex = 0;
+            this.radioButtonCHI.Text = "Chi Cuadrado";
+            this.radioButtonCHI.UseVisualStyleBackColor = true;
+            // 
+            // li
+            // 
+            this.li.FillWeight = 80F;
+            this.li.HeaderText = "Lim inf";
+            this.li.Name = "li";
+            // 
+            // ls
+            // 
+            this.ls.FillWeight = 80F;
+            this.ls.HeaderText = "Lim sup";
+            this.ls.Name = "ls";
+            // 
+            // Fo
+            // 
+            this.Fo.HeaderText = "FO";
+            this.Fo.Name = "Fo";
+            // 
+            // FE
+            // 
+            this.FE.HeaderText = "FE";
+            this.FE.Name = "FE";
             // 
             // TP3Interfaz
             // 
@@ -286,13 +493,16 @@
             this.Controls.Add(this.label1);
             this.Name = "TP3Interfaz";
             this.Text = "TP3Interfaz";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRandoms)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.Variables.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgVariable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgRandoms)).EndInit();
+            this.Test.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgPrueba)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -306,16 +516,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtIntervalos;
-        private System.Windows.Forms.DataGridView dgvRandoms;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iteracion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RND;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonPoisson;
         private System.Windows.Forms.RadioButton radioButtonExpo;
         private System.Windows.Forms.RadioButton radioButtonNormal;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label parametro1;
+        private System.Windows.Forms.Label lblParametro1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Variables;
         private System.Windows.Forms.TabPage Test;
@@ -323,5 +530,18 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButtonKS;
         private System.Windows.Forms.RadioButton radioButtonCHI;
+        private System.Windows.Forms.TextBox txtParametro2;
+        private System.Windows.Forms.TextBox txtParametro1;
+        private System.Windows.Forms.Label lblParametro2;
+        private System.Windows.Forms.DataGridView dvgRandoms;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iteracion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn random;
+        private System.Windows.Forms.DataGridView dvgVariable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Variable;
+        private System.Windows.Forms.DataGridView dvgPrueba;
+        private System.Windows.Forms.DataGridViewTextBoxColumn li;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ls;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FE;
     }
 }

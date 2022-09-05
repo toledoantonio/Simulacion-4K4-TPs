@@ -14,6 +14,8 @@ namespace SIM_TP_4K4.Model
 
         public double frecuenciaRelativa { get; set; }
         public int frecuenciaAbsoluta { get; set; }
+        
+        public double frecuenciaEsperada { get; set; }
 
         public Intervalo(double limInf, double limSup)
         {

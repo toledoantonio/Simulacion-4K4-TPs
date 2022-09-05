@@ -82,9 +82,12 @@
       <DependentUpon>TP1Interfaz.cs</DependentUpon>
     </Compile>
     <Compile Include="TP3\Controlador.cs" />
+    <Compile Include="TP3\Distribuciones\Distribucion.cs" />
     <Compile Include="TP3\Distribuciones\Exponencial.cs" />
     <Compile Include="TP3\Distribuciones\Normal.cs" />
     <Compile Include="TP3\Distribuciones\Poisson.cs" />
+    <Compile Include="TP3\IntervaloList.cs" />
+    <Compile Include="TP3\Pruebas\PruebaChiCuadrado.cs" />
     <Compile Include="TP3\TP3Interfaz.cs">
       <SubType>Form</SubType>
     </Compile>

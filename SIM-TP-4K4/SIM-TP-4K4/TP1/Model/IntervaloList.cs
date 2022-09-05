@@ -40,7 +40,7 @@ namespace SIM_TP_4K4.TP1.Model
             {
                 if(i.contieneRnd(random)) 
                 {
-                    i.contarRelativa(orden, ordenAnterior, 1);
+                    i.contarRelativa(orden, ordenAnterior, 1);  
                     i.contarAbsoluta(1);
                 } else
                 {
