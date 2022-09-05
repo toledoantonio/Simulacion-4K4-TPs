@@ -117,6 +117,7 @@
             this.TxtIntervalos.Name = "TxtIntervalos";
             this.TxtIntervalos.Size = new System.Drawing.Size(51, 24);
             this.TxtIntervalos.TabIndex = 35;
+            this.TxtIntervalos.Visible = false;
             // 
             // btnGenerar
             // 
@@ -145,7 +146,7 @@
             // radioButtonPoisson
             // 
             this.radioButtonPoisson.AutoSize = true;
-            this.radioButtonPoisson.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonPoisson.Location = new System.Drawing.Point(19, 65);
             this.radioButtonPoisson.Name = "radioButtonPoisson";
             this.radioButtonPoisson.Size = new System.Drawing.Size(74, 20);
             this.radioButtonPoisson.TabIndex = 2;
@@ -156,7 +157,7 @@
             // radioButtonExpo
             // 
             this.radioButtonExpo.AutoSize = true;
-            this.radioButtonExpo.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonExpo.Location = new System.Drawing.Point(19, 42);
             this.radioButtonExpo.Name = "radioButtonExpo";
             this.radioButtonExpo.Size = new System.Drawing.Size(99, 20);
             this.radioButtonExpo.TabIndex = 1;
@@ -167,7 +168,7 @@
             // radioButtonNormal
             // 
             this.radioButtonNormal.AutoSize = true;
-            this.radioButtonNormal.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonNormal.Location = new System.Drawing.Point(19, 21);
             this.radioButtonNormal.Name = "radioButtonNormal";
             this.radioButtonNormal.Size = new System.Drawing.Size(69, 20);
             this.radioButtonNormal.TabIndex = 0;
@@ -272,7 +273,7 @@
             this.dvgVariable.ColumnHeadersHeight = 29;
             this.dvgVariable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Variable});
-            this.dvgVariable.Location = new System.Drawing.Point(286, 3);
+            this.dvgVariable.Location = new System.Drawing.Point(315, 3);
             this.dvgVariable.Name = "dvgVariable";
             this.dvgVariable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -286,13 +287,16 @@
             this.dvgVariable.RowHeadersVisible = false;
             this.dvgVariable.RowHeadersWidth = 51;
             this.dvgVariable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dvgVariable.Size = new System.Drawing.Size(101, 413);
+            this.dvgVariable.Size = new System.Drawing.Size(143, 413);
             this.dvgVariable.TabIndex = 39;
+            this.dvgVariable.Visible = false;
             // 
             // Variable
             // 
             this.Variable.HeaderText = "Variable";
+            this.Variable.MinimumWidth = 6;
             this.Variable.Name = "Variable";
+            this.Variable.Width = 125;
             // 
             // dvgRandoms
             // 
@@ -312,7 +316,7 @@
             this.dvgRandoms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Iteracion,
             this.random});
-            this.dvgRandoms.Location = new System.Drawing.Point(7, 6);
+            this.dvgRandoms.Location = new System.Drawing.Point(7, 3);
             this.dvgRandoms.Name = "dvgRandoms";
             this.dvgRandoms.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -326,8 +330,9 @@
             this.dvgRandoms.RowHeadersVisible = false;
             this.dvgRandoms.RowHeadersWidth = 51;
             this.dvgRandoms.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dvgRandoms.Size = new System.Drawing.Size(251, 413);
+            this.dvgRandoms.Size = new System.Drawing.Size(268, 413);
             this.dvgRandoms.TabIndex = 37;
+            this.dvgRandoms.Visible = false;
             // 
             // Iteracion
             // 
@@ -346,10 +351,10 @@
             // Test
             // 
             this.Test.Controls.Add(this.dvgPrueba);
-            this.Test.Location = new System.Drawing.Point(4, 22);
+            this.Test.Location = new System.Drawing.Point(4, 25);
             this.Test.Name = "Test";
             this.Test.Padding = new System.Windows.Forms.Padding(3);
-            this.Test.Size = new System.Drawing.Size(1132, 420);
+            this.Test.Size = new System.Drawing.Size(1132, 417);
             this.Test.TabIndex = 1;
             this.Test.Text = "Test";
             this.Test.UseVisualStyleBackColor = true;
@@ -415,10 +420,10 @@
             // 
             // Grafico
             // 
-            this.Grafico.Location = new System.Drawing.Point(4, 22);
+            this.Grafico.Location = new System.Drawing.Point(4, 25);
             this.Grafico.Name = "Grafico";
             this.Grafico.Padding = new System.Windows.Forms.Padding(3);
-            this.Grafico.Size = new System.Drawing.Size(1132, 420);
+            this.Grafico.Size = new System.Drawing.Size(1132, 417);
             this.Grafico.TabIndex = 2;
             this.Grafico.Text = "Grafico";
             this.Grafico.UseVisualStyleBackColor = true;
@@ -438,7 +443,7 @@
             // radioButtonKS
             // 
             this.radioButtonKS.AutoSize = true;
-            this.radioButtonKS.Location = new System.Drawing.Point(19, 58);
+            this.radioButtonKS.Location = new System.Drawing.Point(22, 58);
             this.radioButtonKS.Name = "radioButtonKS";
             this.radioButtonKS.Size = new System.Drawing.Size(42, 20);
             this.radioButtonKS.TabIndex = 1;
@@ -448,7 +453,7 @@
             // radioButtonCHI
             // 
             this.radioButtonCHI.AutoSize = true;
-            this.radioButtonCHI.Location = new System.Drawing.Point(19, 27);
+            this.radioButtonCHI.Location = new System.Drawing.Point(22, 27);
             this.radioButtonCHI.Name = "radioButtonCHI";
             this.radioButtonCHI.Size = new System.Drawing.Size(107, 20);
             this.radioButtonCHI.TabIndex = 0;
@@ -556,7 +561,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Iteracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn random;
         private System.Windows.Forms.DataGridView dvgVariable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Variable;
         private System.Windows.Forms.DataGridView dvgPrueba;
         private System.Windows.Forms.DataGridViewTextBoxColumn li;
         private System.Windows.Forms.DataGridViewTextBoxColumn ls;
@@ -565,5 +569,6 @@
         private System.Windows.Forms.Button btn_volverMenu;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.ComboBox Cmb_intervalos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Variable;
     }
 }

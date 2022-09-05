@@ -36,6 +36,9 @@ namespace SIM_TP_4K4.TP2
             //{
             //    MessageBox.Show("¡Complete los campos necesarios!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
+
+                this.dvgRandoms.Visible = true;
+                this.dvgVariable.Visible = true;
             
                 this.limpiarTabla(dvgRandoms);
                 this.limpiarTabla(dvgPrueba);
