@@ -138,5 +138,19 @@ namespace SIM_TP_4K4.TP2
             dvgPrueba.Columns.Add("fo", "FO");
             dvgPrueba.Columns.Add("fe", "FE");
         }
+
+        private void btn_volverMenu_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal ven = new MenuPrincipal();
+            ven.Show();
+            this.Close();
+        }
+
+        private void btn_limpiar_Click(object sender, EventArgs e)
+        {
+            TP3Interfaz ven = new TP3Interfaz();
+            ven.Show();
+            this.Close();
+        }
     }
 }
