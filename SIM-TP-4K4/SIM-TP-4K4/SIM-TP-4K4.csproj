@@ -88,6 +88,7 @@
     <Compile Include="TP3\Distribuciones\Poisson.cs" />
     <Compile Include="TP3\IntervaloList.cs" />
     <Compile Include="TP3\Pruebas\PruebaChiCuadrado.cs" />
+    <Compile Include="TP3\Pruebas\PruebaKS.cs" />
     <Compile Include="TP3\TP3Interfaz.cs">
       <SubType>Form</SubType>
     </Compile>

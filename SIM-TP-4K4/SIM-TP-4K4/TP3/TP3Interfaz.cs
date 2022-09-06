@@ -11,12 +11,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using IntervaloList = SIM_TP_4K4.TP3.IntervaloList;
 
 namespace SIM_TP_4K4.TP2
 {
     public partial class TP3Interfaz : Form
     {
+        public bool seleccionDistro { get; set; }
+        public bool seleccionPrueba { get; set; }
+
+        public int prueba { get; set; }
+        public int distro { get; set; }
         public Controlador controlador { get; set; }
 
         public TP3Interfaz()
@@ -28,41 +34,56 @@ namespace SIM_TP_4K4.TP2
 
             this.radioButtonCHI.CheckedChanged += new EventHandler(this.cambioDePrueba);
             this.radioButtonKS.CheckedChanged += new EventHandler(this.cambioDePrueba);
+            construirGrafico();
+
+
+
+            this.seleccionDistro = false;
+            this.seleccionPrueba = false;
         }
+
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            //if (TxtTamañoMuestra.Text.Equals("") || txtParametro1.Text.Equals(""))
-            //{
-            //    MessageBox.Show("¡Complete los campos necesarios!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
 
-                
-            
+            string resultadoValidacion = validarData();
+
+            if (string.IsNullOrEmpty(resultadoValidacion))
+            {
                 this.limpiarTabla(dvgRandoms);
                 this.limpiarTabla(dvgPrueba);
                 this.limpiarTabla(dvgVariable);
+                this.limpiarTabla(dgvIntervalos);
+                int tamañoMuestra = Int32.Parse(this.TxtTamañoMuestra.Text);
+                double media = Double.Parse(this.txtMedia.Text);
+                double lambda = Double.Parse(this.txtLambda.Text);
+                double desviacion = Double.Parse(this.txtDesviacion.Text);
+                int cantIntervalos = Int32.Parse(Cmb_intervalos.SelectedItem.ToString());
 
 
-                this.controlador = new Controlador(Int32.Parse(this.TxtTamañoMuestra.Text), Double.Parse(this.txtParametro2.Text), Double.Parse(this.txtParametro1.Text));
+                this.controlador = new Controlador(tamañoMuestra, media, desviacion, lambda, cantIntervalos,  distro);
                 this.cargarTablaRandoms(this.controlador.listaRnd);
                 this.cargarTablaVariables(this.controlador.variables);
-
-                IntervaloList prueba = new IntervaloList(this.controlador.variables, 10);
-                prueba.contarFE(0, Double.Parse(this.txtParametro1.Text), Double.Parse(this.txtParametro2.Text), 0);
-
-                PruebaChiCuadrado prueba1 = new PruebaChiCuadrado(prueba);
-
-                this.cargarTablaChi(prueba1.calcular());
+                this.cargarTablaIntervalos(this.controlador.getIntervalos());
+                this.cargarTablaPrueba(this.controlador.realizarPrueba(this.prueba, this.lblValorCriticoResultado, this.lblEstadisticoPruebaResultado, this.lblPruebaAjusteResultado));
+                this.dibujar(this.controlador.obtenerDatosGrafica());
 
                 this.dvgRandoms.Visible = true;
                 this.dvgVariable.Visible = true;
+
+                this.controlador.intervalos.reducir();
+            }
+            else
+            {
+                MessageBox.Show("ERROR! Faltan Campos Por Completar \n" + resultadoValidacion);
+            }
+
         }
 
-        public void cargarTablaChi(List<object[]> data)
+        public void cargarTablaPrueba(List<object[]> data)
         {
             data.ForEach((x) => dvgPrueba.Rows.Add(x));
-            dvgRandoms.FirstDisplayedScrollingRowIndex = dvgPrueba.Rows.Count - 1;
+            dvgPrueba.FirstDisplayedScrollingRowIndex = dvgPrueba.Rows.Count - 1;
         }
 
         public void cargarTablaRandoms(List<double> data)
@@ -72,6 +93,13 @@ namespace SIM_TP_4K4.TP2
                 dvgRandoms.Rows.Add(new object[] { i + 1, Util.truncar(data[i]) });
             }
             dvgRandoms.FirstDisplayedScrollingRowIndex = dvgRandoms.Rows.Count - 1;
+        }
+
+
+        public void cargarTablaIntervalos(List<object[]> data)
+        {
+            data.ForEach((x) => dgvIntervalos.Rows.Add(x));
+            dgvIntervalos.FirstDisplayedScrollingRowIndex = dgvIntervalos.Rows.Count - 1;
         }
 
         public void cargarTablaVariables(List<double> data)
@@ -89,34 +117,57 @@ namespace SIM_TP_4K4.TP2
         {
             if (radioButtonNormal.Checked)
             {
-                this.lblParametro1.Text = "Media";
-                this.lblParametro2.Text = "Varianza";
-
                 this.radioButtonKS.Visible = true;
-                this.lblParametro1.Visible = true;
-                this.lblParametro2.Visible = true;
-                this.txtParametro1.Visible = true;
-                this.txtParametro2.Visible = true;
+                this.lblMedia.Visible = true;
+                this.lblDesv.Visible = true;
+                this.txtMedia.Visible = true;
+                this.txtDesviacion.Visible = true;
+                this.cbxMediaExp.Enabled = false;
+                this.cbxMediaExp.Visible = false;
+
+                this.lblLamda.Visible = false;
+                this.txtLambda.Visible = false;
+
+                this.txtLambda.Text = "0";
+                distro = 0;
             }
             else if (radioButtonExpo.Checked)
             {
-                this.lblParametro1.Text = "Media";
-                this.lblParametro2.Text = "Lambda";
+                this.cbxMediaExp.Enabled = true;
+                this.cbxMediaExp.Visible = true;
                 this.radioButtonKS.Visible = true;
-                this.lblParametro1.Visible = true;
-                this.lblParametro2.Visible = true;
-                this.txtParametro1.Visible = true;
-                this.txtParametro2.Visible = true;
+                this.txtLambda.Visible = true;
+                this.txtMedia.Visible = false;
+                this.lblMedia.Visible = false;
+                this.txtDesviacion.Visible = false;
+                this.lblDesv.Visible = false;
+                this.lblLamda.Visible = true;
+
+                this.txtDesviacion.Text = "0";
+                this.txtMedia.Text = "0";
+                distro = 1;
             }
             else
             {
-                this.lblParametro1.Text = "Lambda";
+                this.lblLamda.Visible = true;
+                
+
+
                 this.radioButtonKS.Visible = false;
-                this.lblParametro1.Visible = true;
-                this.lblParametro2.Visible = false;
-                this.txtParametro1.Visible = true;
-                this.txtParametro2.Visible = false;
+                this.lblMedia.Visible = false;
+                this.lblDesv.Visible = false;
+                this.txtMedia.Visible = false;
+                this.txtDesviacion.Visible = false;
+
+                this.cbxMediaExp.Enabled = false;
+                this.cbxMediaExp.Visible = false;
+
+                this.txtMedia.Text = "0";
+                this.txtDesviacion.Text = "0";
+                distro = 2;
             }
+
+            this.seleccionDistro = true;
         }
         public void cambioDePrueba(object sender, EventArgs e)
         {
@@ -128,6 +179,8 @@ namespace SIM_TP_4K4.TP2
                 dvgPrueba.Columns.Add("Cuadrado", "(FE - FO) ^ 2");
                 dvgPrueba.Columns.Add("div", "(FE - FO) ^ 2 / FE");
                 dvgPrueba.Columns.Add("acum", "Acumlado");
+
+                prueba = 0;
             }
             else
             {
@@ -135,8 +188,39 @@ namespace SIM_TP_4K4.TP2
                 dvgPrueba.Columns.Add("probe", "PE");
                 dvgPrueba.Columns.Add("dif", "Diferencia");
                 dvgPrueba.Columns.Add("max", "Maximo");
+
+                prueba = 1;
+            }
+
+            this.seleccionPrueba = true;
+        }
+
+
+        private void usarMediaExp(object sender, EventArgs e)
+        {
+            if (cbxMediaExp.Checked)
+            {
+                this.lblMedia.Visible = true;
+                this.txtMedia.Visible = true;
+
+                this.lblLamda.Visible = false;
+                this.txtLambda.Visible = false;
+
+                this.txtDesviacion.Text = "0";
+                this.txtLambda.Text = "0";
+            }
+            else
+            {
+                this.lblLamda.Visible = true;
+                this.txtLambda.Visible = true;
+
+                this.lblMedia.Visible = false;
+                this.txtMedia.Visible = false;
+                this.txtDesviacion.Text = "0";
+                this.txtMedia.Text = "0";
             }
         }
+
 
         public void limpiarColumnas()
         {
@@ -159,6 +243,60 @@ namespace SIM_TP_4K4.TP2
             TP3Interfaz ven = new TP3Interfaz();
             ven.Show();
             this.Close();
+        }
+
+
+        public void dibujar(List<object[]> dataResult)
+        {
+            int numIntervalo = 1;
+            foreach (Object[] data in dataResult)
+            {
+                chart1.Series["Frecuencia observada"].Points.AddXY(numIntervalo, data[0]);
+                chart1.Series["Frecuencia esperada"].Points.AddXY(numIntervalo, data[1]);
+                ++numIntervalo;
+            }
+        }
+
+        public void construirGrafico()
+        {
+            chart1.Series.Clear();
+            chart1.Series.Add("Frecuencia observada");
+            chart1.Series.Add("Frecuencia esperada");
+
+            chart1.Titles.Add(new Title("Graficos de frecuencias"));
+            chart1.Legends.Add(new Legend("FO"));
+            chart1.Legends["FO"].Docking = Docking.Bottom;
+            chart1.Series["Frecuencia observada"].Legend = "FO";
+            chart1.Series["Frecuencia observada"].IsVisibleInLegend = true;
+
+            chart1.Legends.Add(new Legend("FE"));
+            chart1.Legends["FE"].Docking = Docking.Bottom;
+            chart1.Series["Frecuencia esperada"].Legend = "FE";
+            chart1.Series["Frecuencia esperada"].IsVisibleInLegend = true;
+
+        }
+
+
+        public string validarData()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (string.IsNullOrEmpty(this.TxtTamañoMuestra.Text)) sb.Append("Ingrese Tamaño de la muestra \n");
+
+
+            if (string.IsNullOrEmpty(this.txtMedia.Text)) sb.Append("Ingrese " + this.lblMedia.Text + "\n");
+
+            if (string.IsNullOrEmpty(this.txtDesviacion.Text)) sb.Append("Ingrese " + this.lblDesv.Text + "\n");
+
+            if (!Double.TryParse(this.txtMedia.Text, out double result)) sb.Append(this.lblMedia.Text + " Debe ser un numero\n");
+
+            if (!(Double.TryParse(this.txtDesviacion.Text, out double result2)) && this.radioButtonPoisson.Checked == false) sb.Append(this.lblDesv.Text + " Debe ser un numero\n");
+
+            if (!this.seleccionDistro) sb.Append("Debe seleccionar una distibucion \n");
+
+            if (!this.seleccionPrueba) sb.Append("Debe seleccionar una prueba \n");
+
+            return sb.ToString();
         }
     }
 }

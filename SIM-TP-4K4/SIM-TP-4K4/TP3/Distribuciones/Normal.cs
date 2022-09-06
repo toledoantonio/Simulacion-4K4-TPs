@@ -68,14 +68,6 @@ namespace SIM_TP_4K4.TP3.Distribuciones
             return variable;
         }
 
-        public double getMax()
-        {
-            return this.max;
-        }
 
-        public double getMin()
-        {
-            return this.min;
-        }
     }
 }
