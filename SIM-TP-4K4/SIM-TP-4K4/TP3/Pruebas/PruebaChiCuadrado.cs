@@ -20,16 +20,22 @@ namespace SIM_TP_4K4.TP3.Pruebas
         public Label lblEstadistico { get; set; }
         public Label lblAjuste { get; set; }
 
-        
-        public PruebaChiCuadrado(List<Intervalo> intervalos, Label lblValorCritico, Label lblEstadistico, Label lblAjuste)
+
+        public PruebaChiCuadrado(List<Intervalo> intervalos, Label lblValorCritico, Label lblEstadistico, Label lblAjuste, int cantidadIntervalos, int distro)
         {
             this.intervalos = intervalos;
-            
+
             this.lblValorCritico = lblValorCritico;
             this.lblEstadistico = lblEstadistico;
             this.lblAjuste = lblAjuste;
+            this.getTabulado(cantidadIntervalos, distro);
+        }
 
-            this.getTabulado(intervalos.Count);
+        public List<object[]> calcular(int distro)
+        {
+            Console.WriteLine(distro);
+
+            return (distro < 2) ? this.calcular() : this.calcularPoisson();
         }
 
         public List<Object[]> calcular()
@@ -38,6 +44,8 @@ namespace SIM_TP_4K4.TP3.Pruebas
             double anterior = 0;
             foreach (Intervalo it in intervalos)
             {
+
+
                 Object[] datosFila = new Object[8];
                 datosFila[0] = it.limInf;
                 datosFila[1] = it.limSup;
@@ -52,7 +60,35 @@ namespace SIM_TP_4K4.TP3.Pruebas
                 datosFila[7] = valores[3];
                 datos.Add(datosFila);
             }
-            valorCalculado =  (double) datos.Last()[7];
+            valorCalculado = (double)datos.Last()[7];
+            this.lblEstadistico.Text = valorCalculado.ToString();
+            this.validarHipotesis();
+            return datos;
+        }
+
+
+        public List<Object[]> calcularPoisson()
+        {
+            List<Object[]> datos = new List<Object[]>();
+            double anterior = 0;
+            foreach (Intervalo it in intervalos)
+            {
+
+
+                Object[] datosFila = new Object[8];
+                datosFila[0] = ((ValorPoisson)it).intervaloTitulo();
+                datosFila[1] = it.frecuenciaAbsoluta;
+                datosFila[2] = it.frecuenciaEsperada;
+                double[] valores = calcularValoresChiFila(it.frecuenciaEsperada, it.frecuenciaAbsoluta, anterior);
+                anterior = valores[3];
+
+                datosFila[3] = valores[0];
+                datosFila[4] = valores[1];
+                datosFila[5] = valores[2];
+                datosFila[6] = valores[3];
+                datos.Add(datosFila);
+            }
+            valorCalculado = (double)datos.Last()[6];
             this.lblEstadistico.Text = valorCalculado.ToString();
             this.validarHipotesis();
             return datos;
@@ -71,27 +107,54 @@ namespace SIM_TP_4K4.TP3.Pruebas
         }
 
 
-        public void getTabulado(int cantidadIntervalos)
+        public void getTabulado(int cantidadIntervalos, int distro)
         {
-            switch (cantidadIntervalos)
+
+            if(distro < 2)
             {
-                case 5:
-                    this.valorTabulado = 9.49;
-                    this.lblValorCritico.Text = "9.49";
-                    break;
-                case 8:
-                    this.valorTabulado = 14.1;
-                    this.lblValorCritico.Text = "14.1";
-                    break;
-                case 10:
-                    this.valorTabulado = 16.9;
-                    this.lblValorCritico.Text = "16.9";
-                    break;
-                case 12:
-                    this.valorTabulado = 19.7;
-                    this.lblValorCritico.Text = "19.7";
-                    break;
+                switch (cantidadIntervalos)
+                {
+                    case 5:
+                        this.valorTabulado = 9.49;
+                        this.lblValorCritico.Text = "9.49";
+                        break;
+                    case 8:
+                        this.valorTabulado = 14.1;
+                        this.lblValorCritico.Text = "14.1";
+                        break;
+                    case 10:
+                        this.valorTabulado = 16.9;
+                        this.lblValorCritico.Text = "16.9";
+                        break;
+                    case 12:
+                        this.valorTabulado = 19.7;
+                        this.lblValorCritico.Text = "19.7";
+                        break;
+                }
+
+            } else
+            {
+                if (this.intervalos.Count > 40) 
+                {
+                    this.valorTabulado = chiTabulado[39];
+                    this.lblValorCritico.Text = $"{chiTabulado[39]}";
+                } else
+                {
+                    if (this.intervalos.Count == 1)
+                    {
+                        this.valorTabulado = chiTabulado[0];
+                        this.lblValorCritico.Text = $"{chiTabulado[0]}";
+                    }
+                    else
+                    {
+                        this.valorTabulado = chiTabulado[this.intervalos.Count - 2];
+                        this.lblValorCritico.Text = $"{chiTabulado[this.intervalos.Count - 2]}";
+                    }
+
+                }
             }
+
+
         }
 
         public void validarHipotesis()
@@ -109,5 +172,49 @@ namespace SIM_TP_4K4.TP3.Pruebas
                 lblAjuste.ForeColor = Color.FromArgb(255, 0, 0);
             }
         }
+
+
+
+        public static readonly double[] chiTabulado = {3.8415,
+                                                        5.9915,
+                                                        7.8147,
+                                                        9.4877,
+                                                        11.0705,
+                                                        12.5916,
+                                                        14.0671,
+                                                        15.5073,
+                                                        16.9190,
+                                                        18.3070,
+                                                        19.6752,
+                                                        21.0261,
+                                                        22.3620,
+                                                        23.6848,
+                                                        24.9958,
+                                                        26.2962,
+                                                        27.5871,
+                                                        28.8693,
+                                                        30.1435,
+                                                        31.4104,
+                                                        32.6706,
+                                                        33.9245,
+                                                        35.1725,
+                                                        36.4150,
+                                                        37.6525,
+                                                        38.8851,
+                                                        40.1133,
+                                                        41.3372,
+                                                        42.5569,
+                                                        43.7730,
+                                                        44.9853,
+                                                        46.1942,
+                                                        47.3999,
+                                                        48.6024,
+                                                        49.8018,
+                                                        50.9985,
+                                                        52.1923,
+                                                        53.3835,
+                                                        54.5722,
+                                                        55.7585};
+
     }
 }

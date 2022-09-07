@@ -15,6 +15,8 @@ namespace SIM_TP_4K4.TP3
         public int cantidadIntervalos { get; set; }
         public List<double> variables { get; set; }
 
+        public List<int> variablesPoisson { get; set; }
+
         public IntervaloList(List<double> variables, int cantidadIntervalos)
         {
             this.cantidadIntervalos = cantidadIntervalos;
@@ -23,6 +25,17 @@ namespace SIM_TP_4K4.TP3
             this.construirIntervalos(variables);
             this.contarFO();
         }
+
+        public IntervaloList(List<int> variables, int cantidadIntervalos)
+        { 
+            this.variablesPoisson = variables;
+            this.intervalos = new List<Intervalo>();
+
+          
+            this.construirIntervalos(variables);
+            this.contarFOPoisson();
+        }
+
 
         public void construirIntervalos(List<double> variables)
         {
@@ -53,6 +66,24 @@ namespace SIM_TP_4K4.TP3
         }
 
 
+        public void construirIntervalos(List<int> variables)
+        {
+            variables = variables.OrderBy((x) => x).ToList(); ;
+            HashSet<int> aparecieron = new HashSet<int>();
+            for(int i = 0; i < variables.Count; i++)
+            {
+
+                if (! aparecieron.Contains(variables[i])) {
+                    Intervalo intervalo = new ValorPoisson(variables[i]);
+                    intervalos.Add(intervalo);
+                    aparecieron.Add(variables[i]);
+                } 
+
+            }
+
+            
+        }
+
         public void contarFO()
         {
             foreach (double num in variables)
@@ -62,6 +93,21 @@ namespace SIM_TP_4K4.TP3
                     if (i.contieneRnd(num))
                     {
                         i.contarAbsoluta(1);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void contarFOPoisson()
+        {
+            foreach (int num in variablesPoisson)
+            {
+                foreach (Intervalo i in intervalos)
+                {
+                    if (((ValorPoisson) i).esValor(num))
+                    { 
+                        ((ValorPoisson) i).contarAbsoluta(1);
                         break;
                     }
                 }
@@ -90,6 +136,10 @@ namespace SIM_TP_4K4.TP3
                 case 1:
                     contarFEEXP(media, lambda, tamañoMuestra);
                     break;
+                case 2:
+                    contarFEP(lambda, tamañoMuestra);
+                    break;
+                    
             }
         }
 
@@ -118,7 +168,17 @@ namespace SIM_TP_4K4.TP3
         }
 
 
-        public List<Intervalo> reducir()
+        public void contarFEP(double lambda, int muestra)
+        {
+            foreach(Intervalo i in intervalos)
+            {
+                ValorPoisson inter = (ValorPoisson) i;
+                inter.calcularProbabilidad(lambda);
+                inter.calcularFe(muestra);
+            }
+        }
+
+        public List<Intervalo> reducir(int distro)
         {
             List<Intervalo> aux = new List<Intervalo>(this.intervalos);
             List<Intervalo> reducidos = new List<Intervalo>();
@@ -139,7 +199,16 @@ namespace SIM_TP_4K4.TP3
                         int cantidadPruebas = 0;
                         for (int j = i + 1; j < intervalos.Count; j++)
                         {
-                            aux[i].fucionarIntervalo(aux[j]);
+
+                            if (distro < 2)
+                            {
+                                aux[i].fucionarIntervalo(aux[j]);
+                            }
+                            else
+                            {
+                                ((ValorPoisson)aux[i]).fusionarIntervalo(aux[j]);
+                            }
+                            
                             if (aux[i].frecuenciaEsperada > 5)
                             {
                                 reducidos.Add(aux[i]);
@@ -164,11 +233,21 @@ namespace SIM_TP_4K4.TP3
             
             
             if (faltantes > 0)
-            { 
-                reducidos[reducidos.Count - 1].fucionarIntervalo(aux[intervalos.Count - faltantes]);
+            {
+               if(distro < 2)
+                {
+                    reducidos[reducidos.Count - 1].fucionarIntervalo(aux[intervalos.Count - faltantes]);
+                } else
+                {
+                    ((ValorPoisson)reducidos[reducidos.Count - 1]).fucionarIntervalo(aux[intervalos.Count - faltantes]);
+                }
+              
             }
 
             return reducidos;
         }
+
+
+        
     }
 }

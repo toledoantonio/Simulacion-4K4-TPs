@@ -54,6 +54,7 @@ namespace SIM_TP_4K4.TP2
                 this.limpiarTabla(dvgPrueba);
                 this.limpiarTabla(dvgVariable);
                 this.limpiarTabla(dgvIntervalos);
+                this.construirGrafico();
                 int tamañoMuestra = Int32.Parse(this.TxtTamañoMuestra.Text);
                 double media = Double.Parse(this.txtMedia.Text);
                 double lambda = Double.Parse(this.txtLambda.Text);
@@ -63,15 +64,15 @@ namespace SIM_TP_4K4.TP2
 
                 this.controlador = new Controlador(tamañoMuestra, media, desviacion, lambda, cantIntervalos,  distro);
                 this.cargarTablaRandoms(this.controlador.listaRnd);
-                this.cargarTablaVariables(this.controlador.variables);
+                this.cargarTablaVariables();
                 this.cargarTablaIntervalos(this.controlador.getIntervalos());
-                this.cargarTablaPrueba(this.controlador.realizarPrueba(this.prueba, this.lblValorCriticoResultado, this.lblEstadisticoPruebaResultado, this.lblPruebaAjusteResultado));
                 this.dibujar(this.controlador.obtenerDatosGrafica());
+                this.cargarTablaPrueba(this.controlador.realizarPrueba(this.prueba, this.lblValorCriticoResultado, this.lblEstadisticoPruebaResultado, this.lblPruebaAjusteResultado));
 
                 this.dvgRandoms.Visible = true;
                 this.dvgVariable.Visible = true;
 
-                this.controlador.intervalos.reducir();
+                this.controlador.intervalos.reducir(distro);
             }
             else
             {
@@ -82,8 +83,18 @@ namespace SIM_TP_4K4.TP2
 
         public void cargarTablaPrueba(List<object[]> data)
         {
-            data.ForEach((x) => dvgPrueba.Rows.Add(x));
-            dvgPrueba.FirstDisplayedScrollingRowIndex = dvgPrueba.Rows.Count - 1;
+
+            if( distro < 2)
+            {
+                data.ForEach((x) => dvgPrueba.Rows.Add(x));
+                dvgPrueba.FirstDisplayedScrollingRowIndex = dvgPrueba.Rows.Count - 1;
+            } else
+            {
+                this.tablaPruebaPoisson();
+                data.ForEach((x) => dvgPrueba.Rows.Add(x));
+                dvgPrueba.FirstDisplayedScrollingRowIndex = dvgPrueba.Rows.Count - 1;
+            }
+
         }
 
         public void cargarTablaRandoms(List<double> data)
@@ -98,13 +109,29 @@ namespace SIM_TP_4K4.TP2
 
         public void cargarTablaIntervalos(List<object[]> data)
         {
-            data.ForEach((x) => dgvIntervalos.Rows.Add(x));
-            dgvIntervalos.FirstDisplayedScrollingRowIndex = dgvIntervalos.Rows.Count - 1;
+            if(distro < 2) {
+                data.ForEach((x) => dgvIntervalos.Rows.Add(x));
+                dgvIntervalos.FirstDisplayedScrollingRowIndex = dgvIntervalos.Rows.Count - 1;
+            } else
+            {
+                this.tablaVariablesPoisson();
+                data.ForEach((x) => dgvIntervalos.Rows.Add(x));
+                dgvIntervalos.FirstDisplayedScrollingRowIndex = dgvIntervalos.Rows.Count - 1;
+            }
+
         }
 
-        public void cargarTablaVariables(List<double> data)
+        public void cargarTablaVariables()
         {
-            data.ForEach((x) => dvgVariable.Rows.Add(x));
+
+            if(distro < 2)
+            {
+                this.controlador.variables.ForEach((x) => dvgVariable.Rows.Add(x));
+
+            } else
+            {
+                this.controlador.variablesPoisson.ForEach((x) => dvgVariable.Rows.Add((object) x));
+            }
             dvgVariable.FirstDisplayedScrollingRowIndex = dvgVariable.Rows.Count - 1;
         }
 
@@ -150,7 +177,7 @@ namespace SIM_TP_4K4.TP2
             else
             {
                 this.lblLamda.Visible = true;
-                
+                this.txtLambda.Visible = true;
 
 
                 this.radioButtonKS.Visible = false;
@@ -259,6 +286,7 @@ namespace SIM_TP_4K4.TP2
 
         public void construirGrafico()
         {
+            chart1.Legends.Clear();
             chart1.Series.Clear();
             chart1.Series.Add("Frecuencia observada");
             chart1.Series.Add("Frecuencia esperada");
@@ -276,6 +304,24 @@ namespace SIM_TP_4K4.TP2
 
         }
 
+        public void tablaVariablesPoisson() {
+            dgvIntervalos.Columns.Clear();
+            dgvIntervalos.Columns.Add("valor", "Valor");
+            dgvIntervalos.Columns.Add("fo", "FO");
+            dgvIntervalos.Columns.Add("fe", "FE");
+        }
+
+        public void tablaPruebaPoisson()
+        {
+            dvgPrueba.Columns.Clear();
+            dvgPrueba.Columns.Add("valor", "Valor");
+            dvgPrueba.Columns.Add("fo", "FO");
+            dvgPrueba.Columns.Add("fe", "FE");
+            dvgPrueba.Columns.Add("resta", "FE - FO");
+            dvgPrueba.Columns.Add("Cuadrado", "(FE - FO) ^ 2");
+            dvgPrueba.Columns.Add("div", "(FE - FO) ^ 2 / FE");
+            dvgPrueba.Columns.Add("acum", "Acumlado");
+        }
 
         public string validarData()
         {

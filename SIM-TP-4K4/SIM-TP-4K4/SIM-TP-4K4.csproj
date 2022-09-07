@@ -95,6 +95,7 @@
     <Compile Include="TP3\TP3Interfaz.Designer.cs">
       <DependentUpon>TP3Interfaz.cs</DependentUpon>
     </Compile>
+    <Compile Include="TP3\ValorPoisson.cs" />
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

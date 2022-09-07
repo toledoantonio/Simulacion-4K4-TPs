@@ -17,11 +17,14 @@ namespace SIM_TP_4K4.Model
 
         public double frecuenciaRelativa { get; set; }
 
-        public double frecuenciaRelativaEsperada { get; set;  }
+        public double frecuenciaRelativaEsperada { get; set; }
 
         public int frecuenciaAbsoluta { get; set; }
-        
+
         public double frecuenciaEsperada { get; set; }
+
+
+        public Intervalo() { }
 
         public Intervalo(double limInf, double limSup)
         {
@@ -59,10 +62,6 @@ namespace SIM_TP_4K4.Model
         public void fucionarIntervalo(Intervalo i)
         {
 
-            if(intervaloId == i.intervaloId)
-            {
-                Console.WriteLine("Mismo intervalo");
-            }
             this.limInf = (this.limInf < i.limInf) ? this.limInf : i.limInf;
             this.limSup = (this.limSup > i.limSup) ? this.limSup : i.limSup;
 

@@ -8,6 +8,8 @@ namespace SIM_TP_4K4.TP3.Distribuciones
 {
     public interface Distribucion
     {
-        List<Double> generarVariables();
+        List<double> generarVariables();
+
+        List<int> generarVariablesPoisson();
     }
 }

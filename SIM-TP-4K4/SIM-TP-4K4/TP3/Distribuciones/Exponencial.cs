@@ -49,5 +49,10 @@ namespace SIM_TP_4K4.TP3.Distribuciones
 
             return Util.truncar(variable);
         }
+
+        public List<int> generarVariablesPoisson()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
