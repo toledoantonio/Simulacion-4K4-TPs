@@ -15,6 +15,7 @@ namespace SIM_TP_4K4.Model
         public double limInf { get; set; }
         public double limSup { get; set; }
 
+        public double marcaClase { get; set; }
         public double frecuenciaRelativa { get; set; }
 
         public double frecuenciaRelativaEsperada { get; set; }
@@ -23,6 +24,7 @@ namespace SIM_TP_4K4.Model
 
         public double frecuenciaEsperada { get; set; }
 
+        public int valor { get; set; }
 
         public Intervalo() { }
 
@@ -30,8 +32,10 @@ namespace SIM_TP_4K4.Model
         {
             this.limInf = limInf;
             this.limSup = limSup;
+            this.marcaClase = (limInf + limSup) / 2;
             this.frecuenciaRelativa = 0;
             this.frecuenciaAbsoluta = 0;
+            this.valor = 0;
         }
 
 

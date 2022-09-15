@@ -45,7 +45,6 @@ namespace SIM_TP_4K4.TP2
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-
             string resultadoValidacion = validarData();
 
             if (string.IsNullOrEmpty(resultadoValidacion))
@@ -62,7 +61,7 @@ namespace SIM_TP_4K4.TP2
                 int cantIntervalos = Int32.Parse(Cmb_intervalos.SelectedItem.ToString());
 
 
-                this.controlador = new Controlador(tamañoMuestra, media, desviacion, lambda, cantIntervalos,  distro);
+                this.controlador = new Controlador(tamañoMuestra, media, desviacion, lambda, cantIntervalos, distro);
                 this.cargarTablaRandoms(this.controlador.listaRnd);
                 this.cargarTablaVariables();
                 this.cargarTablaIntervalos(this.controlador.getIntervalos());
@@ -84,7 +83,7 @@ namespace SIM_TP_4K4.TP2
         public void cargarTablaPrueba(List<object[]> data)
         {
 
-            if( distro < 2)
+            if (distro < 2)
             {
                 data.ForEach((x) => dvgPrueba.Rows.Add(x));
                 dvgPrueba.FirstDisplayedScrollingRowIndex = dvgPrueba.Rows.Count - 1;
@@ -109,7 +108,8 @@ namespace SIM_TP_4K4.TP2
 
         public void cargarTablaIntervalos(List<object[]> data)
         {
-            if(distro < 2) {
+            if (distro < 2) {
+                this.tablaPrueba();
                 data.ForEach((x) => dgvIntervalos.Rows.Add(x));
                 dgvIntervalos.FirstDisplayedScrollingRowIndex = dgvIntervalos.Rows.Count - 1;
             } else
@@ -124,13 +124,13 @@ namespace SIM_TP_4K4.TP2
         public void cargarTablaVariables()
         {
 
-            if(distro < 2)
+            if (distro < 2)
             {
                 this.controlador.variables.ForEach((x) => dvgVariable.Rows.Add(x));
 
             } else
             {
-                this.controlador.variablesPoisson.ForEach((x) => dvgVariable.Rows.Add((object) x));
+                this.controlador.variablesPoisson.ForEach((x) => dvgVariable.Rows.Add((object)x));
             }
             dvgVariable.FirstDisplayedScrollingRowIndex = dvgVariable.Rows.Count - 1;
         }
@@ -275,11 +275,13 @@ namespace SIM_TP_4K4.TP2
 
         public void dibujar(List<object[]> dataResult)
         {
+            chart1.Series["Frecuencia observada"].Points.Clear();
+            chart1.Series["Frecuencia esperada"].Points.Clear();
             int numIntervalo = 1;
             foreach (Object[] data in dataResult)
             {
-                chart1.Series["Frecuencia observada"].Points.AddXY(numIntervalo, data[0]);
-                chart1.Series["Frecuencia esperada"].Points.AddXY(numIntervalo, data[1]);
+                chart1.Series["Frecuencia observada"].Points.AddXY(data[2], data[0]);
+                chart1.Series["Frecuencia esperada"].Points.AddXY(data[2], data[1]);
                 ++numIntervalo;
             }
         }
@@ -290,7 +292,7 @@ namespace SIM_TP_4K4.TP2
             chart1.Series.Clear();
             chart1.Series.Add("Frecuencia observada");
             chart1.Series.Add("Frecuencia esperada");
-
+            chart1.Titles.Clear();
             chart1.Titles.Add(new Title("Graficos de frecuencias"));
             chart1.Legends.Add(new Legend("FO"));
             chart1.Legends["FO"].Docking = Docking.Bottom;
@@ -322,6 +324,20 @@ namespace SIM_TP_4K4.TP2
             dvgPrueba.Columns.Add("div", "(FE - FO) ^ 2 / FE");
             dvgPrueba.Columns.Add("acum", "Acumlado");
         }
+
+        public void tablaPrueba()
+        {
+            dvgPrueba.Columns.Clear();
+            dvgPrueba.Columns.Add("li", "Lim inf");
+            dvgPrueba.Columns.Add("ls", "Lim sup");
+            dvgPrueba.Columns.Add("fo", "FO");
+            dvgPrueba.Columns.Add("fe", "FE");
+            dvgPrueba.Columns.Add("resta", "FE - FO");
+            dvgPrueba.Columns.Add("Cuadrado", "(FE - FO) ^ 2");
+            dvgPrueba.Columns.Add("div", "(FE - FO) ^ 2 / FE");
+            dvgPrueba.Columns.Add("acum", "Acumlado");
+        }
+
 
         public string validarData()
         {

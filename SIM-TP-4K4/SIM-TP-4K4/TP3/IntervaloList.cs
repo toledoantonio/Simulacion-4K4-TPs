@@ -78,10 +78,7 @@ namespace SIM_TP_4K4.TP3
                     intervalos.Add(intervalo);
                     aparecieron.Add(variables[i]);
                 } 
-
             }
-
-            
         }
 
         public void contarFO()

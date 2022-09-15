@@ -20,6 +20,7 @@ namespace SIM_TP_4K4.TP3
         public ValorPoisson(int valor) {
             this.valor = valor;
             this.titulo = $"{valor}";
+            this.marcaClase = valor;
         }
 
         public void contarAbsoluta(int obs)

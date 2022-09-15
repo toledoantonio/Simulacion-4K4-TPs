@@ -124,7 +124,7 @@ namespace SIM_TP_4K4.TP3
         public List<object[]> obtenerDatosGrafica()
         {
             List<object[]> datosGrafica = new List<object[]>();
-            intervalos.intervalos.ForEach((x) => datosGrafica.Add(new object[2] { x.frecuenciaAbsoluta, x.frecuenciaEsperada }));
+            intervalos.intervalos.ForEach((x) => datosGrafica.Add( new object[3] { x.frecuenciaAbsoluta, x.frecuenciaEsperada, x.marcaClase } )); 
             return datosGrafica;
         }
         
