@@ -1,4 +1,5 @@
-﻿using SIM_TP_4K4.TP4.Controlador;
+﻿using SIM_TP_4K4.TP2;
+using SIM_TP_4K4.TP4.Controlador;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,7 +95,43 @@ namespace SIM_TP_4K4.TP4
 
         private void btnGenerarSimulacion_Click(object sender, EventArgs e)
         {
-            this.iniciarSimulacion();
+            string resultadoValidacion = validarCampos();
+            if (string.IsNullOrEmpty(resultadoValidacion))
+            {
+                this.iniciarSimulacion();
+            } else
+            {
+                MessageBox.Show(resultadoValidacion);
+            }
+
+        }
+
+        private string validarCampos()
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            if (this.numLiA1.Value < 0 || this.numLsA1.Value < 0 || this.numLiA2.Value < 0 || this.numLsA2.Value < 0 || this.numLiA4.Value < 0 || this.numLsA4.Value < 0) sb.Append("Los valores de los limites no pueden ser negativos \n");
+            if (this.numLiA1.Value > this.numLsA1.Value) sb.Append("El Limite Inferior de la Actividad 1 es mayor al Limite Superior \n");
+            if (this.numLiA2.Value > this.numLsA2.Value) sb.Append("El Limite Inferior de la Actividad 2 es mayor al Limite Superior \n");
+            if (this.numLiA4.Value > this.numLsA4.Value) sb.Append("El Limite Inferior de la Actividad 4 es mayor al Limite Superior \n");
+            if (this.numHasta.Value > this.numNroMuestra.Value) sb.Append("El numero de simulaciones que se quieren mostrar excede numero de simulaciones realizadas \n");
+            if (this.numDesde.Value > this.numHasta.Value) sb.Append("El valor desde el cual se quiere mostrar las simulaciones es mayor al valor hasta\n");
+            if (this.numDesde.Value < 0 || this.numHasta.Value < 0) sb.Append("El numero de simulaciones a mostrar debe ser positivo \n");
+            return sb.ToString();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal ven = new MenuPrincipal();
+            ven.Show();
+            this.Close();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            TP4Interfaz ven = new TP4Interfaz();
+            ven.Show();
+            this.Close();
         }
     }
 }
