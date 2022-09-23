@@ -86,6 +86,7 @@
     <Compile Include="TP3\Distribuciones\Exponencial.cs" />
     <Compile Include="TP3\Distribuciones\Normal.cs" />
     <Compile Include="TP3\Distribuciones\Poisson.cs" />
+    <Compile Include="TP3\Distribuciones\Uniforme.cs" />
     <Compile Include="TP3\IntervaloList.cs" />
     <Compile Include="TP3\Pruebas\PruebaChiCuadrado.cs" />
     <Compile Include="TP3\Pruebas\PruebaKS.cs" />
@@ -96,6 +97,14 @@
       <DependentUpon>TP3Interfaz.cs</DependentUpon>
     </Compile>
     <Compile Include="TP3\ValorPoisson.cs" />
+    <Compile Include="TP4\Controlador\ControladorMonteCarlo.cs" />
+    <Compile Include="TP4\TP4Interfaz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TP4\TP4Interfaz.Designer.cs">
+      <DependentUpon>TP4Interfaz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TP4\VectorEstado.cs" />
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TP3\TP3Interfaz.resx">
       <DependentUpon>TP3Interfaz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TP4\TP4Interfaz.resx">
+      <DependentUpon>TP4Interfaz.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

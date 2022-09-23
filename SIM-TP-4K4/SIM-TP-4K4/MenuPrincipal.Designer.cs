@@ -299,7 +299,6 @@
             // btn4_MenuPrincipal
             // 
             this.btn4_MenuPrincipal.BackColor = System.Drawing.Color.SlateGray;
-            this.btn4_MenuPrincipal.Enabled = false;
             this.btn4_MenuPrincipal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4_MenuPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn4_MenuPrincipal.Location = new System.Drawing.Point(150, 33);
@@ -308,6 +307,7 @@
             this.btn4_MenuPrincipal.TabIndex = 38;
             this.btn4_MenuPrincipal.Text = "TP4";
             this.btn4_MenuPrincipal.UseVisualStyleBackColor = false;
+            this.btn4_MenuPrincipal.Click += new System.EventHandler(this.btn4_MenuPrincipal_Click);
             // 
             // label9
             // 

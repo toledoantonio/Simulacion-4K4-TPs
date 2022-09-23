@@ -11,5 +11,7 @@ namespace SIM_TP_4K4.TP3.Distribuciones
         List<double> generarVariables();
 
         List<int> generarVariablesPoisson();
+
+        double generarVariable(double x, double y, double z);
     }
 }

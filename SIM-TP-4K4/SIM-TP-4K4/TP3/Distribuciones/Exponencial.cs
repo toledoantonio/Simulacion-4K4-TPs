@@ -18,6 +18,11 @@ namespace SIM_TP_4K4.TP3.Distribuciones
         public double max { get; set; }
         public double min { get; set; }
 
+
+        public Exponencial() { 
+        
+        }
+
         public Exponencial(int muestra, double media, double lambda, List<double> randoms)
         {
             this.muestra = muestra;
@@ -41,13 +46,16 @@ namespace SIM_TP_4K4.TP3.Distribuciones
             return variables;
         }
 
-
         public double calcularVariable(double random, double multiplicador) {
-
             double log = Math.Log(1 - random);
             double variable = - multiplicador * log;
 
             return Util.truncar(variable);
+        }
+
+        public double generarVariable(double media, double lambda, double random) {
+            double multiplicador = (media == 0) ? 1 / lambda : media; 
+            return calcularVariable(random, multiplicador); ;
         }
 
         public List<int> generarVariablesPoisson()

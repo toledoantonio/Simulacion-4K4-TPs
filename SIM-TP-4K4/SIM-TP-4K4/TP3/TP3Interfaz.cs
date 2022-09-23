@@ -360,5 +360,25 @@ namespace SIM_TP_4K4.TP2
 
             return sb.ToString();
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMostrarGrafico_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVerResultados_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenerarSimulacion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

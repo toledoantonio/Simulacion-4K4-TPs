@@ -89,6 +89,9 @@ namespace SIM_TP_4K4.TP3.Distribuciones
             throw new NotImplementedException();
         }
 
+        public double generarVariable(double x, double y , double z) {
+            throw new NotImplementedException();
+        }
        
     }
 }
