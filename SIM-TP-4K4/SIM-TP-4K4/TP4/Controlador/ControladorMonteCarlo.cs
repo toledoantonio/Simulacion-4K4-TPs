@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SIM_TP_4K4.TP4.Controlador
 {
@@ -25,7 +26,9 @@ namespace SIM_TP_4K4.TP4.Controlador
 
         public int simulaciones { get; set; }
 
-        public ControladorMonteCarlo(int simulaciones, double[] infoT1, double[] infoT2, double[] infoT3, double[] infoT4, double[] infot5)
+        public ToolStripProgressBar pbar { get; set; }
+
+        public ControladorMonteCarlo(int simulaciones, double[] infoT1, double[] infoT2, double[] infoT3, double[] infoT4, double[] infot5, ToolStripProgressBar progressBar)
         {
             this.distribuciones = new Dictionary<int, Distribucion>() {
                 { 0, new Exponencial() },
@@ -41,6 +44,8 @@ namespace SIM_TP_4K4.TP4.Controlador
             this.randoms4 = generarRandoms(simulaciones);
             this.randoms5 = generarRandoms(simulaciones);
             this.simulaciones = simulaciones;
+
+            this.pbar = progressBar;
         }
 
         public  List<double> generarRandoms(int simulaciones)
@@ -48,7 +53,7 @@ namespace SIM_TP_4K4.TP4.Controlador
            
             List<double> rnd = new List<double>();
             for (int i = 0; i < simulaciones; i++) { 
-                rnd.Add(generador.NextDouble());
+                rnd.Add(generador.NextDouble());;
             }
 
             return rnd;
@@ -59,17 +64,32 @@ namespace SIM_TP_4K4.TP4.Controlador
             List<object[]> datosFacheros = new List<object[]>();
             for(int i = 0; i < simulaciones; i++)
             {
-                if (i >= desde && i <= hasta)
+                vectorEstado.siguienteSimulacion(randoms1[i], randoms2[i], randoms3[i], randoms4[i], randoms5[i]);
+
+                if (i >= desde - 1 && i <= hasta)
                 {
                     datosFacheros.Add(vectorEstado.getActualVectorAsObject());
                 }
-
-                vectorEstado.siguienteSimulacion(randoms1[i], randoms2[i], randoms3[i], randoms4[i], randoms5[i]);
-
+                this.pbar.Value++;
             }
 
             return datosFacheros;
         }
-        
+
+        public List<object[]> fechaConfianza90()
+        {
+
+            return vectorEstado.calcularFechaConfianza90();
+        }
+
+        public List<double> obtenerPromedios()
+        {
+            return vectorEstado.tiemposPromedio;
+        }
+
+        public object[] ultimaSimulacion()
+        {
+            return vectorEstado.getActualVectorAsObject();
+        }
     }
 }

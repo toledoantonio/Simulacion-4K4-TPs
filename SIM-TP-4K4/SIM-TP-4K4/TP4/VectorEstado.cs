@@ -1,4 +1,5 @@
-﻿using SIM_TP_4K4.TP3.Distribuciones;
+﻿using SIM_TP_4K4.TP1.Model;
+using SIM_TP_4K4.TP3.Distribuciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace SIM_TP_4K4.TP4
         public VectorEstado(Dictionary<int, Distribucion> distribuciones, double[]infoT1, double[]infoT2, double[]infoT3, double[]infoT4, double[]infoT5)
         {
             this.vectorDatos = new double[18];
+            this.valoresOrdenados = new List<double>();
+            this.tiemposPromedio = new List<double>();
             this.distribuciones = distribuciones;
             this.iniciarVector();
             this.infoT1 = infoT1;
@@ -43,6 +46,9 @@ namespace SIM_TP_4K4.TP4
             this.duracionTotalAcumulada = 0;
             this.duracionTotalPromedio = 0;
             this.prob45 = 0;
+            this.max = 0;
+            this.aux = 0;
+            this.min = Double.MaxValue;
         }
 
         public void siguienteSimulacion(double rnd1, double rnd2, double rnd3, double rnd4, double rnd5) {
@@ -64,7 +70,12 @@ namespace SIM_TP_4K4.TP4
             this.duracionTotalAcumulada = calcularAcumulada();
             this.duracionTotalPromedio = calcularDuracionTotalPromedio();
             this.prob45 = calcularProbabilidad();
+            this.valoresOrdenados.Add(this.duracionTotal);
+            this.tiemposPromedio.Add(this.duracionTotalPromedio);
+            this.actualizarMin();
+            this.actualizarMax();
             this.actualizarVectores();
+
         }
 
 
@@ -129,17 +140,43 @@ namespace SIM_TP_4K4.TP4
             return prob;
         }
 
+        private void actualizarMax()
+        {
+            this.max = (this.duracionTotal > this.max) ? this.duracionTotal : this.max;
+        }
+        private void actualizarMin()
+        {
+            this.min = (this.duracionTotal < this.min) ? this.duracionTotal : this.min;
+        }
+
         private void actualizarVectores()
         {
-            this.vectorDatos = new double[] { this.numEnsamble, this.Rnd1, this.t1, this.Rnd2, this.t2, this.Rnd3, this.t3, this.Rnd4, this.t4, this.Rnd5, this.t5, this.finT4, this.initT5, this.finT5, this.duracionTotal, this.duracionTotalAcumulada, this.duracionTotalPromedio, this.prob45};
+            this.vectorDatos = new double[] { this.numEnsamble, this.Rnd1, Util.truncar(this.t1), this.Rnd2, Util.truncar(this.t2), this.Rnd3, Util.truncar(this.t3), this.Rnd4, Util.truncar(this.t4), this.Rnd5, this.t5, Util.truncar(this.finT4), this.initT5, Util.truncar(this.finT5), Util.truncar(this.duracionTotal), Util.truncar(this.duracionTotalAcumulada), Util.truncar(this.duracionTotalPromedio),Util.truncar(this.min), Util.truncar(this.max), Util.truncar(this.prob45)};
           
         }
 
+        public List<object[]> calcularFechaConfianza90() {
+            this.valoresOrdenados.Sort();
+            List<object[]> resultado = this.valoresOrdenados.Select((x) => new object[] { x, calcularFormula() }).ToList();
+            this.aux = 0;
+            return resultado;
+            
+        }
+
+
+
+        public double calcularFormula()
+        {
+            aux++;
+            return (double) ((double) aux / (double) (valoresOrdenados.Count + 1));
+        }
 
         public object[] getActualVectorAsObject()
         {
             return this.vectorDatos.Select((x) => (object)x).ToArray();
         }
+
+        public List<double> valoresOrdenados;
 
         public double[] vectorDatos { get; set; }
 
@@ -179,9 +216,12 @@ namespace SIM_TP_4K4.TP4
 
         public double prob45 { get; set; }
 
-
+        public double max { get; set; }
+        public double min { get; set; }
 
         public Dictionary<int, Distribucion> distribuciones { get; set; }
+
+        public List<double> tiemposPromedio { get; set; }
 
         public double[] infoT1 { get; set; }
         public double[] infoT2 { get; set; }
@@ -189,5 +229,7 @@ namespace SIM_TP_4K4.TP4
         public double[] infoT4 { get; set; }
         public double[] infoT5 { get; set; }
 
+
+        public int aux { get; set; }
     }
 }
