@@ -56,7 +56,6 @@ namespace SIM_TP_4K4.TP4.Controlador
             for (int i = 0; i < simulaciones; i++) { 
                 rnd.Add(generador.NextDouble());;
             }
-
             return rnd;
         }
 
@@ -77,13 +76,11 @@ namespace SIM_TP_4K4.TP4.Controlador
                 }
                 this.pbar.Value++;
             }
-
             return datosSimulacion;
         }
 
         public List<object[]> fechaConfianza90()
         {
-
             return vectorEstado.calcularFechaConfianza90();
         }
 
@@ -101,7 +98,6 @@ namespace SIM_TP_4K4.TP4.Controlador
         {
             return vectorEstado.getTitulosIntervalos();
         }
-
 
         public object[] getResultados()
         {
@@ -121,7 +117,6 @@ namespace SIM_TP_4K4.TP4.Controlador
                     bandera = true;
                 }
             }
-
             return resultados;
         }
     }

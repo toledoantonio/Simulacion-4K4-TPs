@@ -22,12 +22,10 @@ namespace SIM_TP_4K4.TP4.Model
 
         public void construirIntervalos(List<double> valores)
         {
-
             double limInf = 0;
 
             for (int i = 0; i < valores.Count; i++)
             {
-               
                 double limSup = Util.truncar(valores[i]) - 0.0001;
                 Intervalo intervalo = new Intervalo(limInf, limSup);
                 intervalos.Add(intervalo);
@@ -70,16 +68,9 @@ namespace SIM_TP_4K4.TP4.Model
             return data;
         }
         
-
         public string[] getTitulos()
         {
             return intervalos.Select(intervalo => intervalo.intervaloTitulo()).ToArray();
         } 
-
-        public void setFrecuenciaEsperada(double fEsperada)
-        {
-            this.frecuenciaEsperada = Util.truncar(fEsperada);
-        }
-
     }
 }

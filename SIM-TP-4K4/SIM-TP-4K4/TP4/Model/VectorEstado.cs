@@ -14,7 +14,6 @@ namespace SIM_TP_4K4.TP4
 {
     public class VectorEstado
     {
-
         public VectorEstado(Dictionary<int, Distribucion> distribuciones, double[]infoT1, double[]infoT2, double[]infoT3, double[]infoT4, double[]infoT5)
         {
             this.vectorDatos = new double[18];
@@ -28,7 +27,6 @@ namespace SIM_TP_4K4.TP4
             this.infoT3 = infoT3;
             this.infoT4 = infoT4;
             this.infoT5 = infoT5;
-
         }
 
         public void iniciarVector()
@@ -88,52 +86,40 @@ namespace SIM_TP_4K4.TP4
         }
         private double calcularDuracionT2() {
            return this.distribuciones[1].generarVariable(this.infoT2[0], this.infoT2[1], this.Rnd2);
-
         }
         private double calcularDuracionT3() {
             return this.distribuciones[0].generarVariable(this.infoT3[0], 0, this.Rnd3);
-
         }
         private double calcularDuracionT4() {
             return this.distribuciones[1].generarVariable(this.infoT4[0], this.infoT4[1], this.Rnd4);
-
         }
         private double calcularDuracionT5() {
             return this.distribuciones[0].generarVariable(this.infoT5[0], 0, this.Rnd5);
         }
-
-
         private double finalizacionT4()
         {
             return this.t1 + this.t4;
         }
-
         private double iniciaT5()
         {
             return (this.t2 > this.finT4) ? t2 : finT4;
         }
-
         private double finalizacionT5()
         {
             return this.initT5 + this.t5;
         }
-
         private double calcularDuracionTotal()
         {
             return (this.t3 > this.finT5) ? t3 : finT5;
         }
-
         private double calcularAcumulada()
         {
-            
             return this.duracionTotalAcumulada + this.duracionTotal;
         }
-
         private double calcularDuracionTotalPromedio()
         {
             return this.duracionTotalAcumulada / this.numEnsamble;
         }
-
         private double calcularProbabilidad()
         {
             double es45 = (duracionTotal <= 45) ? 1 : 0;
@@ -185,8 +171,6 @@ namespace SIM_TP_4K4.TP4
         {
             return this.intervalos.getTitulos();
         }
-
-
 
         private void recopilar14Sim()
         {

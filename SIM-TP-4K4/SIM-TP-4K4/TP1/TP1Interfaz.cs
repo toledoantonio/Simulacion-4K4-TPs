@@ -34,7 +34,6 @@ namespace SIM_TP_4K4.TP1
 
         public void cargarTabla(List<object[]> interaciones)
         {
-           
             foreach(object[] it in interaciones)
             {
                 agregarFilaTabla(it);
