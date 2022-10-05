@@ -22,19 +22,18 @@ namespace SIM_TP_4K4.TP4
 
         public double fecha90 { get; set; }
 
+        public object[] intervalosResultados { get; set;}
 
-
-        public List<double> promedios { get; set; }
         public TP4Interfaz()
         {
             InitializeComponent();
             this.armarGrafico();
         }
 
-
         public void iniciarSimulacion()
         {
             this.dgvTp4.Rows.Clear();
+            this.limpiarTablaIntervalos();
             this.eliminarDatosGrafico();
             progressBar.Maximum = ((int)this.numNroMuestra.Value) * 3+ 1; 
             progressBar.Minimum = 1;
@@ -52,13 +51,18 @@ namespace SIM_TP_4K4.TP4
             this.agregarColumnas(mountCharly.getTitulosIntervalos());
             this.agregarDatosIntervalos(mountCharly.intervalos);
             this.graficar(mountCharly.obtenerPromedios());
+            this.cargarResultadosIntervalos(mountCharly.getResultados());
             this.cargarResultados(mountCharly.ultimaSimulacion());
+           
             progressBar.Value = 1;
             progressBar.Visible = false;
         }
 
-
-       
+        private void limpiarTablaIntervalos()
+        {
+            dgvIntervalos.Columns.Clear();
+            dgvIntervalos.Columns.Add("orden", "N° Ensambles");
+        }
 
         public void llenarTabla(List<object[]> dataSimulacion, List<object[]> dataOrdenados)
         {
@@ -97,11 +101,23 @@ namespace SIM_TP_4K4.TP4
         }
 
 
+        public void cargarResultadosIntervalos(object[] resultados)
+        {
+            dgvIntervalos.Rows.Add(resultados);
 
+            dgvIntervalos.Rows[dgvIntervalos.Rows.Count - 1].Cells[(int)resultados[16]].Style.BackColor = Color.Orange;
+        }
+        
         public void agregarDatosIntervalos(List<object[]> valores)
         {
             dgvIntervalos.SuspendLayout();
-            valores.ForEach(x => dgvIntervalos.Rows.Add(x));
+
+                valores.ForEach(x =>
+                            dgvIntervalos.Invoke(new Action(delegate ()
+                            {
+                                dgvIntervalos.Rows.Add(x);
+                            })));
+          
             dgvIntervalos.FirstDisplayedScrollingRowIndex = dgvIntervalos.Rows.Count - 1;
             dgvIntervalos.ResumeLayout();
         }
@@ -152,8 +168,6 @@ namespace SIM_TP_4K4.TP4
                 this.numLambdaA5.Enabled = false;
             }
         }
-
-
 
         public void graficar(List<double> promedio)
         {
@@ -255,8 +269,5 @@ namespace SIM_TP_4K4.TP4
             ven.Show();
             this.Close();
         }
-
-
-
     }
 }

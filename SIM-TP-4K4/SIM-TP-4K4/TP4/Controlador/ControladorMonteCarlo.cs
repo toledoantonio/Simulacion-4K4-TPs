@@ -1,6 +1,7 @@
 ﻿using SIM_TP_4K4.TP3.Distribuciones;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,6 @@ namespace SIM_TP_4K4.TP4.Controlador
 {
     public class ControladorMonteCarlo
     {
-
-
         public List<double> randoms1 { get; set; }
         public List<double> randoms2 { get; set; }
         public List<double> randoms3 { get; set; }
@@ -71,7 +70,7 @@ namespace SIM_TP_4K4.TP4.Controlador
                 if ((i >= desde - 1 && i <= hasta) || i == simulaciones - 1)
                 {
                     datosSimulacion.Add(vectorEstado.getActualVectorAsObject());
-                    if (i > 15)
+                    if (i > 15 || i == simulaciones - 1)
                     {
                      this.intervalos.Add(vectorEstado.getValoresIntervalos());
                     }
@@ -101,6 +100,29 @@ namespace SIM_TP_4K4.TP4.Controlador
         public string[] getTitulosIntervalos()
         {
             return vectorEstado.getTitulosIntervalos();
+        }
+
+
+        public object[] getResultados()
+        {
+            bool bandera = false;
+            object[] resultados = new object[17];
+            resultados[0] = "Acumulados: ";
+            double result = 0;
+            object[] ultimos = this.intervalos.Last();
+            for(int i = 1; i <  ultimos.Length; i++)
+            {
+                result += (double)ultimos[i];
+                resultados[i] = result;
+                if (result > 0.9 && !bandera)
+                {
+                    Console.WriteLine("Hola mundo");
+                    resultados[16] = i;
+                    bandera = true;
+                }
+            }
+
+            return resultados;
         }
     }
 }

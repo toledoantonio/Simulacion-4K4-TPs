@@ -127,11 +127,5 @@ namespace SIM_TP_4K4.TP3
             intervalos.intervalos.ForEach((x) => datosGrafica.Add( new object[3] { x.frecuenciaAbsoluta, x.frecuenciaEsperada, x.marcaClase } )); 
             return datosGrafica;
         }
-        
-        public void generarIntervalos()
-        {
-            
-        }
-
     }
 }

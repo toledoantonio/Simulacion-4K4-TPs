@@ -186,6 +186,8 @@ namespace SIM_TP_4K4.TP4
             return this.intervalos.getTitulos();
         }
 
+
+
         private void recopilar14Sim()
         {
             if (this.numEnsamble <= 14) {

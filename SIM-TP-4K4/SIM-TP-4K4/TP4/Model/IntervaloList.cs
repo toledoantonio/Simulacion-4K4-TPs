@@ -61,7 +61,7 @@ namespace SIM_TP_4K4.TP4.Model
 
         public object[] getValores(int orden)
         {
-            object[] data = new object[17];
+            object[] data = new object[16];
             data[0] = orden;
             for(int i=0; i < intervalos.Count(); i++)
             {
@@ -69,6 +69,7 @@ namespace SIM_TP_4K4.TP4.Model
             }
             return data;
         }
+        
 
         public string[] getTitulos()
         {
