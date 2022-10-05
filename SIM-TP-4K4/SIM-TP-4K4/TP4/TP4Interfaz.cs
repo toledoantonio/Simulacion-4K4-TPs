@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,13 +49,16 @@ namespace SIM_TP_4K4.TP4
 
             this.mountCharly = new ControladorMonteCarlo((int)this.numNroMuestra.Value, info1, info2, info3, info4, info5, progressBar);
             this.llenarTabla(mountCharly.simular((int)this.numDesde.Value, (int) this.numHasta.Value), mountCharly.fechaConfianza90());
+            this.agregarColumnas(mountCharly.getTitulosIntervalos());
+            this.agregarDatosIntervalos(mountCharly.intervalos);
             this.graficar(mountCharly.obtenerPromedios());
-
             this.cargarResultados(mountCharly.ultimaSimulacion());
             progressBar.Value = 1;
             progressBar.Visible = false;
         }
 
+
+       
 
         public void llenarTabla(List<object[]> dataSimulacion, List<object[]> dataOrdenados)
         {
@@ -94,7 +98,13 @@ namespace SIM_TP_4K4.TP4
 
 
 
-
+        public void agregarDatosIntervalos(List<object[]> valores)
+        {
+            dgvIntervalos.SuspendLayout();
+            valores.ForEach(x => dgvIntervalos.Rows.Add(x));
+            dgvIntervalos.FirstDisplayedScrollingRowIndex = dgvIntervalos.Rows.Count - 1;
+            dgvIntervalos.ResumeLayout();
+        }
         private void numMediaA3_ValueChanged(object sender, EventArgs e)
         {
             this.numLambdaA3.Value = 1 / this.numMediaA3.Value;
@@ -172,6 +182,14 @@ namespace SIM_TP_4K4.TP4
             grafico.ResumeLayout();
         }
 
+        public void agregarColumnas(string[] titulosIntervalos)
+        {
+
+            for (int i = 0; i < titulosIntervalos.Count(); ++i)
+            {
+                dgvIntervalos.Columns.Add($"intervalo {i + 1}", titulosIntervalos[i]);
+            }
+        }
 
         public void armarGrafico()
         {

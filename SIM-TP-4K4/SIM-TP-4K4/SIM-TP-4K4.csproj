@@ -98,13 +98,15 @@
     </Compile>
     <Compile Include="TP3\ValorPoisson.cs" />
     <Compile Include="TP4\Controlador\ControladorMonteCarlo.cs" />
+    <Compile Include="TP4\Model\Intervalo.cs" />
+    <Compile Include="TP4\Model\IntervaloList.cs" />
     <Compile Include="TP4\TP4Interfaz.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TP4\TP4Interfaz.Designer.cs">
       <DependentUpon>TP4Interfaz.cs</DependentUpon>
     </Compile>
-    <Compile Include="TP4\VectorEstado.cs" />
+    <Compile Include="TP4\Model\VectorEstado.cs" />
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

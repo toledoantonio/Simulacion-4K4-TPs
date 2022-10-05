@@ -1,10 +1,14 @@
-﻿using SIM_TP_4K4.TP1.Model;
+﻿
+using SIM_TP_4K4.TP1.Model;
 using SIM_TP_4K4.TP3.Distribuciones;
+using SIM_TP_4K4.TP4.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using IntervaloList = SIM_TP_4K4.TP4.Model.IntervaloList;
 
 namespace SIM_TP_4K4.TP4
 {
@@ -16,6 +20,7 @@ namespace SIM_TP_4K4.TP4
             this.vectorDatos = new double[18];
             this.valoresOrdenados = new List<double>();
             this.tiemposPromedio = new List<double>();
+            this.primeros14 = new List<double>();
             this.distribuciones = distribuciones;
             this.iniciarVector();
             this.infoT1 = infoT1;
@@ -75,9 +80,8 @@ namespace SIM_TP_4K4.TP4
             this.actualizarMin();
             this.actualizarMax();
             this.actualizarVectores();
-
+            this.recopilar14Sim();
         }
-
 
         private double calcularDuracionT1() {
             return this.distribuciones[1].generarVariable(this.infoT1[0], this.infoT1[1], this.Rnd1);
@@ -152,7 +156,6 @@ namespace SIM_TP_4K4.TP4
         private void actualizarVectores()
         {
             this.vectorDatos = new double[] { this.numEnsamble, this.Rnd1, Util.truncar(this.t1), this.Rnd2, Util.truncar(this.t2), this.Rnd3, Util.truncar(this.t3), this.Rnd4, Util.truncar(this.t4), this.Rnd5, this.t5, Util.truncar(this.finT4), this.initT5, Util.truncar(this.finT5), Util.truncar(this.duracionTotal), Util.truncar(this.duracionTotalAcumulada), Util.truncar(this.duracionTotalPromedio),Util.truncar(this.min), Util.truncar(this.max), Util.truncar(this.prob45)};
-          
         }
 
         public List<object[]> calcularFechaConfianza90() {
@@ -160,10 +163,7 @@ namespace SIM_TP_4K4.TP4
             List<object[]> resultado = this.valoresOrdenados.Select((x) => new object[] { x, calcularFormula() }).ToList();
             this.aux = 0;
             return resultado;
-            
         }
-
-
 
         public double calcularFormula()
         {
@@ -174,6 +174,31 @@ namespace SIM_TP_4K4.TP4
         public object[] getActualVectorAsObject()
         {
             return this.vectorDatos.Select((x) => (object)x).ToArray();
+        }
+
+        public object[] getValoresIntervalos()
+        {
+            return this.intervalos.getValores(this.numEnsamble); 
+        }
+
+        public string[] getTitulosIntervalos()
+        {
+            return this.intervalos.getTitulos();
+        }
+
+        private void recopilar14Sim()
+        {
+            if (this.numEnsamble <= 14) {
+                primeros14.Add(this.duracionTotal);
+            } else if(this.numEnsamble == 15)
+            {
+                primeros14.Sort();
+                this.intervalos = new IntervaloList(this.primeros14);
+                this.intervalos.actualizarIntervalos(this.duracionTotal, 15, 14);
+            } else 
+            {
+                this.intervalos.actualizarIntervalos(this.duracionTotal, numEnsamble,numEnsamble -1);
+            }
         }
 
         public List<double> valoresOrdenados;
@@ -223,13 +248,16 @@ namespace SIM_TP_4K4.TP4
 
         public List<double> tiemposPromedio { get; set; }
 
+        public List<double> primeros14 { get; set; }
+
+        public IntervaloList intervalos { get; set;}
+
+        public List<object[]> primeros14Valores { get; set; }
         public double[] infoT1 { get; set; }
         public double[] infoT2 { get; set; }
         public double[] infoT3 { get; set; }
         public double[] infoT4 { get; set; }
         public double[] infoT5 { get; set; }
-
-
         public int aux { get; set; }
     }
 }

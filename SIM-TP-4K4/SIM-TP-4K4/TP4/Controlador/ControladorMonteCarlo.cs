@@ -18,6 +18,8 @@ namespace SIM_TP_4K4.TP4.Controlador
         public List<double> randoms4 { get; set; }
         public List<double> randoms5 { get; set; }
 
+        public List<object[]> intervalos { get; set; }
+
         public Random generador { get; set; }
 
         public Dictionary<int, Distribucion> distribuciones { get; set; }
@@ -37,7 +39,7 @@ namespace SIM_TP_4K4.TP4.Controlador
 
             this.vectorEstado = new VectorEstado(this.distribuciones, infoT1, infoT2, infoT3, infoT4, infot5);
             this.generador = new Random();
-                
+            this.intervalos = new List<object[]>();
             this.randoms1 = generarRandoms(simulaciones);
             this.randoms2 = generarRandoms(simulaciones);
             this.randoms3 = generarRandoms(simulaciones);
@@ -61,19 +63,23 @@ namespace SIM_TP_4K4.TP4.Controlador
 
         public List<object[]> simular(int desde, int hasta)
         {
-            List<object[]> datosFacheros = new List<object[]>();
+            List<object[]> datosSimulacion = new List<object[]>();
             for(int i = 0; i < simulaciones; i++)
             {
                 vectorEstado.siguienteSimulacion(randoms1[i], randoms2[i], randoms3[i], randoms4[i], randoms5[i]);
 
-                if (i >= desde - 1 && i <= hasta)
+                if ((i >= desde - 1 && i <= hasta) || i == simulaciones - 1)
                 {
-                    datosFacheros.Add(vectorEstado.getActualVectorAsObject());
+                    datosSimulacion.Add(vectorEstado.getActualVectorAsObject());
+                    if (i > 15)
+                    {
+                     this.intervalos.Add(vectorEstado.getValoresIntervalos());
+                    }
                 }
                 this.pbar.Value++;
             }
 
-            return datosFacheros;
+            return datosSimulacion;
         }
 
         public List<object[]> fechaConfianza90()
@@ -90,6 +96,11 @@ namespace SIM_TP_4K4.TP4.Controlador
         public object[] ultimaSimulacion()
         {
             return vectorEstado.getActualVectorAsObject();
+        }
+
+        public string[] getTitulosIntervalos()
+        {
+            return vectorEstado.getTitulosIntervalos();
         }
     }
 }

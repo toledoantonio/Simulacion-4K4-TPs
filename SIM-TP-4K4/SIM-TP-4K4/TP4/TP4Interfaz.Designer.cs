@@ -53,6 +53,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.numHasta = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.numDesde = new System.Windows.Forms.NumericUpDown();
@@ -139,6 +140,9 @@
             this.Valores = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvIntervalos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numHasta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDesde)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNroMuestra)).BeginInit();
@@ -166,6 +170,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTp4)).BeginInit();
             this.tabControl2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIntervalos)).BeginInit();
             this.SuspendLayout();
             // 
             // numHasta
@@ -1302,6 +1308,7 @@
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage1);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Location = new System.Drawing.Point(12, 204);
@@ -1309,6 +1316,45 @@
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(1023, 511);
             this.tabControl2.TabIndex = 32;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dgvIntervalos);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1015, 485);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Intervalos";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvIntervalos
+            // 
+            this.dgvIntervalos.AllowUserToAddRows = false;
+            this.dgvIntervalos.AllowUserToDeleteRows = false;
+            this.dgvIntervalos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvIntervalos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIntervalos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.dgvIntervalos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvIntervalos.Location = new System.Drawing.Point(0, 0);
+            this.dgvIntervalos.Name = "dgvIntervalos";
+            this.dgvIntervalos.ReadOnly = true;
+            this.dgvIntervalos.RowHeadersWidth = 51;
+            this.dgvIntervalos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvIntervalos.Size = new System.Drawing.Size(1015, 485);
+            this.dgvIntervalos.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "NroTarea";
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "N° Ensambles";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 98;
             // 
             // TP4Interfaz
             // 
@@ -1368,6 +1414,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTp4)).EndInit();
             this.tabControl2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIntervalos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1461,5 +1509,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prob;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valores;
         private System.Windows.Forms.DataGridViewTextBoxColumn xd;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView dgvIntervalos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
