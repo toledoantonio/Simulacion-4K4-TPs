@@ -16,7 +16,6 @@ namespace SIM_TP_4K4.TP4.Controlador
         public List<double> randoms3 { get; set; }
         public List<double> randoms4 { get; set; }
         public List<double> randoms5 { get; set; }
-
         public List<object[]> intervalos { get; set; }
 
         public Random generador { get; set; }

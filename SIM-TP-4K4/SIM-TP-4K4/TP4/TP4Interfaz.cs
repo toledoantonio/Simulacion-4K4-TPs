@@ -16,8 +16,7 @@ namespace SIM_TP_4K4.TP4
 {
     public partial class TP4Interfaz : Form
     {
-
-        public ControladorMonteCarlo mountCharly { get; set; }
+        public ControladorMonteCarlo controlador { get; set; }
         public bool prob90 { get; set; }
 
         public double fecha90 { get; set; }
@@ -46,13 +45,13 @@ namespace SIM_TP_4K4.TP4
             double[] info4 = new double[2] { (double) this.numLiA4.Value, (double)this.numLsA4.Value };
             double[] info5 = new double[2] { (double) this.numMediaA5.Value, (double)this.numLambdaA5.Value };
 
-            this.mountCharly = new ControladorMonteCarlo((int)this.numNroMuestra.Value, info1, info2, info3, info4, info5, progressBar);
-            this.llenarTabla(mountCharly.simular((int)this.numDesde.Value, (int) this.numHasta.Value), mountCharly.fechaConfianza90());
-            this.agregarColumnas(mountCharly.getTitulosIntervalos());
-            this.agregarDatosIntervalos(mountCharly.intervalos);
-            this.graficar(mountCharly.obtenerPromedios());
-            this.cargarResultadosIntervalos(mountCharly.getResultados());
-            this.cargarResultados(mountCharly.ultimaSimulacion());
+            this.controlador = new ControladorMonteCarlo((int)this.numNroMuestra.Value, info1, info2, info3, info4, info5, progressBar);
+            this.llenarTabla(controlador.simular((int)this.numDesde.Value, (int) this.numHasta.Value), controlador.fechaConfianza90());
+            this.agregarColumnas(controlador.getTitulosIntervalos());
+            this.agregarDatosIntervalos(controlador.intervalos);
+            this.graficar(controlador.obtenerPromedios());
+            this.cargarResultadosIntervalos(controlador.getResultados());
+            this.cargarResultados(controlador.ultimaSimulacion());
            
             progressBar.Value = 1;
             progressBar.Visible = false;
@@ -134,7 +133,6 @@ namespace SIM_TP_4K4.TP4
         private void numMediaA5_ValueChanged(object sender, EventArgs e)
         {
             this.numLambdaA5.Value = 1 / this.numMediaA5.Value;
-
         }
 
         private void numLambdaA5_ValueChanged(object sender, EventArgs e)
@@ -190,15 +188,12 @@ namespace SIM_TP_4K4.TP4
                         grafico.Series["TiempoPromedio"].Points.AddXY(i + 1, promedio[i]);
                     }));
                 }
-
-
             }
             grafico.ResumeLayout();
         }
 
         public void agregarColumnas(string[] titulosIntervalos)
         {
-
             for (int i = 0; i < titulosIntervalos.Count(); ++i)
             {
                 dgvIntervalos.Columns.Add($"intervalo {i + 1}", titulosIntervalos[i]);
@@ -217,8 +212,7 @@ namespace SIM_TP_4K4.TP4
         {
             grafico.Series["TiempoPromedio"].Points.Clear();
         }
-
-
+ 
         private void btnGenerarSimulacion_Click(object sender, EventArgs e)
         {
             string resultadoValidacion = validarCampos();
@@ -229,7 +223,6 @@ namespace SIM_TP_4K4.TP4
             {
                 MessageBox.Show(resultadoValidacion);
             }
-
         }
 
         public void cargarResultados(object[] data)
