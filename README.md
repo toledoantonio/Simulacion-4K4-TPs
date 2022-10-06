@@ -2,4 +2,3 @@
 
 **Grupo B**
 
-TP1 Generación de Números Aleatorios - 17/08
