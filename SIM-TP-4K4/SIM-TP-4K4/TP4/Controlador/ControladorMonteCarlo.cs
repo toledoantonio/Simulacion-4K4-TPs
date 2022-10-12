@@ -111,7 +111,6 @@ namespace SIM_TP_4K4.TP4.Controlador
                 resultados[i] = result;
                 if (result > 0.9 && !bandera)
                 {
-                    Console.WriteLine("Hola mundo");
                     resultados[16] = i;
                     bandera = true;
                 }

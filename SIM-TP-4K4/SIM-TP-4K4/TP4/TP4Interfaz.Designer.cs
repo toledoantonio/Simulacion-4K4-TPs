@@ -263,9 +263,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 13);
+            this.label1.Size = new System.Drawing.Size(143, 13);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Cantidad de tares a simular:";
+            this.label1.Text = "Cantidad de tareas a simular:";
             // 
             // btnSalir
             // 

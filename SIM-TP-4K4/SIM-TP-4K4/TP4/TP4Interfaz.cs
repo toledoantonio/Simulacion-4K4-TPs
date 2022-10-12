@@ -72,7 +72,8 @@ namespace SIM_TP_4K4.TP4
             {
                 progressBar.Value++;
                 object[] valores = dataSimulacion[i];
-                object[] valoresOrdenados = dataOrdenados[i];
+               
+                object[] valoresOrdenados = (i == dataSimulacion.Count - 1 && numNroMuestra.Value > numHasta.Value) ? dataOrdenados.Last():dataOrdenados[i];
                 object[] tablaSimulacion = new object[] { valores[0], valores[1], valores[2],
                                                 valores[3],valores[4], valores[5],
                                                 valores[6], valores[7], valores[8],
@@ -83,7 +84,7 @@ namespace SIM_TP_4K4.TP4
                 dgvTp4.Invoke(new Action(delegate ()
                 {
                     dgvTp4.Rows.Add(tablaSimulacion);
-                    if (!prob90 && (double)valoresOrdenados[1] > 0.9)
+                    if (!prob90 && (double)valoresOrdenados[1] > 0.9 && numNroMuestra.Value <= numHasta.Value)
                     {
                         this.fecha90 = (double)valoresOrdenados[0];
                         prob90 = true;
