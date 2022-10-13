@@ -78,9 +78,14 @@ namespace SIM_TP_4K4.TP4.Controlador
             return datosSimulacion;
         }
 
-        public List<object[]> fechaConfianza90()
+        public List<object[]> ordenarParaFecha90DeConfianza()
         {
-            return vectorEstado.calcularFechaConfianza90();
+            return vectorEstado.ordenarParaFecha90DeConfianza();
+        }
+
+        public double obtnerFecha90DeConfianza()
+        {
+            return vectorEstado.fecha90;
         }
 
         public List<double> obtenerPromedios()

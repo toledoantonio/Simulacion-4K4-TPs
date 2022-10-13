@@ -46,11 +46,12 @@ namespace SIM_TP_4K4.TP4
             double[] info5 = new double[2] { (double) this.numMediaA5.Value, (double)this.numLambdaA5.Value };
 
             this.controlador = new ControladorMonteCarlo((int)this.numNroMuestra.Value, info1, info2, info3, info4, info5, progressBar);
-            this.llenarTabla(controlador.simular((int)this.numDesde.Value, (int) this.numHasta.Value), controlador.fechaConfianza90());
+            this.llenarTabla(controlador.simular((int)this.numDesde.Value, (int) this.numHasta.Value), controlador.ordenarParaFecha90DeConfianza());
             this.agregarColumnas(controlador.getTitulosIntervalos());
             this.agregarDatosIntervalos(controlador.intervalos);
             this.graficar(controlador.obtenerPromedios());
             this.cargarResultadosIntervalos(controlador.getResultados());
+            this.fecha90 = controlador.obtnerFecha90DeConfianza();
             this.cargarResultados(controlador.ultimaSimulacion());
            
             progressBar.Value = 1;
@@ -67,13 +68,13 @@ namespace SIM_TP_4K4.TP4
         {
 
             dgvTp4.SuspendLayout();
-
+            int j = (numDesde.Value > 1) ? (int)numDesde.Value - 1 : 0; 
             for (int i = 0; i < dataSimulacion.Count; i++)
             {
                 progressBar.Value++;
                 object[] valores = dataSimulacion[i];
                
-                object[] valoresOrdenados = (i == dataSimulacion.Count - 1 && numNroMuestra.Value > numHasta.Value) ? dataOrdenados.Last():dataOrdenados[i];
+                object[] valoresOrdenados = (i == dataSimulacion.Count - 1 && numNroMuestra.Value > numHasta.Value) ? dataOrdenados.Last():dataOrdenados[j];
                 object[] tablaSimulacion = new object[] { valores[0], valores[1], valores[2],
                                                 valores[3],valores[4], valores[5],
                                                 valores[6], valores[7], valores[8],
@@ -86,13 +87,13 @@ namespace SIM_TP_4K4.TP4
                     dgvTp4.Rows.Add(tablaSimulacion);
                     if (!prob90 && (double)valoresOrdenados[1] > 0.9 && numNroMuestra.Value <= numHasta.Value)
                     {
-                        this.fecha90 = (double)valoresOrdenados[0];
                         prob90 = true;
                         dgvTp4.Rows[dgvTp4.Rows.Count - 1].Cells[20].Style.BackColor = Color.Orange;
                         dgvTp4.Rows[dgvTp4.Rows.Count - 1].Cells[21].Style.BackColor = Color.Orange;
                     }
                 }
-                ));       
+                ));
+                j++;
             }
 
             dgvTp4.FirstDisplayedScrollingRowIndex = dgvTp4.Rows.Count - 1;

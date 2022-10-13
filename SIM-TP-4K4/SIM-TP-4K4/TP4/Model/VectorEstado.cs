@@ -18,6 +18,7 @@ namespace SIM_TP_4K4.TP4
         {
             this.vectorDatos = new double[18];
             this.valoresOrdenados = new List<double>();
+            this.ordenados = new List<object[]>();
             this.tiemposPromedio = new List<double>();
             this.primeros14 = new List<double>();
             this.distribuciones = distribuciones;
@@ -144,12 +145,27 @@ namespace SIM_TP_4K4.TP4
             this.vectorDatos = new double[] { this.numEnsamble, this.Rnd1, Util.truncar(this.t1), this.Rnd2, Util.truncar(this.t2), this.Rnd3, Util.truncar(this.t3), this.Rnd4, Util.truncar(this.t4), this.Rnd5, this.t5, Util.truncar(this.finT4), this.initT5, Util.truncar(this.finT5), Util.truncar(this.duracionTotal), Util.truncar(this.duracionTotalAcumulada), Util.truncar(this.duracionTotalPromedio),Util.truncar(this.min), Util.truncar(this.max), Util.truncar(this.prob45)};
         }
 
-        public List<object[]> calcularFechaConfianza90() {
+        public List<object[]> ordenarParaFecha90DeConfianza() {
             this.valoresOrdenados.Sort();
-            List<object[]> resultado = this.valoresOrdenados.Select((x) => new object[] { x, calcularFormula() }).ToList();
+            this.ordenados = this.valoresOrdenados.Select((x) => new object[] { x, calcularFormula() }).ToList();
             this.aux = 0;
-            return resultado;
+            this.fecha90DeConfianza();
+            return this.ordenados;
         }
+
+        public void fecha90DeConfianza()
+        {
+            
+            foreach (object[] item in ordenados)
+            {
+                if ((double) item[1] >= 0.9)
+                {
+                    this.fecha90 = (double) item[0];
+                    break;
+                } 
+
+            }
+        } 
 
         public double calcularFormula()
         {
@@ -230,6 +246,8 @@ namespace SIM_TP_4K4.TP4
         public double max { get; set; }
         public double min { get; set; }
 
+        public double fecha90 { get; set; }
+
         public Dictionary<int, Distribucion> distribuciones { get; set; }
 
         public List<double> tiemposPromedio { get; set; }
@@ -237,7 +255,7 @@ namespace SIM_TP_4K4.TP4
         public List<double> primeros14 { get; set; }
 
         public IntervaloList intervalos { get; set;}
-
+        public List<object[]> ordenados { get; set; }
         public List<object[]> primeros14Valores { get; set; }
         public double[] infoT1 { get; set; }
         public double[] infoT2 { get; set; }
